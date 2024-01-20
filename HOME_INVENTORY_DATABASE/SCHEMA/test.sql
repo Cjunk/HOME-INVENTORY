@@ -4,6 +4,13 @@
 DROP TABLE IF EXISTS PURCHASE_HISTORY,STORES,LOCATION_MASTER,SOH,ITEM_TYPES,PRIME_LOCATION,ITEM_MASTER,MANUFACTURERS,ITEM_IMAGES_URLS CASCADE;
 
 CREATE TABLE ITEM_TYPES (type_id INT PRIMARY KEY);
+CREATE TABLE users (
+	userID INT AUTO_INCREMENT PRIMARY KEY,
+    user_first_name VARCHAR(45),
+    user_last_name VARCHAR(45),
+    user_email varchar(110),
+    user_hashed_pwd varchar(100),
+);
 CREATE TABLE manufacturers (
 	manufacturer_ID INT AUTO_INCREMENT PRIMARY KEY,
     manufacturer_name VARCHAR(50),
@@ -38,7 +45,7 @@ CREATE TABLE SOH (
 	soh_id INT AUTO_INCREMENT PRIMARY KEY,
     soh_item INT REFERENCES ITEM_MASTER(item_number),
     soh_location INT REFERENCES LOCATION_MASTER(location_id)
-)
+);
 /*The image table.   */
 
 CREATE TABLE ITEM_IMAGES_URLS (
