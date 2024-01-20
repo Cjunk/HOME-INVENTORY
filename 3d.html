@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>3D Object</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"
+    ></script>
+  </head>
+  <body>
+    <div class="webgl">
+      <canvas
+        class="canvas"
+        data-modeluid="99bfe75ebd734fa3832a63e02e2cacf7"
+        data-action="create-hotspot"
+        width="792"
+        height="650"
+        tabindex="0"
+        style="
+          touch-action: none;
+          user-select: none;
+          -webkit-user-drag: none;
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        "
+      >
+      </canvas>
+
+      <div class="loading-container">
+        <div class="secondary-progress --colored visible">
+          <div class="secondary-progress-percentage">0 %</div>
+          <div class="secondary-progress-display" style="width: 0%"></div>
+        </div>
+        <div class="main-progress --colored">
+          <img
+            alt="Loading 3D Model"
+            src="https://media.sketchfab.com/models/99bfe75ebd734fa3832a63e02e2cacf7/thumbnails/fc6d3718f870450aa29373c61e822266/4991a0605e024d7db289be6843eb086d.jpeg"
+            class="loading-thumbnail"
+          />
+
+          <div class="main-progress-wrapper">
+            <div class="main-progress-percentage loading-percentage">100 %</div>
+            <p>Loading 3D model</p>
+            <div class="main-progress-display">
+              <div
+                class="main-progress-display__progress"
+                style="width: 100%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hotspots"></div>
+
+      <div class="gui enabled">
+        <div class="animation-not-supported hidden">
+          <a href="#" class="close" aria-label="close"></a>
+          <p>
+            Model is too heavy for your device and can not be rendered properly
+          </p>
+        </div>
+
+        <div class="controls">
+          <div class="general-controls widget no-fadeout">
+            <a class="control volume" title="Volume (M)" draggable="false">
+              <i class="viewer-icon-volume-up"></i>
+              <div class="volume-menu">
+                <div
+                  class="widget slider-widget volume-slider-widget --vertical"
+                >
+                  <div class="widget-wrapper">
+                    <a class="fa-regular fa-volume-up"></a>
+                    <div class="bar">
+                      <div class="slide" style="height: 100%">
+                        <div class="cursor"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <a
+              class="control tooltip ar --always-visible"
+              data-tooltip="View in AR"
+            >
+              <i class="viewer-icon-ar"></i>
+            </a>
+
+            <a
+              class="control tooltip tooltip-right-bound fullscreen --always-visible"
+              data-tooltip="Fullscreen (f)"
+            >
+              <i class="viewer-icon-fullscreen"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="viewer-hint widget disabled">
+          <div class="viewer-movehint">
+            <i class="icon"></i>
+            <span class="label">click &amp; hold<br />to rotate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
