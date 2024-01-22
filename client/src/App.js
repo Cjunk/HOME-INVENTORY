@@ -1,0 +1,53 @@
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import LoginForm from './Components/login.js'; // Adjust the path if necessary
+import './App.css';
+
+function App() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async (username, password) => {
+    //event.preventDefault();
+
+    // Create the request payload
+    const payload = {
+      username: username,
+      password: password
+    };
+
+    try {
+      // Send a POST request to your server endpoint
+      const response = await fetch('http://localhost:3001/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const responseData = await response.json();
+      console.log('Login response:', responseData);
+
+      // Handle the response data as needed...
+    } catch (error) {
+      console.error('Failed to login:', error);
+      // Handle errors here, like showing a notification to the user
+    }
+  };
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Login</h1>
+        <LoginForm onLogin={handleLogin} />
+      </header>
+    </div>
+  );
+}
+
+export default App;
