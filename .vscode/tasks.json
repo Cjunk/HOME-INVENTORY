@@ -2,37 +2,49 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Echo Message",
-      "type": "shell",
-      "command": "echo",
-      "args": ["VSCode tasks.json and settings.json are detected!"],
+      "label": "Start Express Server",
+      "type": "npm",
+      "script": "start",
+      "path": "server",
       "problemMatcher": [],
-      "isBackground": false,
+      "isBackground": true,
       "presentation": {
         "reveal": "always"
       }
     },
     {
-      "label": "Start Express Server",
-      "type": "npm",
-      "script": "start",
-      "path": "/server/",
+      "label": "Debug Test",
+      "type": "shell",
+      "command": "echo",
+      "args": [
+        "Debug Test Task"
+      ],
       "problemMatcher": [],
       "isBackground": false,
       "presentation": {
-        "reveal": "never"
+        "reveal": "always",
+        "panel": "new"
       }
     },
     {
       "label": "Start React App",
       "type": "npm",
       "script": "start",
-      "path": "/client/",
+      "path": "client",
       "problemMatcher": [],
-      "isBackground": false,
+      "isBackground": true,
       "presentation": {
-        "reveal": "never"
+        "reveal": "always"
       }
+    },
+    {
+      "label": "Start Server and React App",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Start Express Server",
+        "Start React App"
+      ],
+      "problemMatcher": []
     }
   ]
 }

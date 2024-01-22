@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 // eslint-disable-next-line
 import LoginForm from './Components/login.js'; // Adjust the path if necessary
+import TestPage from './Components/testpage.js'
+import LogoutComponent from './Components/logout.js'
 import './App.css';
 
 function App() {
   // eslint-disable-next-line
-  const [username, setUsername] = useState('');
-  // eslint-disable-next-line
-  const [password, setPassword] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false); // Track user authentication state
+
+  // useEffect to check authentication state on component mount
+  useEffect(() => {
+    // You can implement logic here to check the user's authentication status.
+    // For simplicity, set it to true initially.
+    setLoggedIn(true);
+  }, []);
 
   const handleLogin = async (username, password) => {
     //event.preventDefault();
@@ -36,20 +43,33 @@ function App() {
 
       const responseData = await response.json();
       console.log('Login response:', responseData);
-
+      setLoggedIn(true);
       // Handle the response data as needed...
     } catch (error) {
       console.error('Failed to login:', error);
       // Handle errors here, like showing a notification to the user
     }
+
   };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Login</h1>
-        <LoginForm onLogin={handleLogin} />
-      </header>
+      <Router>
+        <Routes>
+          <Route path="/" element={loggedIn ? (<Navigate to="/test" replace />) : (<LoginForm onLogin={handleLogin} />)}>
+            
+            {/* Show login form if not logged in, else redirect to /test */}
+            {/*loggedIn ? <Navigate to="/test" /> : <LoginForm onLogin={handleLogin} />*/}
+          </Route>
+          <Route path="/test" element={!loggedIn ? (<LoginForm onLogin={handleLogin} />) : (<TestPage onLogin={handleLogin} />)}>
+            {/* Show TestPage component if logged in, else redirect to /login */}
+            {/*loggedIn ? <TestPage /> : <Navigate to="/login" />*/}
+          </Route>
+          <Route path="/logout" element={<LogoutComponent />} />
+          {/* Add other routes as needed */}
+          {/*<Navigate from="/" to="/login" />*/}
+        </Routes>
+      </Router>
     </div>
   );
 }

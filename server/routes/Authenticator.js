@@ -34,7 +34,6 @@ function isValidUser(username, password) {
 // Middleware to handle user login
 function login(req, res) {
     const { username, password } = req.body;
-
     isValidUser(username, password).then(isValid => {
         if (isValid) {
             const userDetailsQuery = 'SELECT userID, user_first_name, user_email FROM users WHERE user_username = ?';
