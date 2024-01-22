@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+// eslint-disable-next-line
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+// eslint-disable-next-line
 import LoginForm from './Components/login.js'; // Adjust the path if necessary
 import './App.css';
 
 function App() {
+  // eslint-disable-next-line
   const [username, setUsername] = useState('');
+  // eslint-disable-next-line
   const [password, setPassword] = useState('');
 
   const handleLogin = async (username, password) => {
