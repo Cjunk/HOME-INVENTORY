@@ -1,0 +1,14 @@
+{
+  "tasks.autoDetect": "onFirstFolderOpen",
+  "tasks.runInBackground": false,
+  "tasks.onDidOpen": [
+    {
+      "task": "Start Express Server",
+      "problemMatcher": []
+    },
+    {
+      "task": "Start React App",
+      "problemMatcher": []
+    }
+  ]
+}
