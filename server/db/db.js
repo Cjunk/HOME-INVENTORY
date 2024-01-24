@@ -1,17 +1,23 @@
+/*
+    The database module :
+    Using MySQL
+
+*/
 const mysql = require('mysql')
 require('dotenv').config();
 
+// Create the connection 
 const db = mysql.createConnection({
-    connectionLimit: 2, // Adjust this value as needed
-    host: process.env.DB_HOST, // Replace with correct host ip
+    connectionLimit: 2,             // Adjust this value as needed 2 connections 1 for the app and 1 for express.sessions
+    host: process.env.DB_HOST,      // Replace with correct host ip
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME
 });
-/*DATABASE CONNECTOR*/
+/*Creating the object and connecting*/
 db.connect(err => {
     if (err) {
-        console.error('Error connecting to MySQL:', err);
+        console.error('db.js: Error connecting to MySQL:', err);
         return;
     }
     console.log('Connected to MySQL');
@@ -24,13 +30,12 @@ db.connect(err => {
  */
 function executeQuery(sql, values) {
     return new Promise((resolve, reject) => {
-        
+
         db.query(sql, values, (err, results) => {
             if (err) {
                 reject(err);
-            } else {    
-            
-                resolve(results);
+            } else {
+                resolve(results);  // Find how many results via results.length
             }
         });
     });

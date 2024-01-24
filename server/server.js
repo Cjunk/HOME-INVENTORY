@@ -6,9 +6,10 @@ const app = express();
 
 const { login, authMiddleware, isAuthenticated } = require('./routes/Authenticator.js');
 const db = require('./db/db.js'); // Adjust the path according to your file structure
+
 const allowedOrigins = [{
-    origin:'*',
-     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 }]; // Adjust as needed
 const https = require('https');
 const fs = require('fs');
@@ -34,7 +35,7 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     httpOnly: true, // Prevent JavaScript access to the cookie
-    
+
     cookie: {
         maxAge: 36000000, // Session expires after 1 hour (in milliseconds)
         secure: true, // Set to true in a production environment if using HTTPS
