@@ -2,17 +2,22 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import Axios
 
-function LogoutComponent() {
+function LogoutComponent({ onLogout }) {
+  console.log("am here")
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     // Send a request to the server to log the user out
     axios
-      .post('/logout') // Replace with the appropriate server endpoint for logout
+      .post('/logout', null, {
+        withCredentials: true,
+      }) // Replace with the appropriate server endpoint for logout
       .then((response) => {
         // Handle successful logout (e.g., clear local storage, reset user state)
         // ...
-
+        console.log("logout.js"), response
+        onLogout(false)
+        
         // Redirect to the login page
         navigate('/');
       })
@@ -24,7 +29,7 @@ function LogoutComponent() {
         // Redirect to the login page
         navigate('/');
       });
-  }, [navigate]);
+  }, [navigate, onLogout]);
 
   return null; // You can return null since this component is just for redirection
 }

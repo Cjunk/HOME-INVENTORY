@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const db = require('../db/db'); // Adjust the path according to your file structure
+
 const saltRounds = 10;
 //const myPlaintextPassword = 'Quest35#';
 require('dotenv').config();
@@ -41,16 +42,21 @@ function login(req, res) {
                 .then(results => {
                     if (results.length > 0) {
                         // Authentication successful, initialize the user object in the session
+                        req.session.isAuthenticated = true;
                         req.session.user = {
                             userID: results[0].userID,
                             username: results[0].user_username,
                             firstName: results[0].user_first_name,
-                            email: results[0].user_email
+                            email: results[0].user_email,
                         };
-                        req.session.isAuthenticated = true;
-                        console.log("function login: Password is VALID", req.session.isAuthenticated);
-                        console.log(req.session.user);
-                        res.redirect('/test');
+                        
+                        //console.log("function login: Password is VALID", req.session.isAuthenticated);
+                        console.log("Session Cookie to be Set:", req.sessionID);
+                        res.json({
+                            message: 'Login successful',
+                            success:true,                          
+                        });
+
                     } else {
                         // User not found (should not happen since isValidUser was true)
                         res.redirect('/login?error=usernotfound');
@@ -78,11 +84,13 @@ function login(req, res) {
 
 
 function isAuthenticated(req, res, next) {
-    if (req.session.isAuthenticated) {
+    req.sessionID = Object.keys(req.sessionStore.sessions)[0]
+    console.log("HERE IS THE SESSION COOKIE", req.sessionID);
+    if (req.session.isAuthenticated && req.sessionID) {
         next(); // Continue if the user is authenticated
     } else {
-        res.redirect('/login'); // Redirect to login if not authenticated
-        //res.status(401).send('Unauthorized'); // Return 401 if not authenticated
+        //res.redirect('/login'); // Redirect to login if not authenticated
+        res.status(401).send('Unauthorized'); // Return 401 if not authenticated
     }
 }
 // Middleware for authentication checks

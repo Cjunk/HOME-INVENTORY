@@ -1,39 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './styles/login.css';
+import axios from 'axios';
 
-function TestPage({ onLogin }) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onLogin(username, password);
+function TestPage({ setLogout }) {
+  const handleLogout = async () => {
+    try {
+      console.log("Cookies before Axios request:", document.cookie);
+      const response = await axios.post('https://localhost:3001/logout', {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+          'sessionID': 'sessionID' + encodeURIComponent(document.cookie)
+        },
+      });
+      console.log("ATTEMPTING IT", response);
+      if (response.status === 200) {
+        localStorage.removeItem('isLoggedIn');
+        setLogout(false);
+      } else {
+        console.error('Failed to logout:', response);
+      }
+    } catch (error) {
+      console.error('Failed to logout:', error);
+    }
   };
 
   return (
     <div>
-      
-    <form onSubmit={handleSubmit}>
-      <div>
-        <h2>Login</h2>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <button type="submit">Login</button>
-    </form>
+      <h2>Your inventory 3</h2>
+      <h1> J J</h1>
+      <button onClick={handleLogout} className="input" id="logoutBut">
+        Logout
+      </button>
     </div>
   );
 }

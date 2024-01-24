@@ -2,6 +2,7 @@ const mysql = require('mysql')
 require('dotenv').config();
 
 const db = mysql.createConnection({
+    connectionLimit: 2, // Adjust this value as needed
     host: process.env.DB_HOST, // Replace with correct host ip
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
@@ -22,7 +23,6 @@ db.connect(err => {
  * @returns {Promise} - A Promise that resolves to the query results.
  */
 function executeQuery(sql, values) {
-    console.log("db / exectureQuery I am being called", values)
     return new Promise((resolve, reject) => {
         
         db.query(sql, values, (err, results) => {
