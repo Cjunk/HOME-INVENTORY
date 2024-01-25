@@ -20,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://192.168.1.23:3001",
+
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-transform-optional-catch-binding": "^7.23.4",
     "dotenv": "^16.4.0"
   }

@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles/login.css';
 import axios from 'axios';
-const serverIP = '192.168.1.23'; // Replace with your server's IP address
 function TestPage({ setLogout }) {
+  const [theData, settheData] = useState('')
+  const getData = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_EXPRESS_SERVER_URL}/secure/getLoggedInInfo`, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+          'sessionID': 'sessionID' + encodeURIComponent(document.cookie)
+        },
+      })
+      if (response.status === 200) {
+        settheData(response.data)
+      } else {
+        settheData(response.data)
+        console.error('No data received');
+      }
+    } catch (error) {
+      settheData('Failed to get data')
+      console.error('Failed to logout:', error);
+    }
+  }
   const handleLogout = async () => {
     try {
-      console.log("Cookies before Axios request:", document.cookie);
-      const response = await axios.post(`/logout`, {
+      const response = await axios.post(`${process.env.REACT_APP_EXPRESS_SERVER_URL}/logout`, {
         withCredentials: true,
         headers: {
           'Content-Type': 'application/json',
@@ -27,10 +46,14 @@ function TestPage({ setLogout }) {
 
   return (
     <div>
+      {theData && <div>TheData: {theData.userID} {theData.user_first_name}  {theData.user_email}</div>}
       <h2>Your inventory 3</h2>
       <h1> J J</h1>
       <button onClick={handleLogout} className="input" id="logoutBut">
         Logout
+      </button>
+      <button onClick={getData} className="input" id="logoutBut">
+        Get data
       </button>
     </div>
   );

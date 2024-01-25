@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './styles/login.css';
 import axios from 'axios'; // Import Axios
-const serverIP = '192.168.1.23'; // Replace with your server's IP address
 // public ip http://112.141.11.237/
 function LoginForm({ setLogin }) {
     const [username, setUsername] = useState('');
@@ -16,7 +15,7 @@ function LoginForm({ setLogin }) {
             password: password,
         };
         try {
-            const response = await axios.post(`/login`, payload, {
+            const response = await axios.post(`${process.env.REACT_APP_EXPRESS_SERVER_URL}/login`, payload, {
                 withCredentials: true, // Include cookies in the request
                 headers: {
                     'Content-Type': 'application/json',
@@ -24,10 +23,10 @@ function LoginForm({ setLogin }) {
             });
 
             if (response.status === 200) {
-                const responseData = response.data;
-                console.log('Login response:', responseData);
+                console.log('Login response:', response.data);
                 localStorage.setItem('isLoggedIn', 'true');
                 setLogin(true);
+                //  TODO:  implement get POST login info from the server. must get from /test
             } else {
                 console.error('Failed to login:', response);
             }
