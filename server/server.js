@@ -5,12 +5,16 @@ const session = require('express-session');
 const app = express();
 
 const { login, authMiddleware, isAuthenticated } = require('./routes/Authenticator.js');
-const db = require('./db/db.js'); // Adjust the path according to your file structure
+const db = require('./db/db.js'); 
 
+//  CORS:
+const corsOrigins = process.env.NODE_ENV === 'DEVELOPMENT' ? '*' : ['http://192.168.1.23:2002']
 const allowedOrigins = [{
-    origin: '*',
+    origin: corsOrigins,  //  In production this will need to change
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 }]; // Adjust as needed
+
+
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
