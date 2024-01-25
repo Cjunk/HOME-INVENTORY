@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './styles/login.css';
 import axios from 'axios'; // Import Axios
-
+const serverIP = '192.168.1.23'; // Replace with your server's IP address
+// public ip http://112.141.11.237/
 function LoginForm({ setLogin }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -14,7 +16,7 @@ function LoginForm({ setLogin }) {
             password: password,
         };
         try {
-            const response = await axios.post('https://localhost:3001/login', payload, {
+            const response = await axios.post(`/login`, payload, {
                 withCredentials: true, // Include cookies in the request
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,16 +32,25 @@ function LoginForm({ setLogin }) {
                 console.error('Failed to login:', response);
             }
         } catch (error) {
+            setErrorMessage(error.message);
             console.error('Failed to login:', error);
             // Handle errors here, like showing a notification to the user
         }
     };
-
+    const handleAlertButtonClick = () => {
+        window.open('https://www.cnn.com', '_blank');
+    };
+    const handlePasswordKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handleSubmit(event); // Call the handleSubmit function when Enter is pressed
+        }
+    };
     return (
         <div>
+            {errorMessage && <div>Error: {errorMessage}</div>}
             <form onSubmit={handleSubmit} className="form" method="Post">
                 <div>
-                    <h2>Login1</h2>
+                    <h2>Login2</h2>
                     <label htmlFor="username">Username:</label>
                     <input
                         type="text"
@@ -55,11 +66,20 @@ function LoginForm({ setLogin }) {
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        onKeyDown={handlePasswordKeyDown}
                     />
                 </div>
-                <button type="submit" className="input">
-                    Login
-                </button>
+                <div>
+                    <button type="submit" className="input">
+                        Login
+                    </button>
+                    <button type="button" className="input" onClick={handleSubmit} onPointerEnter={handleSubmit}>
+                        Login
+                    </button>
+                    <button type="button" className="input" onClick={handleSubmit} onTouchStart={handleAlertButtonClick}>
+                        Alert Button
+                    </button>
+                </div>
             </form>
         </div>
     );

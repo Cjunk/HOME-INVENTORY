@@ -1,12 +1,12 @@
 import React from 'react';
 import './styles/login.css';
 import axios from 'axios';
-
+const serverIP = '192.168.1.23'; // Replace with your server's IP address
 function TestPage({ setLogout }) {
   const handleLogout = async () => {
     try {
       console.log("Cookies before Axios request:", document.cookie);
-      const response = await axios.post('https://localhost:3001/logout', {
+      const response = await axios.post(`/logout`, {
         withCredentials: true,
         headers: {
           'Content-Type': 'application/json',
