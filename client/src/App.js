@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginForm from './Components/login.js'; // Adjust the path if necessary
-import TestPage from './Components/testpage.js'
+import TestPage from './Components/testpage.js';
 import './App.css';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     setLoggedIn(isLoggedIn);
   }, []);
-  const handleLogin =(val) => {
+  const handleLogin = (val) => {
     setLoggedIn(val)
   }
   const handleLogout = (val) => {
@@ -23,9 +23,9 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={loggedIn ? (<Navigate to="/test" replace />) : (<LoginForm setLogin={handleLogin} />)}>
+          <Route path="/" element={loggedIn ? (<Navigate to="/homepage" replace />) : (<LoginForm setLogin={handleLogin} />)}>
           </Route>
-          <Route path="/test" element={!loggedIn ? (<Navigate to="/" replace />) : (<TestPage setLogout={handleLogout} />)}>
+          <Route path="/homepage" element={!loggedIn ? (<Navigate to="/" replace />) : (<TestPage setLogout={handleLogout} />)}>
           </Route>
         </Routes>
       </Router>

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './styles/login.css';
 import axios from 'axios';
 function TestPage({ setLogout }) {
   const [theData, settheData] = useState('')
+  useEffect(() => {
+    document.title = 'Home Harmony';
+  }, [theData])
   const getData = async () => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_EXPRESS_SERVER_URL}/secure/getLoggedInInfo`, {

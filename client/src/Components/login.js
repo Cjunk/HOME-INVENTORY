@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './styles/login.css';
 import axios from 'axios'; // Import Axios
 // public ip http://112.141.11.237/
 function LoginForm({ setLogin }) {
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState("");
-
+    useEffect(() => {
+        document.title = "Login";
+    }, [])
     const handleSubmit = async (event) => {
         event.preventDefault();
 
