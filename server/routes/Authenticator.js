@@ -48,13 +48,23 @@ function login(req, res) {
                             username: results[0].user_username,
                             firstName: results[0].user_first_name,
                             email: results[0].user_email,
+                            isAuthenticated: true
                         };
-                        
+
                         //console.log("function login: Password is VALID", req.session.isAuthenticated);
-                        console.log("Session Cookie to be Set:", req.sessionID);
+                        //console.log("Session Cookie to be Set:", req.sessionID); //TODO DELETE ME
+                        const userDetailsQuery = 'SELECT userID, user_first_name, user_email FROM users WHERE userID = ?';
+
+                        db.executeQuery(userDetailsQuery, [req.session.user.userID])
+                            .then(results => {
+                                console.log(results[0].user_first_name) // TODO DELETE ME
+                            }).catch(error => {
+                                console.error(error) // TODO DELETE ME
+                            })
+
                         res.json({
                             message: 'Login successful',
-                            success:true,                          
+                            success: true,
                         });
 
                     } else {
