@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginForm from './Components/login.js'; // Adjust the path if necessary
+import NavigationBar from './Components/heading.js'
 import TestPage from './Components/testpage.js';
 import './App.css';
 
@@ -19,11 +20,13 @@ function App() {
     setLoggedIn(val)
   }
   console.log('loggedIn:', loggedIn);
-  return (
+  return ( 
     <div className="App">
+       <NavigationBar isLoggedIn={loggedIn}/>
+            {/* Rest of your app component */}
       <Router>
         <Routes>
-          <Route path="/" element={loggedIn ? (<Navigate to="/homepage" replace />) : (<LoginForm setLogin={handleLogin} />)}>
+          <Route path="/" element={loggedIn ? (<Navigate to="/homepage" replace />) : (<LoginForm  setLogin={handleLogin} />)}>
           </Route>
           <Route path="/homepage" element={!loggedIn ? (<Navigate to="/" replace />) : (<TestPage setLogout={handleLogout} />)}>
           </Route>
@@ -32,5 +35,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
