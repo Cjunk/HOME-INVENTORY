@@ -19,7 +19,7 @@ function TestPage({ setLogout }) {
         settheData ("STATUS CODE 401")
       }
       if (response.status === 200) {
-        settheData("----",response.data)
+        settheData(response.data)
       } else {
         settheData("NO DATA" + response.data)
         console.error('No data received');
@@ -52,7 +52,7 @@ function TestPage({ setLogout }) {
 
   return (
     <div>
-      {theData && <div>TheData:{theData} {theData.userID} {theData.user_first_name}  {theData.user_email}</div>}
+      {theData && <div>TheData:{theData.userID} {theData.user_first_name}  {theData.user_email}</div>}
       <h2>Your inventory 3</h2>
       <h1> J J</h1>
       <button onClick={handleLogout} className="input" id="logoutBut">

@@ -9,11 +9,11 @@ const securedRoutes = require('./routes/securedRoutes');
 let NUMBER_OF_CONNECTIONS = 0
 const SERVER_START_TIME = Date.now()
 // ======================================================================================================================
-const { login, authMiddleware, isAuthenticated } = require('./routes/Authenticator.js');
+const { login} = require('./routes/Authenticator.js');
 const db = require('./db/db.js');
 
 //  CORS:
-const corsOrigins = process.env.NODE_ENV === 'DEVELOPMENT' ? '*' : ['http://192.168.1.23:2002']
+const corsOrigins = process.env.NODE_ENV === 'DEVELOPMENT' ? '*' : ['http://192.168.1.23:2002','http://112.141.11.237:3002']
 const allowedOrigins = [{
     origin: '*',  //  In production this will need to change
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -81,8 +81,6 @@ app.use((req, res, next) => {
     });
     next();
 });
-
-
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
@@ -90,7 +88,6 @@ app.use((err, req, res, next) => {
 
 app.use('/secure', securedRoutes);
 // Usage
-
 /*
 
     PUBLIC ROUTES  ---------------------------------------------------------------------------------------------
