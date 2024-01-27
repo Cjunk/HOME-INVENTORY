@@ -8,8 +8,8 @@ function NavigationBar(props) {
       <ul>
         {props.isLoggedIn ? (
           <>
-          <li><button>Add Item</button></li>,
-          <li><button>Delete Item</button></li>,
+          <li><button>Add Item</button></li>
+          <li><button>Delete Item</button></li>
             <li><button>Settings</button></li>
             </>
         ):(
