@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import './styles/login.css';
+//import './styles/login.css';
 import axios from 'axios'; // Import Axios
 // public ip http://112.141.11.237/
 function LoginForm({ setLogin }) {
@@ -50,7 +50,7 @@ function LoginForm({ setLogin }) {
     return (
         <div>
             {errorMessage && <div>Error: {errorMessage}</div>}
-            <form onSubmit={handleSubmit} className="form" method="Post">
+            <form onSubmit={handleSubmit} className="" method="Post">
                 <div>
                     <h2>laptop server</h2>
                     <label htmlFor="username">Username:</label>
@@ -72,13 +72,13 @@ function LoginForm({ setLogin }) {
                     />
                 </div>
                 <div>
-                    <button type="submit" className="input">
+                    <button type="submit" className="">
                         Login
                     </button>
-                    <button type="button" className="input" onClick={handleSubmit} onPointerEnter={handleSubmit}>
+                    <button type="button" className="" onClick={handleSubmit} onPointerEnter={handleSubmit}>
                         Login
                     </button>
-                    <button type="button" className="input" onClick={handleSubmit} onTouchStart={handleAlertButtonClick}>
+                    <button type="button" className="" onClick={handleSubmit} onTouchStart={handleAlertButtonClick}>
                         Alert Button
                     </button>
                 </div>
