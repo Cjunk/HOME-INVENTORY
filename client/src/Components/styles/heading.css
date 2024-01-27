@@ -1,0 +1,70 @@
+/* NavigationBar.css */
+.navbar-main {
+  background-color:red;
+}
+.Navbar-main2{
+  background-color:red;
+  color:red;
+}
+.navigation-header {
+    background-color: Blue;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    width:100%;
+    position:sticky;
+    top:0;
+}
+
+.navigation-header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+   
+}
+
+.navigation-header li {
+    margin: 10px;
+}
+
+.navigation-header button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+}
+
+.navigation-header button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navigation-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navigation-header ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .navigation-header li {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .navigation-header button {
+        width: 100%;
+        text-align: left;
+    }
+}

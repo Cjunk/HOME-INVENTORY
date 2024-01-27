@@ -16,17 +16,21 @@ function isValidUser(username, password) {
                     // Compare the provided password with the stored hash
                     bcrypt.compare(password, results[0].user_hashed_pwd, (err, isMatched) => {
                         if (err) {
+                            //  USER IS NOT AUTHENTICATED: DUE to invalid password
                             reject(err);
                         } else {
                             resolve(isMatched); // true if passwords match, false otherwise
                         }
                     });
                 } else {
+                    //  USER IS NOT AUTHENTICATED: Due to invalid username
                     console.log("function isValidUser: user not found");
                     resolve(false); // No user found
                 }
             })
             .catch(err => {
+                //  Not authenticated due to some other reason
+                console.log("Athentication failed for some other reason")
                 reject(err);
             });
     });
