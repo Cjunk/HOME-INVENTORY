@@ -52,7 +52,7 @@ function LoginForm({ setLogin }) {
             {errorMessage && <div>Error: {errorMessage}</div>}
             <form onSubmit={handleSubmit} className="form" method="Post">
                 <div>
-                    <h2>Login2</h2>
+                    <h2>laptop server</h2>
                     <label htmlFor="username">Username:</label>
                     <input
                         type="text"

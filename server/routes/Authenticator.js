@@ -1,18 +1,24 @@
+/*
+    The Express server Authenticator: 2024
+    Written by Jericho Sharman
+
+    USAGE
+    Called by every secured route
+*/
 const bcrypt = require('bcrypt');
 const db = require('../db/db'); // Adjust the path according to your file structure
-
-const saltRounds = 10;
-//const myPlaintextPassword = 'Quest35#';
+//const saltRounds = 10;  //  Required for BCRYPT for password hash creation
 require('dotenv').config();
 
-// Function to check if a user is valid based on username and password
+// Function to check if an attempted login username and password combination are in the database. Will check the password hashes
+//  A username and password are required
 function isValidUser(username, password) {
     return new Promise((resolve, reject) => {
         // Query the database for the user's hashed password
         const sql = 'SELECT * FROM users WHERE user_username = ?;';
         db.executeQuery(sql, [username])
             .then(results => {
-                if (results.length !== 0) {
+                if (results.length !== 0) { // A users details have been found
                     // Compare the provided password with the stored hash
                     bcrypt.compare(password, results[0].user_hashed_pwd, (err, isMatched) => {
                         if (err) {
@@ -31,8 +37,10 @@ function isValidUser(username, password) {
             });
     });
 }
+/*
+    Main login function: Written by Jericho Sharman
 
-// Middleware to handle user login
+*/
 function login(req, res) {
     const { username, password } = req.body;
     isValidUser(username, password).then(isValid => {
@@ -50,10 +58,9 @@ function login(req, res) {
                             email: results[0].user_email,
                             isAuthenticated: true
                         };
-
                         //console.log("function login: Password is VALID", req.session.isAuthenticated);
                         //console.log("Session Cookie to be Set:", req.sessionID); //TODO DELETE ME
-                        const userDetailsQuery = 'SELECT userID, user_first_name, user_email FROM users WHERE userID = ?';
+                        const userDetailsQuery = 'SELECT userID, user_first_name, user_email FROM users WHERE userID = ?'; // Get more user details now logged in
 
                         db.executeQuery(userDetailsQuery, [req.session.user.userID])
                             .then(results => {
