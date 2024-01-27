@@ -46,7 +46,6 @@ app.use(session({
     },
     //store: sessionStore
 }));
-
 // Middleware to parse JSON and URL-encoded data
 app.use(express.json()); // For parsing application/json
 app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
