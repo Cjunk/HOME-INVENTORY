@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import './styles/login.css';
 import axios from 'axios';
-function TestPage({ setLogout }) {
+function YourInventory({ setLogout }) {
   const [theData, settheData] = useState('')
   useEffect(() => {
     document.title = 'Home Harmony';
@@ -19,9 +19,10 @@ function TestPage({ setLogout }) {
         settheData ("STATUS CODE 401")
       }
       if (response.status === 200) {
-        settheData("----",response.data)
+        settheData(response.data)
+        console.log(response.data)
       } else {
-        settheData("NO DATA" + response.data)
+        settheData("Status NOT 200:    NO DATA" + response.data)
         console.error('No data received');
       }
     } catch (error) {
@@ -52,7 +53,7 @@ function TestPage({ setLogout }) {
 
   return (
     <div>
-      {theData && <div>TheData:{theData} {theData.userID} {theData.user_first_name}  {theData.user_email}</div>}
+      {theData && <div>TheData:{theData.userID} {theData.user_first_name}  {theData.user_email}</div>}
       <h2>Your inventory 3</h2>
       <h1> J J</h1>
       <button onClick={handleLogout} className="input" id="logoutBut">
@@ -65,4 +66,4 @@ function TestPage({ setLogout }) {
   );
 }
 
-export default TestPage;
+export default YourInventory;
