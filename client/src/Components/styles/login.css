@@ -8,7 +8,9 @@
             height: 100vh;
             margin: 0;
         }
-
+        .formlabel {
+            color:white;
+                }
         .form {
             background-color: black;
             padding: 20px;

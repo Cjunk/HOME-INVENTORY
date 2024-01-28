@@ -53,7 +53,7 @@ function YourInventory({ setLogout }) {
 
   return (
     <div>
-      {theData && <div>TheData:{theData.userID} {theData.user_first_name}  {theData.user_email}</div>}
+      {theData && <div className="formlabel">TheData:{theData.userID} {theData.user_first_name}  {theData.user_email}</div>}
       <h2>Your inventory 3</h2>
       <h1> J J</h1>
       <button onClick={handleLogout} className="input" id="logoutBut">

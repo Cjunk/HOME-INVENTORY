@@ -39,6 +39,7 @@
     cursor: pointer;
     transition: background-color 0.3s;
   font-size: 12px;  
+  
 }
 
 .navigation-header button:hover {
@@ -57,17 +58,25 @@
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
+        
     }
 
     .navigation-header li {
         width: 100%;
         margin: 5px 0;
+        
     }
+    .mobbutton {
 
+    }
+    .resbutton {
+        font-size:28px;
+    }
     .navigation-header button {
         width: 100%;
         text-align: left;
         font-size: 25px; 
+       
     }
 
 }
