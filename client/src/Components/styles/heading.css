@@ -38,7 +38,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    
+  font-size: 12px;  
 }
 
 .navigation-header button:hover {
@@ -50,6 +50,7 @@
     .navigation-header {
         flex-direction: column;
         align-items: flex-start;
+        
     }
 
     .navigation-header ul {
@@ -66,5 +67,7 @@
     .navigation-header button {
         width: 100%;
         text-align: left;
+        font-size: 25px; 
     }
+
 }

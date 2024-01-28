@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react'
 import './styles/heading.css';
 function NavigationBar(props) {
   return (
-        <nav className="navigation-header">
+    <nav className="navigation-header">
+      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
       <ul>
         {props.isLoggedIn ? (
           <>

@@ -28,5 +28,8 @@
     "**/node_modules": true,
     "**/bower_components": true
   },
-  "onStartupRunTask": "Start Server and React App" // Add this line
+  "onStartupRunTask": "Start Server and React App",
+  "[sql]": {
+    "editor.defaultFormatter": "cymonk.sql-formatter"
+  } // Add this line
 }
