@@ -8,6 +8,8 @@ yarn-error.log*
 lerna-debug.log*
 node_modules
 .env
+temp
+
 server.cert 
 server.key
 # Diagnostic reports (https://nodejs.org/api/report.html)

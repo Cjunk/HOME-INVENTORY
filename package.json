@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "description": "Project Root",
   "author": "Jericho Sharman",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  }
 }
