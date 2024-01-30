@@ -51,9 +51,6 @@ CREATE TABLE categories (
     PRIMARY KEY (`idcategories`),
     UNIQUE KEY `idcategories_UNIQUE` (`idcategories`)
 );
-
-
-
 CREATE TABLE manufacturers (
     userID INT REFERENCES usrs(userID),
     manufacturer_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -62,7 +59,6 @@ CREATE TABLE manufacturers (
     manufacturer_number INT
     /*  random field, use for anything */
 );
-
 CREATE TABLE PRIME_LOCATION (
     userID INT REFERENCES usrs(userID),
     location_id INT PRIMARY KEY,
@@ -188,9 +184,6 @@ LEFT JOIN
     manufacturers m ON im.manufacturer_ID = m.manufacturer_ID
 LEFT JOIN 
     LOCATION_MASTER lm ON soh.soh_location = lm.location_id;
-
-
-=======
 
 $ $ DELIMITER;
 

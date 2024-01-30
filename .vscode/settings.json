@@ -30,6 +30,6 @@
   },
   "onStartupRunTask": "Start Server and React App",
   "[sql]": {
-    "editor.defaultFormatter": "cymonk.sql-formatter"
+    "editor.defaultFormatter": "cweijan.vscode-mysql-client2"
   } // Add this line
 }
