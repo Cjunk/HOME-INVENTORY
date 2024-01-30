@@ -13,7 +13,7 @@ ITEM_IMAGES_URLS,
 users,
 categories CASCADE;
 
-DROP TABLE IF EXISTS ITEM_TYPES,
+DROP TABLE IF EXISTS ITEM_TYPES,USER_TYPES,
 TRANSACTION_HISTORY,
 transaction_types CASCADE;
 
@@ -33,7 +33,6 @@ CREATE TABLE transaction_types (
     tran_name VARCHAR(20),
     tran_descr VARCHAR(45)
 );
-
 CREATE TABLE TRANSACTION_HISTORY (
     userID INT REFERENCES usrs(userID),
     transaction_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -53,15 +52,7 @@ CREATE TABLE categories (
     UNIQUE KEY `idcategories_UNIQUE` (`idcategories`)
 );
 
-CREATE TABLE users (
-    userID INT AUTO_INCREMENT PRIMARY KEY,
-    user_username varchar(50),
-    user_first_name VARCHAR(45),
-    user_last_name VARCHAR(45),
-    user_email varchar(150),
-    user_hashed_pwd varchar(100),
-    user_database_role int REFERENCES database_roles(role_id)
-);
+
 
 CREATE TABLE manufacturers (
     userID INT REFERENCES usrs(userID),
@@ -167,6 +158,39 @@ VALUES
 
 - - Assuming transaction_type ID for deletes is 2
 END;
+<<<<<<< HEAD
+$$
+DELIMITER ;
+CREATE VIEW View_AllUserSOH AS
+SELECT 
+    u.userID,
+    u.user_username,
+    im.item_number,
+    im.descr AS item_description,
+    im.barcode,
+    im.item_weight,
+    im.item_height,
+    im.item_width,
+    im.uom AS unit_of_measure,
+    m.manufacturer_name,
+    lm.location_name,
+    lm.location_desc,
+    soh.soh_qty AS quantity_on_hand,
+    soh.soh_date_added,
+    soh.soh_last_updated
+FROM 
+    users u
+INNER JOIN 
+    SOH soh ON u.userID = soh.userID
+INNER JOIN 
+    ITEM_MASTER im ON soh.soh_item = im.item_number
+LEFT JOIN 
+    manufacturers m ON im.manufacturer_ID = m.manufacturer_ID
+LEFT JOIN 
+    LOCATION_MASTER lm ON soh.soh_location = lm.location_id;
+
+
+=======
 
 $ $ DELIMITER;
 
@@ -184,3 +208,4 @@ FROM
     JOIN ITEM_MASTER i ON s.soh_item = i.item_number
 WHERE
     s.userID = i.userID;
+

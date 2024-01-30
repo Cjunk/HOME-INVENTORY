@@ -7,9 +7,18 @@
 */
 const bcrypt = require('bcrypt');
 const db = require('../db/db'); // Adjust the path according to your file structure
-//const saltRounds = 10;  //  Required for BCRYPT for password hash creation
+const saltRounds = 10;  //  Required for BCRYPT for password hash creation
 require('dotenv').config();
+// Password to hash
+const password = 'Quest35#';
+// Hash the password with the generated salt
+bcrypt.hash(password, saltRounds, (err, hash) => {
+    if (err) {
+        throw err;
+    }
 
+    console.log('Hashed Password:', hash);
+});
 // Function to check if an attempted login username and password combination are in the database. Will check the password hashes
 //  A username and password are required
 function isValidUser(username, password) {
@@ -20,6 +29,7 @@ function isValidUser(username, password) {
             .then(results => {
                 if (results.length !== 0) { // A users details have been found
                     // Compare the provided password with the stored hash
+                    console.log("attempted password =",password,"retireved hashed password =",results[0].user_hashed_pwd)
                     bcrypt.compare(password, results[0].user_hashed_pwd, (err, isMatched) => {
                         if (err) {
                             //  USER IS NOT AUTHENTICATED: DUE to invalid password
@@ -127,20 +137,7 @@ function authMiddleware(req, res, next) {
     }
 }
 
-// Password to hash
-const password = 'Quest35#';
 
-// Generate a salt with a cost factor of 10
-const saltRounds = 10;
-
-// Hash the password with the generated salt
-bcrypt.hash(password, saltRounds, (err, hash) => {
-    if (err) {
-        throw err;
-    }
-
-    console.log('Hashed Password:', hash);
-});
 
 
 module.exports = { login, authMiddleware, isAuthenticated };
