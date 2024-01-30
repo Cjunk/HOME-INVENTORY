@@ -10,7 +10,7 @@ lerna-debug.log*
 node_modules
 .env
 temp
-
+HOME_INVENTORY_DATABASE
 server.cert 
 server.key
 # Diagnostic reports (https://nodejs.org/api/report.html)

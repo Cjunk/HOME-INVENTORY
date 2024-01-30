@@ -22,7 +22,8 @@ function App() {
   console.log('loggedIn:', loggedIn);
   return ( 
     <div className="App">
-       <NavigationBar isLoggedIn={loggedIn}/>
+      <NavigationBar isLoggedIn={loggedIn} />
+      
             {/* Rest of your app component */}
       <Router>
         <Routes>

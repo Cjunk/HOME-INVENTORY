@@ -1,11 +1,23 @@
 /*  The HOME INVENTORY DATABASE SCHEMA
  Designed & Created  by Jericho Sharman 01/2024
  */
-DROP TABLE IF EXISTS PURCHASE_HISTORY,STORES,LOCATION_MASTER,SOH,ITEM_TYPES,PRIME_LOCATION,ITEM_MASTER,MANUFACTURERS,ITEM_IMAGES_URLS,users,categories CASCADE;
+DROP TABLE IF EXISTS PURCHASE_HISTORY,
+STORES,
+LOCATION_MASTER,
+SOH,
+ITEM_TYPES,
+PRIME_LOCATION,
+ITEM_MASTER,
+MANUFACTURERS,
+ITEM_IMAGES_URLS,
+users,
+categories CASCADE;
 
 DROP TABLE IF EXISTS ITEM_TYPES,USER_TYPES,
 TRANSACTION_HISTORY,
 transaction_types CASCADE;
+
+
 
 CREATE TABLE ITEM_TYPES (
     userID INT REFERENCES usrs(userID),
@@ -13,10 +25,15 @@ CREATE TABLE ITEM_TYPES (
     type_name VARCHAR(20),
     type_description VARCHAR(150)
 );
+<<<<<<< HEAD
 CREATE TABLE USER_TYPES (  /* user types could be free, subscription level 1, subscription level 2, */
     user_typeID INT AUTO_INCREMENT PRIMARY KEY,
     user_type_desc TEXT NOT NULL 
 );
+=======
+
+
+>>>>>>> f81c277657663853d68fc8364938054339aab9c7
 CREATE TABLE transaction_types (
     userID INT REFERENCES usrs(userID),
     tran_typeID INT AUTO_INCREMENT PRIMARY KEY,
@@ -49,9 +66,13 @@ CREATE TABLE users (
     user_last_name VARCHAR(45),
     user_email varchar(150),
     user_hashed_pwd varchar(100),
+<<<<<<< HEAD
     user_mailing_list tinyINT,
     user_last_login DATETIME,
     user_type INT REFERENCES user_types(user_typeID)
+=======
+    user_database_role int REFERENCES database_roles(role_id)
+>>>>>>> f81c277657663853d68fc8364938054339aab9c7
 );
 
 CREATE TABLE manufacturers (
@@ -122,24 +143,43 @@ CREATE TABLE SOH (
 );
 
 /*The image table.   */
--- Create a trigger to record INSERTs in SOH table into TRANSACTION_HISTORY
-DELIMITER $$
-CREATE TRIGGER after_soh_insert
-AFTER INSERT ON SOH FOR EACH ROW
-BEGIN
-    INSERT INTO TRANSACTION_HISTORY (userID, transaction_type, tran_date, item_id, tran_qty)
-    VALUES (1, 1, NOW(), NEW.soh_item, NEW.soh_qty); -- Assuming transaction_type ID for inserts is 1
+- - Create a trigger to record INSERTs in SOH table into TRANSACTION_HISTORY DELIMITER $ $ CREATE TRIGGER after_soh_insert
+AFTER
+INSERT
+    ON SOH FOR EACH ROW BEGIN
+INSERT INTO
+    TRANSACTION_HISTORY (
+        userID,
+        transaction_type,
+        tran_date,
+        item_id,
+        tran_qty
+    )
+VALUES
+    (1, 1, NOW(), NEW.soh_item, NEW.soh_qty);
+
+- - Assuming transaction_type ID for inserts is 1
 END;
-$$
-DELIMITER ;
--- Create a trigger to record DELETEs in SOH table into TRANSACTION_HISTORY
-DELIMITER $$
-CREATE TRIGGER after_soh_delete
-AFTER DELETE ON SOH FOR EACH ROW
-BEGIN
-    INSERT INTO TRANSACTION_HISTORY (userID, transaction_type, tran_date, item_id, tran_qty)
-    VALUES (1, 2, NOW(), OLD.soh_item, -OLD.soh_qty); -- Assuming transaction_type ID for deletes is 2
+
+$ $ DELIMITER;
+
+- - Create a trigger to record DELETEs in SOH table into TRANSACTION_HISTORY DELIMITER $ $ CREATE TRIGGER after_soh_delete
+AFTER
+    DELETE ON SOH FOR EACH ROW BEGIN
+INSERT INTO
+    TRANSACTION_HISTORY (
+        userID,
+        transaction_type,
+        tran_date,
+        item_id,
+        tran_qty
+    )
+VALUES
+    (1, 2, NOW(), OLD.soh_item, - OLD.soh_qty);
+
+- - Assuming transaction_type ID for deletes is 2
 END;
+<<<<<<< HEAD
 $$
 DELIMITER ;
 CREATE VIEW View_AllUserSOH AS
@@ -171,3 +211,22 @@ LEFT JOIN
     LOCATION_MASTER lm ON soh.soh_location = lm.location_id;
 
 
+=======
+
+$ $ DELIMITER;
+
+CREATE VIEW user_specific_soh AS
+SELECT
+    s.userID,
+    s.soh_item,
+    i.descr as item_description,
+    s.soh_location,
+    s.soh_qty,
+    s.soh_date_added,
+    s.soh_last_updated
+FROM
+    SOH s
+    JOIN ITEM_MASTER i ON s.soh_item = i.item_number
+WHERE
+    s.userID = i.userID;
+>>>>>>> f81c277657663853d68fc8364938054339aab9c7
