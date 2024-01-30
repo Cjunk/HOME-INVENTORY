@@ -13,16 +13,23 @@ const { login} = require('./routes/Authenticator.js');
 const db = require('./db/db.js');
 
 //  CORS:
-const corsOrigins = process.env.NODE_ENV === 'DEVELOPMENT' ? '*' : ['http://192.168.1.23:2002','http://112.141.11.237:3002']
-const allowedOrigins = [{
-    origin: '*',  //  In production this will need to change
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-}]; // Adjust as needed
+const corsOrigins = process.env.NODE_ENV === 'DEVELOPMENT' ? ['http://192.168.1.23:2002','http://112.141.11.237:3002'] : ['http://192.168.1.23:2002','http://112.141.11.237:3002']
 const corsOptions = {
-    origin: allowedOrigins, // Add the origin of your React app here
+    origin: function (origin, callback) {
+        if (corsOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true, // Allow credentials (cookies) to be sent
 };
+
 app.use(cors(corsOptions));
+
+
+
+
 
 //  Configure HTTPs
 const https = require('https');
