@@ -53,7 +53,6 @@ function LoginForm({ setLogin }) {
         <div className="container"> {/* Add Bootstrap container class */}
             <div>
 
-                {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
                 <form onSubmit={handleSubmit}>
                     <div>
 
@@ -92,6 +91,8 @@ function LoginForm({ setLogin }) {
                         </div>
                     </div>
                 </form>
+
+                {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
             </div>
         </div>
     );

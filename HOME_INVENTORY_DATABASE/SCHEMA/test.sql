@@ -1,11 +1,23 @@
 /*  The HOME INVENTORY DATABASE SCHEMA
  Designed & Created  by Jericho Sharman 01/2024
  */
-DROP TABLE IF EXISTS PURCHASE_HISTORY,STORES,LOCATION_MASTER,SOH,ITEM_TYPES,PRIME_LOCATION,ITEM_MASTER,MANUFACTURERS,ITEM_IMAGES_URLS,users,categories CASCADE;
+DROP TABLE IF EXISTS PURCHASE_HISTORY,
+STORES,
+LOCATION_MASTER,
+SOH,
+ITEM_TYPES,
+PRIME_LOCATION,
+ITEM_MASTER,
+MANUFACTURERS,
+ITEM_IMAGES_URLS,
+users,
+categories CASCADE;
 
 DROP TABLE IF EXISTS ITEM_TYPES,
 TRANSACTION_HISTORY,
 transaction_types CASCADE;
+
+
 
 CREATE TABLE ITEM_TYPES (
     userID INT REFERENCES usrs(userID),
@@ -13,6 +25,7 @@ CREATE TABLE ITEM_TYPES (
     type_name VARCHAR(20),
     type_description VARCHAR(150)
 );
+
 
 CREATE TABLE transaction_types (
     userID INT REFERENCES usrs(userID),
@@ -46,7 +59,8 @@ CREATE TABLE users (
     user_first_name VARCHAR(45),
     user_last_name VARCHAR(45),
     user_email varchar(150),
-    user_hashed_pwd varchar(100)
+    user_hashed_pwd varchar(100),
+    user_database_role int REFERENCES database_roles(role_id)
 );
 
 CREATE TABLE manufacturers (
@@ -117,23 +131,56 @@ CREATE TABLE SOH (
 );
 
 /*The image table.   */
--- Create a trigger to record INSERTs in SOH table into TRANSACTION_HISTORY
-DELIMITER $$
-CREATE TRIGGER after_soh_insert
-AFTER INSERT ON SOH FOR EACH ROW
-BEGIN
-    INSERT INTO TRANSACTION_HISTORY (userID, transaction_type, tran_date, item_id, tran_qty)
-    VALUES (1, 1, NOW(), NEW.soh_item, NEW.soh_qty); -- Assuming transaction_type ID for inserts is 1
+- - Create a trigger to record INSERTs in SOH table into TRANSACTION_HISTORY DELIMITER $ $ CREATE TRIGGER after_soh_insert
+AFTER
+INSERT
+    ON SOH FOR EACH ROW BEGIN
+INSERT INTO
+    TRANSACTION_HISTORY (
+        userID,
+        transaction_type,
+        tran_date,
+        item_id,
+        tran_qty
+    )
+VALUES
+    (1, 1, NOW(), NEW.soh_item, NEW.soh_qty);
+
+- - Assuming transaction_type ID for inserts is 1
 END;
-$$
-DELIMITER ;
--- Create a trigger to record DELETEs in SOH table into TRANSACTION_HISTORY
-DELIMITER $$
-CREATE TRIGGER after_soh_delete
-AFTER DELETE ON SOH FOR EACH ROW
-BEGIN
-    INSERT INTO TRANSACTION_HISTORY (userID, transaction_type, tran_date, item_id, tran_qty)
-    VALUES (1, 2, NOW(), OLD.soh_item, -OLD.soh_qty); -- Assuming transaction_type ID for deletes is 2
+
+$ $ DELIMITER;
+
+- - Create a trigger to record DELETEs in SOH table into TRANSACTION_HISTORY DELIMITER $ $ CREATE TRIGGER after_soh_delete
+AFTER
+    DELETE ON SOH FOR EACH ROW BEGIN
+INSERT INTO
+    TRANSACTION_HISTORY (
+        userID,
+        transaction_type,
+        tran_date,
+        item_id,
+        tran_qty
+    )
+VALUES
+    (1, 2, NOW(), OLD.soh_item, - OLD.soh_qty);
+
+- - Assuming transaction_type ID for deletes is 2
 END;
-$$
-DELIMITER ;
+
+$ $ DELIMITER;
+
+CREATE VIEW user_specific_soh AS
+SELECT
+    s.userID,
+    s.soh_item,
+    i.descr as item_description,
+    s.soh_location,
+    s.soh_qty,
+    s.soh_date_added,
+    s.soh_last_updated
+FROM
+    SOH s
+    JOIN ITEM_MASTER i ON s.soh_item = i.item_number
+WHERE
+    s.userID = i.userID;
