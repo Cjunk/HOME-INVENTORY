@@ -19,5 +19,7 @@ CREATE TABLE users (
     user_hashed_pwd varchar(100),
     user_mailing_list tinyINT,
     user_last_login DATETIME,
-    user_type INT REFERENCES user_types (user_typeID) user_database_role int REFERENCES database_roles (role_id)
+    user_status TINYINT, -- Active/not active/ paused
+    user_type INT REFERENCES user_types (user_typeID) user_database_role int REFERENCES database_roles (role_id),
+    failed_login_attempts TINYINT
 );
