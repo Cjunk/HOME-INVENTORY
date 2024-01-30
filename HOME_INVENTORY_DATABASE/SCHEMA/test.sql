@@ -52,8 +52,6 @@ CREATE TABLE categories (
     UNIQUE KEY `idcategories_UNIQUE` (`idcategories`)
 );
 
-
-
 CREATE TABLE manufacturers (
     userID INT REFERENCES usrs(userID),
     manufacturer_ID INT AUTO_INCREMENT PRIMARY KEY,
