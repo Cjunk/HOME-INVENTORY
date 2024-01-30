@@ -60,7 +60,6 @@ CREATE TABLE manufacturers (
     manufacturer_number INT
     /*  random field, use for anything */
 );
-
 CREATE TABLE PRIME_LOCATION (
     userID INT REFERENCES usrs(userID),
     location_id INT PRIMARY KEY,
