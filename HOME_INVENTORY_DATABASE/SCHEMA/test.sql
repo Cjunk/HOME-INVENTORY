@@ -25,15 +25,8 @@ CREATE TABLE ITEM_TYPES (
     type_name VARCHAR(20),
     type_description VARCHAR(150)
 );
-<<<<<<< HEAD
-CREATE TABLE USER_TYPES (  /* user types could be free, subscription level 1, subscription level 2, */
-    user_typeID INT AUTO_INCREMENT PRIMARY KEY,
-    user_type_desc TEXT NOT NULL 
-);
-=======
 
 
->>>>>>> f81c277657663853d68fc8364938054339aab9c7
 CREATE TABLE transaction_types (
     userID INT REFERENCES usrs(userID),
     tran_typeID INT AUTO_INCREMENT PRIMARY KEY,
@@ -59,21 +52,7 @@ CREATE TABLE categories (
     UNIQUE KEY `idcategories_UNIQUE` (`idcategories`)
 );
 
-CREATE TABLE users (
-    userID INT AUTO_INCREMENT PRIMARY KEY,
-    user_username varchar(50),
-    user_first_name VARCHAR(45),
-    user_last_name VARCHAR(45),
-    user_email varchar(150),
-    user_hashed_pwd varchar(100),
-<<<<<<< HEAD
-    user_mailing_list tinyINT,
-    user_last_login DATETIME,
-    user_type INT REFERENCES user_types(user_typeID)
-=======
-    user_database_role int REFERENCES database_roles(role_id)
->>>>>>> f81c277657663853d68fc8364938054339aab9c7
-);
+
 
 CREATE TABLE manufacturers (
     userID INT REFERENCES usrs(userID),
@@ -229,4 +208,4 @@ FROM
     JOIN ITEM_MASTER i ON s.soh_item = i.item_number
 WHERE
     s.userID = i.userID;
->>>>>>> f81c277657663853d68fc8364938054339aab9c7
+

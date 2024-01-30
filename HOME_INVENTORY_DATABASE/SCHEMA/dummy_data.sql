@@ -1,19 +1,18 @@
-INSERT INTO users (user_username, user_first_name, user_last_name, user_email, user_hashed_pwd) VALUES ('usr', 'Jericho', 'Sharman', 'jsharman@hotmail.com.au', 'unknown');
+INSERT INTO users (user_username, user_first_name, user_last_name, user_email, user_hashed_pwd) VALUES ('usr', 'Jericho', 'Sharman', 'jsharman@hotmail.com.au', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW');
 -- Inserting dummy data into ITEM_TYPES
 INSERT INTO ITEM_TYPES (type_id) VALUES (1), (2), (3);
 
 -- Inserting dummy data into users
 INSERT INTO users (user_username, user_first_name, user_last_name, user_email, user_hashed_pwd) 
 VALUES 
-('johnDoe', 'John', 'Doe', 'johndoe@example.com', 'hashedpassword1'),
-('janeDoe', 'Jane', 'Doe', 'janedoe@example.com', 'hashedpassword2');
+('johnDoe', 'John', 'Doe', 'johndoe@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW'),
+('janeDoe', 'Jane', 'Doe', 'janedoe@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW');
 -- Inserting more dummy data into users
 INSERT INTO users (user_username, user_first_name, user_last_name, user_email, user_hashed_pwd) 
 VALUES 
-('aliceSmith', 'Alice', 'Smith', 'alicesmith@example.com', 'hashedpassword3'),
-('bobJohnson', 'Bob', 'Johnson', 'bobjohnson@example.com', 'hashedpassword4'),
-('carolWhite', 'Carol', 'White', 'carolwhite@example.com', 'hashedpassword5');
-
+('aliceSmith', 'Alice', 'Smith', 'alicesmith@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW'),
+('bobJohnson', 'Bob', 'Johnson', 'bobjohnson@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW'),
+('carolWhite', 'Carol', 'White', 'carolwhite@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW
 
 -- Inserting dummy data into manufacturers
 INSERT INTO manufacturers (manufacturer_name, manufacturer_description, manufacturer_number) 
