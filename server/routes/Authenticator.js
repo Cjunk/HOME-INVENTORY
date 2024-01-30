@@ -10,7 +10,7 @@ const db = require('../db/db'); // Adjust the path according to your file struct
 const saltRounds = 10;  //  Required for BCRYPT for password hash creation
 require('dotenv').config();
 // Password to hash
-const password = 'Quest35#';
+const password = '';
 // Hash the password with the generated salt
 bcrypt.hash(password, saltRounds, (err, hash) => {
     if (err) {
