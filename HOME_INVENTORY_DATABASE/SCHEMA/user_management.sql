@@ -33,6 +33,6 @@ CREATE TABLE users (
     user_type INT REFERENCES user_types (user_typeID) user_database_role int REFERENCES database_roles (role_id),
     failed_login_attempts TINYINT, -- how many times a failed attempt / use with user_last_logon field
     user_type INT REFERENCES user_types (user_typeID), -- what type of user used for monetisation tracking
-    user_database_role int REFERENCES database_roles (role_id),
+    user_database_role int REFERENCES database_roles (role_id), -- What can they do in the database
     user_creation_date DATETIME
 );

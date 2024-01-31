@@ -13,12 +13,13 @@ const { login} = require('./routes/Authenticator.js');
 const db = require('./db/db.js');
 
 //  CORS:
-const corsOrigins = process.env.NODE_ENV === 'DEVELOPMENT' ? ['http://192.168.1.23:2002','http://112.141.11.237:3002'] : ['http://192.168.1.23:2002','http://112.141.11.237:3002']
+const corsOrigins = process.env.NODE_ENV === 'development' ? ['https://192.168.1.13:3002','http://192.168.1.13:3002', 'http://192.168.1.20:3002', 'http://192.168.1.23:3002', 'http://112.141.11.237:3002'] : ['http://192.168.1.13:3002', 'http://192.168.1.20:3002', 'http://192.168.1.23:3002', 'http://112.141.11.237:3002']
 const corsOptions = {
     origin: function (origin, callback) {
         if (corsOrigins.indexOf(origin) !== -1 || !origin) {
             callback(null, true);
         } else {
+            console.log(corsOrigins, origin)
             callback(new Error('Not allowed by CORS'));
         }
     },
