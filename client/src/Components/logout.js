@@ -17,7 +17,6 @@ function LogoutComponent({ onLogout }) {
         // ...
         console.log("logout.js"), response
         
-        
         // Redirect to the login page
         navigate('/');
       })

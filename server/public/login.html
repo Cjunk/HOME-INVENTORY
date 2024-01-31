@@ -55,7 +55,7 @@
 </head>
 
 <body>
-    <form action="https://112.141.11.237:3001/login" method="POST">
+    <form id="loginForm"  method="POST">
         <h2>Login</h2>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required /><br />
@@ -68,12 +68,15 @@
 
     <script>
         window.onload = function() {
+            var environmentURL = `${process.env.REACT_APP_EXPRESS_SERVER_URL}/login`;
+            document.getElementById('loginForm').action = environmentURL
             var urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('login') && urlParams.get('login') === 'failed') {
                 alert('Invalid username or password');
                 window.history.pushState({}, document.title, window.location.pathname);
             }
         };
+
     </script>
 </body>
 </html>
