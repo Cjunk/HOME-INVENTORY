@@ -2,7 +2,7 @@
 logs
 *.log
 .vscode
-temp
+/temp
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -10,10 +10,10 @@ lerna-debug.log*
 node_modules
 *.sql
 .env
-temp
+
 "F:\MY REPOS\Main Website\HOME_INVENTORY_DATABASE\"
-HOME_INVENTORY_DATABASE/
-BIN/
+/HOME_INVENTORY_DATABASE
+/BIN
 server.cert 
 server.key
 # Diagnostic reports (https://nodejs.org/api/report.html)
