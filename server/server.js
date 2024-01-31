@@ -18,9 +18,9 @@ const { login} = require('./routes/Authenticator.js');
 const db = require('./db/db.js');
 let NUMBER_OF_CONNECTIONS = 0 // This var is used to track the number of attempts to the API. TODO: ok to remove this in prod
 //  CORS:
-
 //  Get the allowed cors origins from the .env file
 //console.log("here is the cors list",process.env.CORS_ORIGINS_DEV.split(','))
+//  Get the allowed cors origins from the .env file
 const corsOrigins = process.env.NODE_ENV === 'development' ? process.env.CORS_ORIGINS_DEV.split(',') : process.env.CORS_ORIGINS_PROD.split(',');
 
 const corsOptions = {
