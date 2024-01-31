@@ -29,6 +29,7 @@ function LoginForm({ setLogin }) {
 
             if (response.status === 200) {
                 console.log('Login response:', response.data);
+                
                 localStorage.setItem('isLoggedIn', 'true');
                 setLogin(true);
                 //  TODO:  implement get POST login info from the server. must get from /test

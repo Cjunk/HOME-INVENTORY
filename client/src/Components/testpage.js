@@ -19,7 +19,7 @@ function YourInventory({ setLogout }) {
         settheData ("STATUS CODE 401")
       }
       if (response.status === 200) {
-        settheData(response.data)
+        settheData("STATUS CODE = 200",response.data)
         console.log(response.data)
       } else {
         settheData("Status NOT 200:    NO DATA" + response.data)
@@ -53,7 +53,7 @@ function YourInventory({ setLogout }) {
 
   return (
     <div>
-      {theData && <div className="formlabel">TheData:{theData.userID} {theData.user_first_name}  {theData.user_email}</div>}
+      {theData && <div className="formlabel">TheData:{theData.userID} {theData.user_first_name}  {theData.user_email} {theData}</div>}
       <h2>Your inventory 3</h2>
       <h1> J J</h1>
       <button onClick={handleLogout} className="input" id="logoutBut">

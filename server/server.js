@@ -1,3 +1,9 @@
+/*
+    The EXPRESS SERVER
+    Written by Jericho Sharman 2024
+
+*/
+
 const dotenv = require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
@@ -6,14 +12,15 @@ const app = express();
 const HOST = '0.0.0.0'; // Bind to all IP addresses
 const port = process.env.PORT || 3001;
 const securedRoutes = require('./routes/securedRoutes');
-let NUMBER_OF_CONNECTIONS = 0
-const SERVER_START_TIME = Date.now()
+const SERVER_START_TIME = Date.now()  // capture the servers start time :TODO
 // ======================================================================================================================
 const { login} = require('./routes/Authenticator.js');
 const db = require('./db/db.js');
-
+let NUMBER_OF_CONNECTIONS = 0 // This var is used to track the number of attempts to the API. TODO: ok to remove this in prod
 //  CORS:
-const corsOrigins = process.env.NODE_ENV === 'DEVELOPMENT' ? ['http://192.168.1.23:2002','http://112.141.11.237:3002'] : ['http://192.168.1.23:2002','http://112.141.11.237:3002']
+//  Get the allowed cors origins from the .env file
+const corsOrigins = process.env.NODE_ENV === 'development' ? process.env.CORS_ORIGINS_DEV.split(',') : process.env.CORS_ORIGINS_PROD.split(',');
+
 const corsOptions = {
     origin: function (origin, callback) {
         if (corsOrigins.indexOf(origin) !== -1 || !origin) {
@@ -24,19 +31,15 @@ const corsOptions = {
     },
     credentials: true, // Allow credentials (cookies) to be sent
 };
-
 app.use(cors(corsOptions));
-
-
-
-
 
 //  Configure HTTPs
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
+const { userInfo } = require('os');
 
-//  Configure Mysql
+//  Configure Mysql  TODO: Implement database access to store session info
 const MySQLStore = require('express-mysql-session')(session);
 const sessionStore = new MySQLStore({}, db); //TODO Keep this line in. eventually implement a database store 
 
@@ -45,7 +48,7 @@ app.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: true,
-    httpOnly: true, // Prevent JavaScript access to the cookie
+    httpOnly: false, // Prevent JavaScript access to the cookie
     cookie: {
         maxAge: 36000000, // Session expires after 1 hour (in milliseconds)
         secure: true, // Set to true in a production environment if using HTTPS
@@ -71,34 +74,35 @@ app.set('trust proxy', true); // Or a more specific configuration depending on y
 app.use((req, res, next) => {
     const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress;
     const startTime = process.hrtime();
-    NUMBER_OF_CONNECTIONS++
-    res.on('finish', () => { // Log after response has been sent
-        const durationInMilliseconds = getDurationInMilliseconds(startTime);
-        console.log("*************************************************************************************************");
-        console.log(`* TIMESTAMP:\t ${new Date().toISOString()}`);
-        console.log(`* CONNECTIONS: ${NUMBER_OF_CONNECTIONS}`)
-        console.log(`* METHOD:\t ${req.method}`);
-        console.log(`* PATH:\t\t ${req.url}`);
-        console.log(`* STATUS:\t ${res.statusCode}`);
-        console.log(`* DURATION:\t ${durationInMilliseconds} ms`);
-        console.log(`* USER IP:\t ${clientIp}`);
-        console.log(`* USER AGENT:\t ${req.get('User-Agent')}`);
-        console.log(`* Authenticated: ${req.session && req.session.isAuthenticated ? 'Yes' : 'No'}`)
-        console.log("*************************************************************************************************");
-    });
+    if (process.env.NODE_ENV === 'development') {
+        // Code that should only run in development
+        NUMBER_OF_CONNECTIONS++
+        res.on('finish', () => { // Log after response has been sent
+            const durationInMilliseconds = getDurationInMilliseconds(startTime);
+            console.log("*************************************************************************************************");
+            console.log(`* TIMESTAMP:\t ${new Date().toISOString()}`);
+            console.log(`* CONNECTIONS: ${NUMBER_OF_CONNECTIONS}`)
+            console.log(`* METHOD:\t ${req.method}`);
+            console.log(`* PATH:\t\t ${req.url}`);
+            console.log(`* STATUS:\t ${res.statusCode}`);
+            console.log(`* DURATION:\t ${durationInMilliseconds} ms`);
+            console.log(`* USER IP:\t ${clientIp}`);
+            console.log(`* USER AGENT:\t ${req.get('User-Agent')}`);
+            console.log(`* Authenticated: ${req.session && req.session.isAuthenticated ? 'Yes' : 'No'}`)
+            console.log("*************************************************************************************************");
+        });
+    }
     next();
 });
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send('Something broke!');
+    res.status(500).send('Something broke!',req.data,userInfo);
 });
 
 app.use('/secure', securedRoutes);
 // Usage
 /*
-
     PUBLIC ROUTES  ---------------------------------------------------------------------------------------------
-
 */
 // Welcome message for the root route
 app.get('/', (req, res) => {
@@ -136,13 +140,6 @@ app.post('/logout', (req, res, next) => {
     SECURED ROUTES  --------------------------SECURED ROUTES------------------------SECURED ROUTES-------------------------------------------
 
 */
-
-
-
-
-
-
-// Apply authentication middleware to routes that need protection
 
 // Configure HTTPS server with the self-signed certificate
 const httpsOptions = {
