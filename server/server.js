@@ -18,11 +18,10 @@ const { login} = require('./routes/Authenticator.js');
 const db = require('./db/db.js');
 let NUMBER_OF_CONNECTIONS = 0 // This var is used to track the number of attempts to the API. TODO: ok to remove this in prod
 //  CORS:
-//const corsOrigins = process.env.NODE_ENV === 'development' ? ['https://192.168.1.13:3002','http://192.168.1.13:3002', 'http://192.168.1.20:3002', 'http://192.168.1.23:3002', 'http://112.141.11.237:3002'] : ['http://192.168.1.13:3002', 'http://192.168.1.20:3002', 'http://192.168.1.23:3002', 'http://112.141.11.237:3002']
+const corsOrigins = process.env.NODE_ENV === 'development' ? ['https://192.168.1.13:3002','http://192.168.1.13:3002', 'http://192.168.1.20:3002', 'http://192.168.1.23:3002', 'http://112.141.11.237:3002'] : ['http://192.168.1.13:3002', 'http://192.168.1.20:3002', 'http://192.168.1.23:3002', 'http://112.141.11.237:3002']
 
 //  Get the allowed cors origins from the .env file
-const corsOrigins = process.env.NODE_ENV === 'development' ? process.env.CORS_ORIGINS_DEV.split(',') : process.env.CORS_ORIGINS_PROD.split(',');
-
+//const corsOrigins = process.env.NODE_ENV === 'development' ? process.env.CORS_ORIGINS_DEV.split(',') : process.env.CORS_ORIGINS_PROD.split(',');
 
 const corsOptions = {
     origin: function (origin, callback) {
