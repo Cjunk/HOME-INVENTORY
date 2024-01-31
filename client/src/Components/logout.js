@@ -5,7 +5,7 @@ import axios from 'axios'; // Import Axios
 function LogoutComponent({ onLogout }) {
   console.log("am here")
   const navigate = useNavigate();
-  
+  onLogout(false)
   useEffect(() => {
     // Send a request to the server to log the user out
     axios
@@ -16,7 +16,7 @@ function LogoutComponent({ onLogout }) {
         // Handle successful logout (e.g., clear local storage, reset user state)
         // ...
         console.log("logout.js"), response
-        onLogout(false)
+        
         
         // Redirect to the login page
         navigate('/');
