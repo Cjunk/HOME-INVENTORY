@@ -51,7 +51,7 @@ app.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: true,
-    httpOnly: false, // Prevent JavaScript access to the cookie
+    httpOnly: true, // Prevent JavaScript access to the cookie
     cookie: {
         maxAge: 36000000, // Session expires after 1 hour (in milliseconds)
         secure: true, // Set to true in a production environment if using HTTPS
@@ -147,7 +147,7 @@ app.post('/logout', (req, res, next) => {
 // Configure HTTPS server with the self-signed certificate
 const httpsOptions = {
     key: fs.readFileSync(path.join(__dirname, 'server.key')),
-    cert: fs.readFileSync(path.join(__dirname, 'server.cert'))
+    cert: fs.readFileSync(path.join(__dirname, 'server.cer'))
 };
 
 const server = https.createServer(httpsOptions, app);
