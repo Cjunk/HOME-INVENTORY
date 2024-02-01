@@ -57,7 +57,7 @@ function LoginForm({ setLogin }) {
                 <form onSubmit={handleSubmit}>
                     <div>
 
-                        <h2 className="mb-4">REACT SERVER</h2>
+                        <h2 className="mb-4">LOGIN</h2>
                         <div className="mb-3">
                             <label htmlFor="username" className="formlabel">Username:</label>
                             <input

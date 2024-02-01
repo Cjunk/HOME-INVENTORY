@@ -9,18 +9,21 @@ function NavigationBar(props) {
       <ul>
         {props.isLoggedIn ? (
           <>
-          <li><button>Add Item</button></li>
-          <li><button>Delete Item</button></li>
+            <li><button>Add Item</button></li>
+            <li><button>Delete Item</button></li>
             <li><button>Settings</button></li>
-            </>
-        ):(
-            <li><button >Login</button></li>
-            
-        )}   
-            </ul>
-        </nav>
-    );
-  
+          </>
+        ) : (
+          <>
+            <li><button onClick={() => props.pageSelector(1)}>Login</button></li>
+            <li><button onClick={() => props.pageSelector(2)}>Register</button></li>
+          </>
+
+        )}
+      </ul>
+    </nav>
+  );
+
 }
 
 export default NavigationBar;

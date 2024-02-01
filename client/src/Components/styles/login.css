@@ -38,6 +38,7 @@
             margin-bottom: 20px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            width:45%;
         }
 
         .input[type="submit"] {

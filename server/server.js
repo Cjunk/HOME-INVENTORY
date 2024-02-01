@@ -14,7 +14,8 @@ const port = process.env.PORT || 3001;
 const securedRoutes = require('./routes/securedRoutes');
 const SERVER_START_TIME = Date.now()  // capture the servers start time :TODO
 // ======================================================================================================================
-const { login} = require('./routes/Authenticator.js');
+const { login,register } = require('./routes/Authenticator.js');
+
 const db = require('./db/db.js');
 let NUMBER_OF_CONNECTIONS = 0 // This var is used to track the number of attempts to the API. TODO: ok to remove this in prod
 //  CORS:
@@ -137,6 +138,7 @@ app.post('/logout', (req, res, next) => {
         }
     });
 });
+app.post('/register', register) // get the registration page
 
 /*
 

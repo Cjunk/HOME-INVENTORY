@@ -51,6 +51,17 @@ function isValidUser(username, password) {
             });
     });
 }
+function register(req, res) {
+    /*  
+        Register a new user
+    */
+    const { firstname, lastname, pswd } = req.body;
+    console.log("password", pswd)
+
+    //   Confirm this is a NEW user than add to the database
+
+    const userDetailsQuery = 'INSERT userID, user_first_name, user_email FROM users WHERE user_username = ?';
+}
 /*
     Main login function: Written by Jericho Sharman
 
@@ -140,4 +151,4 @@ function authMiddleware(req, res, next) {
 
 
 
-module.exports = { login, authMiddleware, isAuthenticated };
+module.exports = { login, register,authMiddleware, isAuthenticated };
