@@ -149,7 +149,6 @@ const httpsOptions = {
     key: fs.readFileSync(path.join(__dirname, 'server.key')),
     cert: fs.readFileSync(path.join(__dirname, 'server.cer'))
 };
-
 const server = https.createServer(httpsOptions, app);
 server.listen(port, HOST, () => {
     console.log(`Server is running on port ${port}`);
