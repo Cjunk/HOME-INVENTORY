@@ -5,11 +5,9 @@ import NavigationBar from './Components/heading.js'
 import TestPage from './Components/testpage.js';
 import RegisterForm from './Components/register.js'
 import './App.css';
-
 function App() {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
   const [currentPage, setcurrentPage] = useState(1)
-  
   const setTheCurrentPage =(page) => {
     setcurrentPage(page)
   }
@@ -25,15 +23,13 @@ function App() {
   const handleLogout = (val) => {
     setLoggedIn(val)
   }
-  console.log('loggedIn:', loggedIn);
   return ( 
     <div className="App">
       <NavigationBar isLoggedIn={loggedIn} pageSelector={setTheCurrentPage} />
-      
             {/* Rest of your app component */}
       <Router>
         <Routes>
-          <Route path="/" element={loggedIn ? (<Navigate to="/homepage" replace />) : currentPage==1?(<LoginForm  setLogin={handleLogin} />):(<RegisterForm/>)}>
+          <Route path="/" element={loggedIn ? (<Navigate to="/homepage" replace />) : currentPage === 1?(<LoginForm  setLogin={handleLogin} />):(<RegisterForm/>)}>
           </Route>
           <Route path="/homepage" element={!loggedIn ? (<Navigate to="/" replace />) : (<TestPage setLogout={handleLogout} />)}>
           </Route>
@@ -42,6 +38,4 @@ function App() {
     </div>
   );
 }
-
-
 export default App;

@@ -51,17 +51,37 @@ function isValidUser(username, password) {
             });
     });
 }
-function register(req, res) {
-    /*  
-        Register a new user
-    */
-    const { firstname, lastname, pswd } = req.body;
-    console.log("password", pswd)
+async function register(req, res) {
+    const { username, firstname, lastname, email, pswd } = req.body;
 
-    //   Confirm this is a NEW user than add to the database
-
-    const userDetailsQuery = 'INSERT userID, user_first_name, user_email FROM users WHERE user_username = ?';
+    try {
+        console.log("Check point #2");
+        // Check if the user already exists
+        const checkUserQuery = 'SELECT * FROM users WHERE user_email = ?';
+        const existingUsers = await db.executeQuery(checkUserQuery, [email]);
+        
+        if (existingUsers.length > 0) {
+            console.log("Check point # 4");
+            // User already exists
+            return res.status(409).send('User already exists');
+        }
+        
+        console.log("OK THIS USER DOESNT EXIST SO OK TO CREATE");
+        // Hash the password and add the new user
+        const hash = await bcrypt.hash(pswd, saltRounds);
+        
+        // Insert the new user
+        const insertUserQuery = 'INSERT INTO users (user_username, user_first_name, user_last_name, user_email, user_hashed_pwd) VALUES (?, ?, ?, ?, ?)';
+        await db.executeQuery(insertUserQuery, [username, firstname, lastname, email, hash]);
+        
+        console.log("User registered successfully");
+        res.status(201).send('User registered successfully');
+    } catch (err) {
+        console.log("An error occurred:", err);
+        res.status(500).send('Internal Server Error');
+    }
 }
+
 /*
     Main login function: Written by Jericho Sharman
 

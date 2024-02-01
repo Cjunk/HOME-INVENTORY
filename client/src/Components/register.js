@@ -11,33 +11,43 @@ function RegisterForm({ setLogin }) {
   useEffect(() => {
     document.title = "Register";
   }, [])
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const payload = {
-      firstname: firstname,
-      email: email,
-      pswd: pswd,
-      Cpswd:Cpswd
-    };
-    try {
-      const response = await axios.post(`${process.env.REACT_APP_EXPRESS_SERVER_URL}/register`, payload, {
-        //withCredentials: true, // Include cookies in the request
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.status === 200) {
-        console.log('Register response:', response.data);
-        //  TODO:  implement get POST login info from the server. must get from /test
-      } else {
-        console.error('Failed to register:', response);
-      }
-    } catch (error) {
-      setErrorMessage(error.message);
-      console.error('Failed to register:', error);
-      // Handle errors here, like showing a notification to the user
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  // Check if passwords match
+  if (pswd !== Cpswd) {
+    setErrorMessage("Passwords do not match.");
+    return; // Stop the function here
+  }
+  const payload = {
+    firstname: firstname,
+    email: email,
+    pswd: pswd,
+  };
+  
+  try {
+    
+    const response = await axios.post('https://192.168.1.20:3001/register', payload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      
+      // Uncomment if needed based on your backend setup
+       withCredentials: true,
+    });
+console.log("here is more stuff")
+    if (response.status === 201) { // Assuming 201 for successful creation
+      console.log('Register response:', response.data);
+      setErrorMessage(""); // Clear any existing errors
+      // Handle post-registration logic here, e.g., redirect or login
+    } else {
+      console.error('Failed to register:', response);
+      setErrorMessage("Registration failed. Please try again.");
     }
+  } catch (error) {
+    console.error('Failed to register:', error);
+    setErrorMessage(error.response?.data?.message || "An error occurred. Please try again.");
+  }
+
   };
   const handleAlertButtonClick = () => {
     alert("Complete the cancel options")

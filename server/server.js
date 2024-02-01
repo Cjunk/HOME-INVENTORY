@@ -118,7 +118,7 @@ app.get('/', (req, res) => {
 
 });
 app.get('/fetch-data', (req, res) => {
-    db.executeQuery('SELECT * FROM item_master', (error, results, fields) => {
+    db.executeQuery('SELECT * FROM users', (error, results, fields) => {
         if (error) throw error;
         res.json(results);
     });
