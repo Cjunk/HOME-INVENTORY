@@ -4,6 +4,7 @@
 
     USAGE
     Called by every secured route
+    This module contains the functions to valid the user in the database for login, and validate the user per server calls via session control
 */
 const bcrypt = require('bcrypt');
 const db = require('../db/db'); // Adjust the path according to your file structure
@@ -22,36 +23,43 @@ bcrypt.hash(password, saltRounds, (err, hash) => {
 // Function to check if an attempted login username and password combination are in the database. Will check the password hashes
 //  A username and password are required
 function isValidUser(username, password) {
-    return new Promise((resolve, reject) => {
-        // Query the database for the user's hashed password
-        const sql = 'SELECT * FROM users WHERE user_username = ?;';
-        db.executeQuery(sql, [username])
-            .then(results => {
-                if (results.length !== 0) { // A users details have been found
-                    // Compare the provided password with the stored hash
-                    console.log("attempted password =",password,"retireved hashed password =",results[0].user_hashed_pwd)
-                    bcrypt.compare(password, results[0].user_hashed_pwd, (err, isMatched) => {
-                        if (err) {
-                            //  USER IS NOT AUTHENTICATED: DUE to invalid password
-                            reject(err);
-                        } else {
-                            resolve(isMatched); // true if passwords match, false otherwise
-                        }
-                    });
-                } else {
-                    //  USER IS NOT AUTHENTICATED: Due to invalid username
-                    console.log("function isValidUser: user not found");
-                    resolve(false); // No user found
-                }
-            })
-            .catch(err => {
-                //  Not authenticated due to some other reason
-                console.log("Athentication failed for some other reason")
-                reject(err);
-            });
-    });
+    if (username && password) {
+        return new Promise((resolve, reject) => {
+            // Query the database for the user's hashed password
+            const sql = 'SELECT * FROM users WHERE user_username = ?;';
+            db.executeQuery(sql, [username])
+                .then(results => {
+                    if (results.length !== 0) { // A users details have been found
+                        // Compare the provided password with the stored hash
+                        console.log("attempted password =", password, "retireved hashed password =", results[0].user_hashed_pwd) // TODO:DELETE ME  
+                        bcrypt.compare(password, results[0].user_hashed_pwd, (err, isMatched) => {
+                            if (err) {
+                                //  USER IS NOT AUTHENTICATED: DUE to invalid password
+                                reject(err);
+                            } else {
+                                resolve(isMatched); // true if passwords match, false otherwise
+                            }
+                        });
+                    } else {
+                        //  USER IS NOT AUTHENTICATED: Due to username not found in the database
+                        console.log("function isValidUser: user not found"); //TODO: DELETE ME  
+                        resolve(false); // No user found
+                    }
+                })
+                .catch(err => {
+                    //  Not authenticated due to some other reason
+                    console.log("Athentication failed for some unknown reason.  user = " + username)
+                    reject(err);
+                });
+        });
+    }
+    else {
+        //   EMPTY username or password sent. TODO: handle this scenario. This should get handled on the client side first. 
+    }
 }
 async function register(req, res) {
+    //  This function is to facilitate registering a new user. 
+    //  First check that all details are valid, then check if the users email is already registered.
     const { username, firstname, lastname, email, pswd } = req.body;
 
     try {
