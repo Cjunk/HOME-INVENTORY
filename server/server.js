@@ -21,7 +21,6 @@ const path = require('path');
 const { userInfo } = require('os');
 // ======================================================================================================================
 const { login,register } = require('./routes/Authenticator.js');
-
 const db = require('./db/db.js');
 let NUMBER_OF_CONNECTIONS = 0 // This var is used to track the number of attempts to the API. TODO: ok to remove this in prod
 //  CORS:
@@ -122,7 +121,7 @@ app.get('/', (req, res) => {
 
 // Handle login requests
 app.post('/login', login);
-app.get('/login', (req, res) => {
+app.get('/login', (req, res) => { // TODO: Consider removing
     console.log("I am from the /app.get login")
 })
 app.post('/logout', (req, res, next) => {

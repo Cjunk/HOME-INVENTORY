@@ -1,6 +1,9 @@
 .testingLabels {
     color: white;
 }
+.mine {
+    width:100%;
+}
         .body {
             font-family: Arial, sans-serif;
             background-color: #0db1d6;
@@ -12,13 +15,15 @@
         }
         .formlabel {
             color:white;
+            
                 }
         .form {
-            background-color: black;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width:100%;
+            width:45%;
+            background-color:black;
+            
         }
 
         h2 {
@@ -33,12 +38,12 @@
 
         input[type="text"],
         input[type="password"] {
-            /*width: 100%;*/
+            
             padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            width:45%;
+            width:100%;
         }
 
         .input[type="submit"] {

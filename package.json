@@ -5,7 +5,6 @@
   "author": "Jericho Sharman",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.3.2",
-    "electron": "^28.2.0"
+    "bootstrap": "^5.3.2"
   }
 }

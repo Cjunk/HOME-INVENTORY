@@ -5,6 +5,9 @@
     USAGE
     Called by every secured route
     This module contains the functions to valid the user in the database for login, and validate the user per server calls via session control
+
+
+    UPDATE: 2/2/2024: Registration is working and updating the database via the front end react form.
 */
 const bcrypt = require('bcrypt');
 const db = require('../db/db'); // Adjust the path according to your file structure
@@ -63,17 +66,16 @@ async function register(req, res) {
     const { username, firstname, lastname, email, pswd } = req.body;
 
     try {
-        console.log("Check point #2");
         // Check if the user already exists
-        const checkUserQuery = 'SELECT * FROM users WHERE user_email = ?';
+        const checkUserQuery = `SELECT * FROM users WHERE user_email = ?`;
         const existingUsers = await db.executeQuery(checkUserQuery, [email]);
-        
         if (existingUsers.length > 0) {
-            console.log("Check point # 4");
             // User already exists
-            return res.status(409).send('User already exists');
-        }
-        
+            return res.status(409).json({
+                    message: 'user already exists',
+                    success: false,
+                });           
+        }       
         console.log("OK THIS USER DOESNT EXIST SO OK TO CREATE");
         // Hash the password and add the new user
         const hash = await bcrypt.hash(pswd, saltRounds);
@@ -98,7 +100,7 @@ function login(req, res) {
     const { username, password } = req.body;
     isValidUser(username, password).then(isValid => {
         if (isValid) {
-            const userDetailsQuery = 'SELECT userID, user_first_name, user_email FROM users WHERE user_username = ?';
+            const userDetailsQuery = `SELECT userID, user_statususer_first_name, user_email FROM users WHERE user_username = ? AND user_status != ${0}`;
             db.executeQuery(userDetailsQuery, [username])
                 .then(results => {
                     if (results.length > 0) {
@@ -163,7 +165,7 @@ function isAuthenticated(req, res, next) {
         res.status(401).send('Unauthorized'); // Return 401 if not authenticated
     }
 }
-// Middleware for authentication checks
+// Middleware for authentication checks //TODO: I think this function can be removed
 function authMiddleware(req, res, next) {
     // Your authentication logic here
     if (req.session.user.username !== process.env.TEST_USR) {

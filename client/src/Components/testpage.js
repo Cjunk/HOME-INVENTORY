@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import './styles/login.css';
+//import './styles/login.css';
 import axios from 'axios';
 function YourInventory({ setLogout }) {
   const [theData, settheData] = useState('')
