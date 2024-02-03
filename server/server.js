@@ -143,7 +143,6 @@ app.post('/logout', (req, res, next) => {
     SECURED ROUTES  --------------------------SECURED ROUTES------------------------SECURED ROUTES-------------------------------------------
 
 */
-
 // Configure HTTPS server with the self-signed certificate
 const httpsOptions = {
     key: fs.readFileSync(path.join(__dirname, 'server.key')),
