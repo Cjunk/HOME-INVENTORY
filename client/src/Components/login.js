@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-//import './styles/login.css';
 import axios from 'axios'; // Import Axios
+import UserForm from './form';
 // public ip http://112.141.11.237/
 function LoginForm({ setLogin }) {
 
@@ -29,7 +28,7 @@ function LoginForm({ setLogin }) {
 
             if (response.status === 200) {
                 console.log('Login response:', response.data);
-                
+
                 localStorage.setItem('isLoggedIn', 'true');
                 setLogin(true);
                 //  TODO:  implement get POST login info from the server. must get from /test
@@ -51,48 +50,10 @@ function LoginForm({ setLogin }) {
         }
     };
     return (
-        <div className="container"> {/* Add Bootstrap container class */}
+
+        <div className="formContainer"> {/* Add Bootstrap container class */}
             <div>
-
-                <form onSubmit={handleSubmit}>
-                    <div>
-
-                        <h2 className="mb-4">REACT SERVER</h2>
-                        <div className="mb-3">
-                            <label htmlFor="username" className="formlabel">Username:</label>
-                            <input
-                                type="text"
-                                id="username"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                className="form-control"
-                            />
-                        </div>
-
-                    </div>
-                    <div>
-                        <label htmlFor="password" className="formlabel">Password:</label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            onKeyDown={handlePasswordKeyDown}
-                            className="form-control"
-                        />
-                    </div>
-                    <div>
-                        <div className="mb-3">
-                        <button type="submit" className="btn btn-primary">
-                            Login
-                        </button>
-                            <button type="button" className="btn btn-danger" onClick={handleAlertButtonClick} onTouchStart={handleAlertButtonClick}>
-                            Alert Button
-                        </button>
-                        </div>
-                    </div>
-                </form>
-
+                <UserForm handleSubmit={handleSubmit} formType={1} handleAlertButtonClick={handleAlertButtonClick} />
                 {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
             </div>
         </div>

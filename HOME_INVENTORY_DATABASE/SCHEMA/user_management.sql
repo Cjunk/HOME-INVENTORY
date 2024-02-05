@@ -1,26 +1,27 @@
-DROP TABLE IF EXISTS users, database_roles,user_types CASCADE;
+DROP TABLE IF EXISTS users, database_roles, user_types CASCADE;
 
 CREATE TABLE user_types (
-/*
- User types:
+    /*
+    User types:
     01  Free user   
     02  basic user  $$ 39
     03  advanced user $$ 70
     04  Premium user  $$ 100
- */
-user_type_id INT AUTO_INCREMENT PRIMARY KEY,
-user_type_description TEXT,
-user_type_field1 INT,
-user_type_field2 INT );
+    */
+    user_type_id INT AUTO_INCREMENT PRIMARY KEY, user_type_description TEXT, user_type_field1 INT, user_type_field2 INT
+);
+
+CREATE TABLE user_status (
+    --  0 = not available, 1 = active
+    statusID TINYINT PRIMARY KEY DEFAULT 1, status_desc TEXT
+);
 
 CREATE TABLE database_roles (
-    role_id int AUTO_INCREMENT PRIMARY KEY,
-    role_desc TEXT,
-    role_delete INT,
-    role_add INT
+    role_id int AUTO_INCREMENT PRIMARY KEY, role_desc TEXT, role_delete INT, role_add INT
 );
 
 CREATE TABLE users (
+
     userID INT AUTO_INCREMENT PRIMARY KEY,
     user_username varchar(50),
     user_first_name VARCHAR(45),

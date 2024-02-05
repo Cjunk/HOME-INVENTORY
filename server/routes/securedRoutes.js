@@ -1,10 +1,10 @@
 const express = require('express');
 const securedRouter = express.Router();
 const db = require('../db/db.js'); // Adjust the path according to your file structure
-const { login, authMiddleware, isAuthenticated } = require('./Authenticator.js');
+const { isAuthenticated } = require('./Authenticator.js');
 /*
   all routes here are to be accessed via '/secure/'
-  all routes MUST have isAuthenticated added to them
+
 */
 securedRouter.use(isAuthenticated);
 
@@ -62,6 +62,7 @@ securedRouter.get('/getLoggedInInfo', (req, res) => {
   const userDetailsQuery = `SELECT userID,user_username,user_first_name, user_last_name,user_email,user_mailing_list,user_last_login,user_type,user_status FROM users WHERE userID = ?`;
 
   db.executeQuery(userDetailsQuery, [req.session.user.userID, 1]).then(results => {
+
     console.log(results[0])
     res.status(200).json(results[0])
   }).catch(error => {

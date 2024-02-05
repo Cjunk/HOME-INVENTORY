@@ -3,7 +3,7 @@
     Written by Jericho Sharman 2024
 
 */
-
+//  ==========================================  CONSTANTS   =================================================================
 const dotenv = require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
@@ -12,9 +12,15 @@ const app = express();
 const HOST = '0.0.0.0'; // Bind to all IP addresses
 const port = process.env.PORT || 3001;
 const securedRoutes = require('./routes/securedRoutes');
+const testRouter = require ('./routes/testroutes.js')
 const SERVER_START_TIME = Date.now()  // capture the servers start time :TODO
+//  Configure HTTPs
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
+const { userInfo } = require('os');
 // ======================================================================================================================
-const { login} = require('./routes/Authenticator.js');
+const { login,register } = require('./routes/Authenticator.js');
 const db = require('./db/db.js');
 let NUMBER_OF_CONNECTIONS = 0 // This var is used to track the number of attempts to the API. TODO: ok to remove this in prod
 //  CORS:
@@ -22,7 +28,7 @@ let NUMBER_OF_CONNECTIONS = 0 // This var is used to track the number of attempt
 //console.log("here is the cors list",process.env.CORS_ORIGINS_DEV.split(','))
 //  Get the allowed cors origins from the .env file
 const corsOrigins = process.env.NODE_ENV === 'development' ? process.env.CORS_ORIGINS_DEV.split(',') : process.env.CORS_ORIGINS_PROD.split(',');
-
+//      ========================  CORS =====================================================================================================
 const corsOptions = {
     origin: function (origin, callback) {
         if (corsOrigins.indexOf(origin) !== -1 || !origin) {
@@ -35,18 +41,18 @@ const corsOptions = {
     credentials: true, // Allow credentials (cookies) to be sent
 };
 app.use(cors(corsOptions));
-
-//  Configure HTTPs
-const https = require('https');
-const fs = require('fs');
-const path = require('path');
-const { userInfo } = require('os');
+//      ====================================================================================================================================
+// Middleware to parse JSON and URL-encoded data
+app.use(express.json()); // For parsing application/json
+app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 
 //  Configure Mysql  TODO: Implement database access to store session info
-const MySQLStore = require('express-mysql-session')(session);
-const sessionStore = new MySQLStore({}, db); //TODO Keep this line in. eventually implement a database store 
+//const MySQLStore = require('express-mysql-session')(session);
+//const sessionStore = new MySQLStore({}, db); //TODO Keep this line in. eventually implement a database store
 
-// Configure session middleware for managing user sessions
+/*
+    Configure EXPRESS SESSIONS MANAGEMENT  ===============================================================================================
+*/
 app.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,
@@ -57,21 +63,13 @@ app.use(session({
         secure: true, // Set to true in a production environment if using HTTPS
         sameSite: 'none', // Required for cross-origin cookies        
     },
-    //store: sessionStore
+    //store: sessionStore //TODO:Implement
 }));
-// Middleware to parse JSON and URL-encoded data
-app.use(express.json()); // For parsing application/json
-app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
-
-// Serve static files from the 'public' directory
+//  =======================================================================================================================================
+// Serve static files from the 'public' directory // TODO: REMOVE THIS ABILITY
 app.use(express.static('public'));
 // Error handling middleware
-function getDurationInMilliseconds(start) {
-    const NS_PER_SEC = 1e9;
-    const NS_TO_MS = 1e6;
-    const diff = process.hrtime(start);
-    return (diff[0] * NS_PER_SEC + diff[1]) / NS_TO_MS;
-}
+
 app.set('trust proxy', true); // Or a more specific configuration depending on your setup
 
 app.use((req, res, next) => {
@@ -103,28 +101,27 @@ app.use((err, req, res, next) => {
 });
 
 app.use('/secure', securedRoutes);
+if (process.env.NODE_ENV = 'development') {
+    app.use('/test',testRouter)
+}
+
 // Usage
 /*
-    PUBLIC ROUTES  ---------------------------------------------------------------------------------------------
+    ============    PUBLIC ROUTES  ---------------------------------------------------------------------------------------------
 */
-// Welcome message for the root route
+// Landing default route message for the root route // TODO: Consider removing
 app.get('/', (req, res) => {
     if (req.session.user) {  // If it is TRUE then this user is authenticated 
         res.redirect('/test');
     } else {
         res.sendFile(__dirname + '/public/login.html');
     }
+});
 
-});
-app.get('/fetch-data', (req, res) => {
-    db.executeQuery('SELECT * FROM item_master', (error, results, fields) => {
-        if (error) throw error;
-        res.json(results);
-    });
-});
+
 // Handle login requests
 app.post('/login', login);
-app.get('/login', (req, res) => {
+app.get('/login', (req, res) => { // TODO: Consider removing
     console.log("I am from the /app.get login")
 })
 app.post('/logout', (req, res, next) => {
@@ -137,18 +134,32 @@ app.post('/logout', (req, res, next) => {
         }
     });
 });
+app.post('/register', register) // get the registration page
 
 /*
 
     SECURED ROUTES  --------------------------SECURED ROUTES------------------------SECURED ROUTES-------------------------------------------
 
 */
+
+
+
+//  ======================================  FUNCTIONS   ====================================================================================
+function getDurationInMilliseconds(start) {
+    const NS_PER_SEC = 1e9;
+    const NS_TO_MS = 1e6;
+    const diff = process.hrtime(start);
+    return (diff[0] * NS_PER_SEC + diff[1]) / NS_TO_MS;
+}
+
+
+//  ========================================================================================================================================
+
 // Configure HTTPS server with the self-signed certificate
 const httpsOptions = {
     key: fs.readFileSync(path.join(__dirname, 'server.key')),
     cert: fs.readFileSync(path.join(__dirname, 'server.cer'))
 };
-
 const server = https.createServer(httpsOptions, app);
 server.listen(port, HOST, () => {
     console.log(`Server is running on port ${port}`);

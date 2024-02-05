@@ -17,7 +17,7 @@ const db = mysql.createConnection({
 /*Creating the object and connecting*/
 db.connect(err => {
     if (err) {
-        console.error('db.js: Error connecting to MySQL:', err);
+        console.log('db.js: Error connecting to MySQL: MYSQL SERVER IS UNREACHABLE');
         return;
     }
     console.log('Connected to MySQL');
