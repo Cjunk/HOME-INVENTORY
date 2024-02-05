@@ -1,6 +1,10 @@
 import React, { useState,useEffect } from 'react';
 //import './styles/login.css';
 import axios from 'axios';
+
+import ShowInventory from './showInventory';
+
+
 function YourInventory({ setLogout }) {
   const [theData, settheData] = useState('')
   const [serverResponse, settheServerResponse] = useState('')
@@ -67,8 +71,11 @@ function YourInventory({ setLogout }) {
       {theData && <div className="testingLabels">TheData:{theData.userID} {theData.user_first_name}  {theData.user_email} </div>}
       <h1>{theData.userID ? "yes user data collected" : "no user data collected"}</h1>
       <h1>{serverResponse? <h2 className="testingLabels">Server response is {serverResponse}</h2>:"" }</h1>
+
       <h2>Your inventory 4</h2>
-      <h1> J J</h1>
+      <h1>working</h1>
+      <ShowInventory filter={1} />
+    
       <button onClick={handleLogout} className="input" id="logoutBut">
         Logout
       </button>

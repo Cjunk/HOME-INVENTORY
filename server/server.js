@@ -144,9 +144,6 @@ app.post('/register', register) // get the registration page
 
 
 
-
-
-
 //  ======================================  FUNCTIONS   ====================================================================================
 function getDurationInMilliseconds(start) {
     const NS_PER_SEC = 1e9;
@@ -157,6 +154,7 @@ function getDurationInMilliseconds(start) {
 
 
 //  ========================================================================================================================================
+
 // Configure HTTPS server with the self-signed certificate
 const httpsOptions = {
     key: fs.readFileSync(path.join(__dirname, 'server.key')),
