@@ -7,6 +7,7 @@ import ShowInventory from './showInventory';
 
 function YourInventory({ setLogout }) {
   const [theData, settheData] = useState('')
+  const [serverResponse, settheServerResponse] = useState('')
   useEffect(() => {
     document.title = 'Home Harmony';
   }, [theData])
@@ -20,23 +21,28 @@ function YourInventory({ setLogout }) {
         },
       })
       if (response.status === 401) {
-        settheData ("STATUS CODE 401")
+        settheData("STATUS CODE 401")
+        settheServerResponse("STATUS CODE = 401")
       }
       if (response.status === 200) {
         if (response.data) {
           settheData(response.data)
+          settheServerResponse("STATUS CODE = 200: Got data")
         } else {
           settheData("Status code = 200 however no data came through")
+          settheServerResponse("Status code = 200 however no data came through")
         }
         
         console.log(response.data)
       } else {
         settheData("Status NOT 200:    NO DATA" + response.data)
+        settheServerResponse("Status code not 200")
         console.error('No data received');
       }
     } catch (error) {
       settheData("COOKIE:" + encodeURIComponent(document.cookie) + " MESSAGE" + error.message)
       console.error('Failed to get data:', error);
+      settheServerResponse(error.message,error.code,error.config)
     }
   }
   const handleLogout = async () => {
@@ -62,8 +68,10 @@ function YourInventory({ setLogout }) {
 
   return (
     <div>
+
       {theData && <div className="formlabel">TheData:{theData.userID} {theData.user_first_name}  {theData.user_email} </div>}
       <>{theData.userID ? <ShowInventory/> :<div></div>}</>
+
       <h2>Your inventory 4</h2>
       <h1>working</h1>
       <ShowInventory filter={1} />
