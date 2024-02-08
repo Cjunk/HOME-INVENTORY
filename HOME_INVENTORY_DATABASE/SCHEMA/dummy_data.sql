@@ -1,18 +1,16 @@
-INSERT INTO users (user_username, user_first_name, user_last_name, user_email, user_hashed_pwd) VALUES ('usr', 'Jericho', 'Sharman', 'jsharman@hotmail.com.au', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW');
--- Inserting dummy data into ITEM_TYPES
-INSERT INTO ITEM_TYPES (type_id) VALUES (1), (2), (3);
+INSERT INTO users (user_username, user_first_name, user_last_name, user_email, user_hashed_pwd,user_status) VALUES ('usr', 'Jericho', 'Sharman', 'jsharman@hotmail.com.au', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW');
 
 -- Inserting dummy data into users
-INSERT INTO users (user_username, user_first_name, user_last_name, user_email, user_hashed_pwd) 
+INSERT INTO users (user_username, user_first_name, user_last_name, user_email, user_hashed_pwd,user_status) 
 VALUES 
-('johnDoe', 'John', 'Doe', 'johndoe@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW'),
-('janeDoe', 'Jane', 'Doe', 'janedoe@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW');
+('johnDoe', 'John', 'Doe', 'johndoe@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW',1),
+('janeDoe', 'Jane', 'Doe', 'janedoe@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW',1);
 -- Inserting more dummy data into users
-INSERT INTO users (user_username, user_first_name, user_last_name, user_email, user_hashed_pwd) 
+INSERT INTO users (user_username, user_first_name, user_last_name, user_email, user_hashed_pwd,user_status) 
 VALUES 
-('aliceSmith', 'Alice', 'Smith', 'alicesmith@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW'),
-('bobJohnson', 'Bob', 'Johnson', 'bobjohnson@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW'),
-('carolWhite', 'Carol', 'White', 'carolwhite@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW');
+('aliceSmith', 'Alice', 'Smith', 'alicesmith@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW',1),
+('bobJohnson', 'Bob', 'Johnson', 'bobjohnson@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW',1),
+('carolWhite', 'Carol', 'White', 'carolwhite@example.com', '$2b$10$dp2q23Bf0n/70EmQiKXoFedoBbPYa7sGFFQkMywFXBNtnx2uK.xVW',1);
 
 -- Inserting dummy data into manufacturers
 INSERT INTO manufacturers (manufacturer_name, manufacturer_description, manufacturer_number) 

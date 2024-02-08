@@ -8,7 +8,12 @@ CREATE TABLE user_types (
     03  advanced user $$ 70
     04  Premium user  $$ 100
     */
-    user_type_id INT AUTO_INCREMENT PRIMARY KEY, user_type_description TEXT, user_type_field1 INT, user_type_field2 INT
+    user_type_id INT AUTO_INCREMENT PRIMARY KEY, 
+    user_type_description TEXT, 
+    user_type_field1 INT, 
+    user_type_field2 INT,
+    user_mem_capacity INT,
+    user_max_uploads INT -- Max number of uploads permitted for this user type
 );
 
 CREATE TABLE user_status (
