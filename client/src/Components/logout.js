@@ -1,37 +1,22 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Import Axios
-
-function LogoutComponent({ onLogout }) {
-  console.log("am here")
+import { logout } from '../services/authService';
+function LogoutComponent({ props }) {
   const navigate = useNavigate();
-  onLogout(false)
+
   useEffect(() => {
-    // Send a request to the server to log the user out
-    axios
-      .post('/logout', null, {
-        withCredentials: true,
-      }) // Replace with the appropriate server endpoint for logout
+    logout()
       .then((response) => {
-        // Handle successful logout (e.g., clear local storage, reset user state)
-        // ...
-        console.log("logout.js"), response
-        
-        // Redirect to the login page
-        navigate('/');
+        console.log("Logout successful", response);
+        props.setLogout(false); // Update logout state
+        navigate('/'); // Redirect to the login page
       })
       .catch((error) => {
         console.error('Logout failed:', error);
-        // Handle logout error, if needed
-        // ...
-
-        // Redirect to the login page
-        navigate('/');
+        navigate('/'); // Redirect to the login page even if logout fails
       });
-  }, [navigate, onLogout]);
+  }, [navigate, props.setLogout]);
 
-  return null; // You can return null since this component is just for redirection
+  return null; // Component only handles redirection
 }
-
 export default LogoutComponent;
-

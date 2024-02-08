@@ -4,7 +4,7 @@
 
 */
 //  ==========================================  CONSTANTS   =================================================================
-const dotenv = require('dotenv').config()
+//const dotenv = require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 const session = require('express-session');
@@ -13,12 +13,13 @@ const HOST = '0.0.0.0'; // Bind to all IP addresses
 const port = process.env.PORT || 3001;
 const securedRoutes = require('./routes/securedRoutes');
 const testRouter = require ('./routes/testroutes.js')
-const SERVER_START_TIME = Date.now()  // capture the servers start time :TODO
+//const SERVER_START_TIME = Date.now()  // capture the servers start time :TODO
 //  Configure HTTPs
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const { userInfo } = require('os');
+
 // ======================================================================================================================
 const { login,register } = require('./routes/Authenticator.js');
 const db = require('./db/db.js');

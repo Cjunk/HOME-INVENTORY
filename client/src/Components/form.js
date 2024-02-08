@@ -1,3 +1,9 @@
+/*
+  This is the the Form controller
+
+  This will decide which form to display to the end user
+*/
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Import Axios
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -64,7 +70,6 @@ function UserForm({ formType, setLogin }) {
       <form className="form" onSubmit={handleSubmit}>
         <div>
 
-          <h2 className="">{formType === 1 ? "LOGIN" : "REGISTER"}</h2>
           <div className="">
             <label htmlFor="username" className="formlabel">Username:</label>
             <input

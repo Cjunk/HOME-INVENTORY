@@ -156,6 +156,7 @@ function login(req, res) {
 
 
 function isAuthenticated(req, res, next) {
+
     req.sessionID = Object.keys(req.sessionStore.sessions)[0]
     console.log("HERE IS THE SESSION COOKIE", req.sessionID);
     if (req.session.isAuthenticated && req.sessionID) {

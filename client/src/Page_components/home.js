@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import UserForm from './form';
-function LoginForm({ setLogin }) {
+function HomePage() {
     const [errorMessage, setErrorMessage] = useState("");
     useEffect(() => {
-        document.title = "Login";
+        document.title = "Home";
     }, [])
     return (
-        <div className="formContainer"> {/* Add Bootstrap container class */}
-            <div>
-                <UserForm setLogin={setLogin} formType={1}  />
+        <div>
+            <h2>THIS IS THE HOME PAGE</h2>
                 {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
             </div>
-        </div>
     );
 }
-export default LoginForm;
+export default HomePage;

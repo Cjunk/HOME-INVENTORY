@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import LoginForm from './Components/login.js'; // Adjust the path if necessary
+import LoginForm from './Page_components/login.js'; // Adjust the path if necessary
 import NavigationBar from './Components/heading.js'
-import TestPage from './Components/testpage.js';
-import RegisterForm from './Components/register.js'
+import TestPage from './Page_components/testpage.js';
+import RegisterForm from './Page_components/register.js'
+import HomePage from './Page_components/home.js'
 import './App.css';
 function App() {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
   const [currentPage, setcurrentPage] = useState(1)
-  const setTheCurrentPage =(page) => {
+  const setTheCurrentPage = (page) => {
     setcurrentPage(page)
   }
   // useEffect to check authentication state on component mount
@@ -17,21 +18,22 @@ function App() {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     setLoggedIn(isLoggedIn);
   }, []);
-  const handleLogin = (val) => {
-    setLoggedIn(val)
+  const handleLogin = () => {
+    setLoggedIn(true)
   }
-  const handleLogout = (val) => {
-    setLoggedIn(val)
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    setLoggedIn(false)
   }
-  return ( 
+  return (
     <div className="App">
-      <NavigationBar isLoggedIn={loggedIn} pageSelector={setTheCurrentPage} />
-            {/* Rest of your app component */}
+      <NavigationBar isLoggedIn={loggedIn} pageSelector={setTheCurrentPage} handleLogout={handleLogout} />
+      {/* Rest of your app component */}
       <Router>
         <Routes>
-          <Route path="/" element={loggedIn ? (<Navigate to="/homepage" replace />) : currentPage === 1?(<LoginForm  setLogin={handleLogin} />):(<RegisterForm/>)}>
+          <Route path="/" element={loggedIn ? (<Navigate to="/homepage" replace />) : currentPage === 1 ? (<HomePage />) : currentPage === 2 ? (<LoginForm setLogin={handleLogin} />) : (<RegisterForm />)}>
           </Route>
-          <Route path="/homepage" element={!loggedIn ? (<Navigate to="/" replace />) : (<TestPage setLogout={handleLogout} />)}>
+          <Route path="/homepage" element={!loggedIn ? (<Navigate to="/" replace />) : (<TestPage handleLogout={handleLogout} />)}>
           </Route>
         </Routes>
       </Router>
