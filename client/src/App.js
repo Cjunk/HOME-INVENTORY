@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginForm from './Page_components/login.js'; // Adjust the path if necessary
-import NavigationBar from './Components/heading.js'
+import NavigationBar from './Components/navigationBar.js'
 import TestPage from './Page_components/testpage.js';
 import RegisterForm from './Page_components/register.js'
 import HomePage from './Page_components/home.js'
+import Header from './Components/Header.js';
 import './App.css';
 function App() {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
@@ -27,8 +28,7 @@ function App() {
   }
   return (
     <div className="App">
-      <NavigationBar isLoggedIn={loggedIn} pageSelector={setTheCurrentPage} handleLogout={handleLogout} />
-      {/* Rest of your app component */}
+      <Header isLoggedIn={loggedIn} pageSelector={setTheCurrentPage} handleLogout={handleLogout} />
       <Router>
         <Routes>
           <Route path="/" element={loggedIn ? (<Navigate to="/homepage" replace />) : currentPage === 1 ? (<HomePage />) : currentPage === 2 ? (<LoginForm setLogin={handleLogin} />) : (<RegisterForm />)}>

@@ -9,4 +9,3 @@ export const logout = () => {
     
     return axios.post(`${API_BASE_URL}/logout`, {}, { withCredentials: true });
 };
-

@@ -1,0 +1,30 @@
+.categories_container {
+  border-style: solid;
+  border-color: blue;
+  width: 100%;
+}
+.catlist {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0;
+  margin: 0;
+  background-color:yellow; /* Light grey background, adjust as needed */
+  border: 1px solid #ccc; /* Border to resemble a combo box */
+}
+.catHeading{
+    color:black;
+    background-color:white;
+}
+.catlist li {
+  display: block; /* Ensure list items display vertically */
+  padding: 0px; /* Add some padding for better appearance */
+  border-bottom: 1px solid black; /* Add a border between items */
+  color:blue;
+  cursor:pointer;
+}
+
+.catlist li:last-child {
+  border-bottom: none; /* Remove border for the last item */
+}
+.catlist li:hover {
+  background-color: #e9e9e9; /* Add hover effect */
+}

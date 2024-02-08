@@ -1,18 +1,20 @@
 /* NavigationBar.css */
-.navbar-main {
-  background-color:red;
-}
+
 .bannerImg {
-    width:100%;
-    height:auto;
-    object-fit: cover;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  position:absolute;
 }
 .banner-container {
   position: relative;
   width: 100%; /* Adjust the width as needed */
-  height: auto; /* Adjust the height as needed */
-  padding-bottom:20px;
-  background-color: #2C3E50;
+  height: 150px; /* Adjust the height as needed */
+  background-color: rgb(88, 11, 11);
+  display:grid;
+  grid-template-columns: 15fr 2fr;
+  margin-bottom:10%;
+  align-items: center;
 }
 .navigation-buttons {
   position: absolute;
@@ -26,7 +28,7 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
 }
 .navigation-buttons button {
-  background-color: #3498DB; /* A vibrant blue */
+  background-color: #3498db; /* A vibrant blue */
   border: none;
   color: white;
   padding: 10px 20px;
@@ -37,72 +39,67 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .navigation-header {
-    background-color: red;
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0px;
-    width:100%;
-    position:sticky;
-    top:0;
-    
+  background-color: blue;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px;
+  width: 100%;
+  position: sticky;
+  top: 0;
 }
 .navigation-header ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex; 
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 .navigation-header li {
-    margin: 10px;
+  margin: 10px;
+  padding-top: 20px;
+  display: flex;
 }
 
 .navigation-header button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 15px;
-    border: solid 1px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 12px;    
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: solid 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 12px;
 }
 .navigation-header button:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .navigation-header {
-        flex-direction: column;
-        align-items: flex-start;
-        
-    }
+  .navigation-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .navigation-header ul {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        
-    }
+  .navigation-header ul {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
 
-    .navigation-header li {
-        width: 100%;
-        margin: 5px 0;
-        
-    }
-    .mobbutton {
-
-    }
-    .resbutton {
-        font-size:28px;
-    }
-    .navigation-header button {
-        width: 100%;
-        text-align: left;
-        font-size: 25px; 
-       
-    }
-
+  .navigation-header li {
+    width: 100%;
+    margin: 5px 0;
+  }
+  .mobbutton {
+  }
+  .resbutton {
+    font-size: 28px;
+  }
+  .navigation-header button {
+    width: 100%;
+    text-align: left;
+    font-size: 25px;
+  }
 }

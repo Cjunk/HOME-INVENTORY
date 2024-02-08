@@ -76,14 +76,11 @@ async function register(req, res) {
                     success: false,
                 });           
         }       
-        console.log("OK THIS USER DOESNT EXIST SO OK TO CREATE");
         // Hash the password and add the new user
         const hash = await bcrypt.hash(pswd, saltRounds);
-        
         // Insert the new user
-        const insertUserQuery = 'INSERT INTO users (user_username, user_first_name, user_last_name, user_email, user_hashed_pwd) VALUES (?, ?, ?, ?, ?)';
+        const insertUserQuery = 'INSERT INTO users (user_username, user_first_name, user_last_name, user_email, user_hashed_pwd,user_status) VALUES (?, ?, ?, ?, ?,1)';
         await db.executeQuery(insertUserQuery, [username, firstname, lastname, email, hash]);
-        
         console.log("User registered successfully");
         res.status(201).send('User registered successfully');
     } catch (err) {
