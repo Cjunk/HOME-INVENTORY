@@ -26,7 +26,7 @@ const handleSubmit = async (event) => {
   
   try {
     
-    const response = await axios.post('https://192.168.1.20:3001/register', payload, {
+    const response = await axios.post('https:localhost:3001/register', payload, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -34,9 +34,7 @@ const handleSubmit = async (event) => {
       // Uncomment if needed based on your backend setup
        withCredentials: true,
     });
-console.log("here is more stuff")
     if (response.status === 201) { // Assuming 201 for successful creation
-      console.log('Register response:', response.data);
       setErrorMessage(""); // Clear any existing errors
       // Handle post-registration logic here, e.g., redirect or login
     } else {

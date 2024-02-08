@@ -2,30 +2,58 @@
 .navbar-main {
   background-color:red;
 }
-.Navbar-main2{
-  background-color:red;
-  color:red;
+.bannerImg {
+    width:100%;
+    height:auto;
+    object-fit: cover;
+}
+.banner-container {
+  position: relative;
+  width: 100%; /* Adjust the width as needed */
+  height: auto; /* Adjust the height as needed */
+  padding-bottom:20px;
+  background-color: #2C3E50;
+}
+.navigation-buttons {
+  position: absolute;
+  top: 20%; /* Centers the buttons vertically */
+  right: 10%; /* Centers the buttons horizontally */
+  transform: translate(-50%, -50%); /* Adjusts the precise centering of the buttons */
+  /* Add more styling for your buttons here */
+}
+.navigation-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+}
+.navigation-buttons button {
+  background-color: #3498DB; /* A vibrant blue */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  margin: 0 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .navigation-header {
-    background-color: Blue;
+    background-color: red;
     color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 10px;
+    padding: 0px;
     width:100%;
     position:sticky;
     top:0;
+    
 }
-
 .navigation-header ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex;
-   
+    display: flex; 
 }
-
 .navigation-header li {
     margin: 10px;
 }
@@ -34,14 +62,12 @@
     background-color: #4CAF50;
     color: white;
     padding: 10px 15px;
-    border: none;
+    border: solid 1px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-  font-size: 12px;  
-  
+    font-size: 12px;    
 }
-
 .navigation-header button:hover {
     background-color: #45a049;
 }

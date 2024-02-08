@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react';
 //import './styles/login.css';
+import './styles/testpage.css'
 import axios from 'axios';
 
 import ShowInventory from './showInventory';
@@ -67,7 +68,7 @@ function YourInventory({ setLogout }) {
   };
 
   return (
-    <div>
+    <div className="">
       {theData && <div className="testingLabels">TheData:{theData.userID} {theData.user_first_name}  {theData.user_email} </div>}
       <h1>{theData.userID ? "yes user data collected" : "no user data collected"}</h1>
       <h1>{serverResponse? <h2 className="testingLabels">Server response is {serverResponse}</h2>:"" }</h1>

@@ -2,10 +2,15 @@
 // eslint-disable-next-line
 import React, { useState, useEffect } from 'react'
 import './styles/heading.css';
+
 function NavigationBar(props) {
   return (
     <nav className="navigation-header">
       <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+      <div className="banner-container">
+        <img className="bannerImg" src='/img/Image1.jpg' alt="Describe the content of the image"></img>
+      </div>
+      <div className="navigation-buttons">
       <ul>
         {props.isLoggedIn ? (
           <>
@@ -20,7 +25,8 @@ function NavigationBar(props) {
           </>
 
         )}
-      </ul>
+        </ul>
+      </div>
     </nav>
   );
 
