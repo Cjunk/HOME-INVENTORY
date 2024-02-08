@@ -34,7 +34,7 @@ function isValidUser(username, password) {
                 .then(results => {
                     if (results.length !== 0) { // A users details have been found
                         // Compare the provided password with the stored hash
-                        console.log("attempted password =", password, "retireved hashed password =", results[0].user_hashed_pwd) // TODO:DELETE ME  
+                        console.log("attempted password =", password, "retrieved hashed password =", results[0].user_hashed_pwd) // TODO:DELETE ME  
                         bcrypt.compare(password, results[0].user_hashed_pwd, (err, isMatched) => {
                             if (err) {
                                 //  USER IS NOT AUTHENTICATED: DUE to invalid password
@@ -91,16 +91,16 @@ async function register(req, res) {
         res.status(500).send('Internal Server Error');
     }
 }
-
 /*
     Main login function: Written by Jericho Sharman
 
 */
 function login(req, res) {
     const { username, password } = req.body;
+    console.log("USERNAME = ", username, "PASSWORD = ", password)
     isValidUser(username, password).then(isValid => {
         if (isValid) {
-            const userDetailsQuery = `SELECT userID, user_statususer_first_name, user_email FROM users WHERE user_username = ? AND user_status != ${0}`;
+            const userDetailsQuery = `SELECT userID, user_status,user_first_name, user_email FROM users WHERE user_username = ? AND user_status != ${0}`;
             db.executeQuery(userDetailsQuery, [username])
                 .then(results => {
                     if (results.length > 0) {
