@@ -1,0 +1,19 @@
+.header-container {
+    display:flex;
+    width:100%;
+}
+.img-container {
+    width:20%;
+    
+}
+.main-content{
+    width:80%;
+    margin:0;
+    padding:0;
+}
+.side-panel {
+    width: 10%;
+    /* Adjust as needed */
+    background-color: lightgreen;
+    /* Just for visualization */
+}

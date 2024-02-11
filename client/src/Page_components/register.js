@@ -8,6 +8,13 @@ function RegisterForm({ setLogin }) {
   const [pswd, setpswd] = useState('');
   const [Cpswd, setCpswd] = useState('');
   const [errorMessage, setErrorMessage] = useState("");
+  const [formData, setFormData] = useState({
+  firstname: '',
+  email: '',
+  pswd: '',
+  Cpswd: '',
+  errorMessage: '',
+});
   useEffect(() => {
     document.title = "Register";
   }, [])

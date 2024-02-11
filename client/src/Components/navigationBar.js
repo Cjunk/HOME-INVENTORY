@@ -2,7 +2,7 @@
 // eslint-disable-next-line
 import React from 'react'
 import { logout } from '../services/authService';
-import './styles/heading.css';
+import './styles/navigationBar.css';
 function NavigationBar(props) {
   const thelogout = () => {
     logout().then(() => {
@@ -15,9 +15,8 @@ function NavigationBar(props) {
     });
   };
   return (
-    <div>
-      <nav className="navigation-header">
-          <div className="navigation-buttons">
+      <nav className="navigation-container">
+          <div className="navigation-buttons2">
             <ul>
               {props.isLoggedIn ? (
                 <>
@@ -37,8 +36,7 @@ function NavigationBar(props) {
               )}
             </ul>
           </div>
-      </nav>
-    </div>
+      </nav>  
   );
 }
 export default NavigationBar;
