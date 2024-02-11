@@ -19,14 +19,14 @@ function Header(props) {
   return (
     <div>
       <div className="header-container">
-        <div className="img-container">
+        <div name="logo" className="img-container">
           <img src="../img/logo.webp" />
         </div>
         <div className="main-content">
           <Hero />
           <NavigationBar {...props} />
         </div>
-        <p1>side panel goes here</p1>
+        <p>side panel goes here</p>
       </div>
     </div>
   );
