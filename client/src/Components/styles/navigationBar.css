@@ -1,0 +1,93 @@
+.navigation-container {
+    background: white;
+    height:auto;
+    margin:0;
+    padding:0;
+    display:flex;
+    justify-content: right;  
+}
+.navigation-buttons {
+    position: absolute;
+    top: 20%;
+    /* Centers the buttons vertically */
+    right: 10%;
+    /* Centers the buttons horizontally */
+    transform: translate(-50%, -50%);
+    /* Adjusts the precise centering of the buttons */
+    /* Add more styling for your buttons here */
+}
+.navigation-buttons button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    /* Slightly larger shadow on hover */
+}
+
+.navigation-buttons button {
+    background-color: #3498db;
+    /* A vibrant blue */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    margin: 0 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navigation-container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.navigation-container li {
+    margin: 10px;
+    padding-top: 20px;
+    display: flex;
+}
+
+.navigation-container button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: solid 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 12px;
+}
+
+.navigation-container button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navigation-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navigation-container ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .navigation-container li {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .resbutton {
+        font-size: 28px;
+    }
+
+    .navigation-container button {
+        width: 100%;
+        text-align: left;
+        font-size: 25px;
+    }
+}

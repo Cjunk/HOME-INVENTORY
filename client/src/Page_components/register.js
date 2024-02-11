@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import './styles/login.css';
+import './styles/form.css';
 import axios from 'axios'; // Import Axios
 function RegisterForm({ setLogin }) {
   const [firstname, setFirstname] = useState('');
@@ -8,6 +8,13 @@ function RegisterForm({ setLogin }) {
   const [pswd, setpswd] = useState('');
   const [Cpswd, setCpswd] = useState('');
   const [errorMessage, setErrorMessage] = useState("");
+  const [formData, setFormData] = useState({
+  firstname: '',
+  email: '',
+  pswd: '',
+  Cpswd: '',
+  errorMessage: '',
+});
   useEffect(() => {
     document.title = "Register";
   }, [])

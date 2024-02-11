@@ -1,0 +1,14 @@
+/* Hero.css */
+.hero-content {
+  background-color: white;
+  width:100%;
+  padding:.1px;
+  color:black;
+  display:flex;
+}
+.hero-content p,h1 {
+  color:black;
+}
+
+
+

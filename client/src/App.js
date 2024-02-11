@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginForm from './Page_components/login.js'; // Adjust the path if necessary
-import NavigationBar from './Components/navigationBar.js'
 import TestPage from './Page_components/testpage.js';
 import RegisterForm from './Page_components/register.js'
 import HomePage from './Page_components/home.js'
 import Header from './Components/Header.js';
+
 import './App.css';
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
   const [currentPage, setcurrentPage] = useState(1)
