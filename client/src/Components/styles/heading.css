@@ -7,7 +7,9 @@
   position:absolute;
 }
 .banner-container {
-  position: relative;
+  position: sticky;
+  z-index:1000;
+  top: 0;
   width: 100%; /* Adjust the width as needed */
   height: 150px; /* Adjust the height as needed */
   background-color: rgb(88, 11, 11);
@@ -16,90 +18,4 @@
   margin-bottom:10%;
   align-items: center;
 }
-.navigation-buttons {
-  position: absolute;
-  top: 20%; /* Centers the buttons vertically */
-  right: 10%; /* Centers the buttons horizontally */
-  transform: translate(-50%, -50%); /* Adjusts the precise centering of the buttons */
-  /* Add more styling for your buttons here */
-}
-.navigation-buttons button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
-}
-.navigation-buttons button {
-  background-color: #3498db; /* A vibrant blue */
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-transform: uppercase;
-  margin: 0 10px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.navigation-header {
-  background-color: blue;
-  color: white;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0px;
-  width: 100%;
-  position: sticky;
-  top: 0;
-}
-.navigation-header ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-.navigation-header li {
-  margin: 10px;
-  padding-top: 20px;
-  display: flex;
-}
 
-.navigation-header button {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 15px;
-  border: solid 1px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-size: 12px;
-}
-.navigation-header button:hover {
-  background-color: #45a049;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .navigation-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .navigation-header ul {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .navigation-header li {
-    width: 100%;
-    margin: 5px 0;
-  }
-  .mobbutton {
-  }
-  .resbutton {
-    font-size: 28px;
-  }
-  .navigation-header button {
-    width: 100%;
-    text-align: left;
-    font-size: 25px;
-  }
-}

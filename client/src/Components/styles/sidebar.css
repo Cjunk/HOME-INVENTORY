@@ -1,30 +1,50 @@
 .categories_container {
+  width: 200px; /* Example width, adjust as needed */
   border-style: solid;
   border-color: blue;
-  width: 100%;
+  position: relative; /* This is important for positioning the dropdown */
 }
 .catlist {
-  list-style-type: none; /* Remove bullet points */
+  position: absolute;
+  width: 100%; /* Make the dropdown match the container's width */
+  top: 100%; /* Position directly below the heading */
+  left: 0;
+  background-color: yellow;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  max-height: 0; /* Initially hidden */
+  opacity: 0; /* Initially transparent */
+  transition: max-height 0.5s ease-out, opacity 0.5s ease;
+  z-index: 1; /* Ensure it's above other content */
+}
+.catHeading {
+  color: black;
+  background-color: white;
+  cursor: pointer;
+  margin:0;
+}
+.catlist ul {
   padding: 0;
   margin: 0;
-  background-color:yellow; /* Light grey background, adjust as needed */
-  border: 1px solid #ccc; /* Border to resemble a combo box */
-}
-.catHeading{
-    color:black;
-    background-color:white;
+  list-style-type: none;
 }
 .catlist li {
-  display: block; /* Ensure list items display vertically */
-  padding: 0px; /* Add some padding for better appearance */
-  border-bottom: 1px solid black; /* Add a border between items */
-  color:blue;
-  cursor:pointer;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  color: blue;
+  cursor: pointer;
 }
-
+.catlist.visible {
+  max-height: 500px; /* Adjust based on content */
+  opacity: 1;
+}
 .catlist li:last-child {
-  border-bottom: none; /* Remove border for the last item */
+  border-bottom: none;
 }
 .catlist li:hover {
-  background-color: #e9e9e9; /* Add hover effect */
+  background-color: #e9e9e9;
+}
+/* Show the list when categories_container is hovered */
+.categories_container:hover .catlist {
+  display: block;
 }

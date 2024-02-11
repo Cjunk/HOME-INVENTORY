@@ -16,7 +16,7 @@ function Header(props) {
             <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
             
             <NavigationBar {...props} />
-            <Sidebar />
+            {props.isLoggedIn ? (<Sidebar />) : (<></>)}
         </div>
     )
 }
