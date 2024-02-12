@@ -13,24 +13,25 @@ function formatDateTime(dateTimeString) {
 }
 function ShowInventory(props) {
   const dataArray = Object.values(props.theData);
-  const headings = ['Item Name', 'Item number', 'Location', 'date', 'qty', 'Picture']
+  const headings = ['Item Name', 'Item Number', 'Location', 'Date added', 'Qty', 'Picture']  // ID in the CSS file must match these headings. Spaces are replaced with a hythen '-' for use in the CSS file
   return (
     <div>
       <h1>Your Inventory {props.itemID}</h1>
       <div className="inventory-container">
-        <div className="inventory-heading">
+        <div className="inventory-heading">          
           {headings.map((heading, index) => (
-            <div key={index} className={`item-property${index === 4 ? '-qty' : ''}`}>{heading}</div>
+            <div id= { heading.replace(/ /g, "-") }  key={index} className={`item-property${index === 4 ? '-qty':''}` }>{heading}</div>
           ))}
+      
         </div>     
         {dataArray.map((item, index) => (  
           <div key={index} className="inventory-row">
-            <div className="item-property">{item.item_name}</div>
-            <div className="item-property">{item.soh_item}</div>
-            <div className="item-property">{item.location_name}</div>
-            <div className="item-property">{formatDateTime(item.soh_date_added)}</div>
-            <div className="item-property-qty">{item.soh_qty}</div>
-            <img src={"https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/back02.jpg"} alt={item.item_name} className="item-image" />
+            <div id={headings[0].replace(/ /g, "-")} className="item-property">{item.item_name}</div>
+            <div id={headings[1].replace(/ /g, "-")} className="item-property">{item.soh_item}</div>
+            <div id={headings[2].replace(/ /g, "-")} className="item-property">{item.location_name}</div>
+            <div id={headings[3].replace(/ /g, "-")} className="item-property">{formatDateTime(item.soh_date_added)}</div>
+            <div id={headings[4].replace(/ /g, "-")} className="item-property-qty">{item.soh_qty}</div>
+            <img id={headings[5].replace(/ /g, "-")} src={"https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/back02.jpg"} alt={item.item_name} className="item-image" />
           </div>
           ))}
       </div>
