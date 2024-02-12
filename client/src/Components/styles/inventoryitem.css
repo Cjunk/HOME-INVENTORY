@@ -1,0 +1,80 @@
+.theitemcontainer {
+  padding: 0;
+  margin: 0;
+  align-items: left;
+}
+.theitem-container li {
+  list-style-type: none;
+  display: block;
+  background:white;
+
+}
+.inventory-container {
+margin:10px;
+}
+.inventory-row{
+    border-bottom:solid 1px;
+    border-color:grey;
+}
+.inventory-row,.inventory-heading {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Spans across 6 columns */
+}
+.inventory-heading{
+    background-color:red;
+}
+.inventory-row:hover{
+    background-color:white;
+    cursor:pointer;
+    
+}
+.theitem-container li:hover {
+  background:rgb(192, 173, 173);
+  cursor:pointer;
+  border-bottom:solid 1px;
+}
+.theItemUL {
+  list-style-type: none; /* Remove default list styles */
+  display: flex;
+  flex-wrap: wrap; /* Allow flex items to wrap onto multiple lines */
+}
+.item-property,.item-property-qty {
+  display: flex;
+  width: 100%; /* Adjust the width as needed */
+  /* Optionally, add additional styles like padding or margin */
+  margin-right: 10px;
+   text-align: left;
+   align-items: center;
+   height:100%;
+   
+   
+   align-self:center;  
+   padding-left:10px;
+}
+.item-property-qty {
+    width:100px;
+}
+.item-image {
+  width: 50px; /* Adjust width as needed */
+  height: 50px; /* Adjust height as needed */
+  margin-right: 10px; /* Optional: Add margin for spacing */
+}
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 768px) {
+  .item-property,
+  .item-property-qty,
+  .item-image {
+    display: none; /* Hide all properties and images */
+  }
+
+  .theitem-container li {
+    display: block; /* Display list items vertically */
+  }
+
+  .theitem-container li .item-property,
+  .theitem-container li .item-property-qty,
+  .theitem-container li .item-image {
+    display: inline; /* Show only item name, location, and quantity */
+  }
+}

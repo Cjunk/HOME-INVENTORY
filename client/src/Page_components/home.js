@@ -8,7 +8,7 @@ function HomePage() {
     return (
         <div>
             <h2>THIS IS THE HOME PAGE</h2>
-                {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
+                {/* {errorMessage && <div className="alert alert-danger">{errorMessage}</div>} */}
             </div>
     );
 }

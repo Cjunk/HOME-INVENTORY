@@ -1,0 +1,21 @@
+/* *{
+  border-style:solid;
+  border-width:1px;
+  border-color:red;
+} */
+.header-container {
+  width: 100%;
+  position:sticky;
+  top:0;
+}
+.main-content {
+  flex: 1; /* Allow the main content to fill the remaining space */
+  height: 100%; /* Set the height to match the header height */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .img-container img{
+    visibility:none;
+  }
+}

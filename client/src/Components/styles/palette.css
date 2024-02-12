@@ -1,0 +1,21 @@
+/* Define color variables */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+:root {
+  /* Primary Color */
+  --primary-color: rgb(87, 87, 221); /* Deep Blue */
+  /* Secondary Color */
+  --secondary-color: #708090; /* Slate Gray */
+  /* Accent Color */
+  --accent-color: #008080; /* Teal */
+  /* Background Color */
+  --background-color: #FFC75D; /* Mustard Yellow */
+  /* Text Color */
+  --text-color: #36454F; /* Dark Slate Gray */
+  --navbar-background1:rgb(54, 54, 214);
+  --navbar-background2:#da1b60;
+  --navbar-buttons-color:black;
+  --navbar-buttons-background:white;
+
+  --myfont:'Roboto', sans-serif;
+  
+}

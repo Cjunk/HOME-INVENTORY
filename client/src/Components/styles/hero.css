@@ -1,8 +1,9 @@
 /* Hero.css */
+@import url("./palette.css");
+
 .hero-content {
   background-color: white;
   width:100%;
-  padding:.1px;
   color:black;
   display:flex;
 }

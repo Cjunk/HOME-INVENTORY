@@ -4,7 +4,7 @@ import LoginForm from './Page_components/login.js'; // Adjust the path if necess
 import TestPage from './Page_components/testpage.js';
 import RegisterForm from './Page_components/register.js'
 import HomePage from './Page_components/home.js'
-import Header from './Components/Header.js';
+import Header from './Components/Header2.js';
 
 import './App.css';
 
@@ -29,7 +29,8 @@ function App() {
   }
   return (
     <div className="App">
-      <Header isLoggedIn={loggedIn} pageSelector={setTheCurrentPage} handleLogout={handleLogout} />
+        <Header isLoggedIn={loggedIn} pageSelector={setTheCurrentPage} handleLogout={handleLogout} />
+      
       <Router>
         <Routes>
           <Route path="/" element={loggedIn ? (<Navigate to="/homepage" replace />) : currentPage === 1 ? (<HomePage />) : currentPage === 2 ? (<LoginForm setLogin={handleLogin} />) : (<RegisterForm />)}>

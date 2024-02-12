@@ -58,6 +58,7 @@ function UserForm({ formType, setLogin }) {
   };
   const handlePasswordKeyDown = (event) => {
     if (event.key === 'Enter') {
+      console.log(username)
       const payload = {
         username: username,
         password: password
