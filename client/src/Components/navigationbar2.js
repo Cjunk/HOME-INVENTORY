@@ -20,19 +20,21 @@ function NavigationBar(props) {
                 <ul>
                     {props.isLoggedIn ? (
                         <>
-                            <li ><button>Home</button></li>
-                            <li ><button>Add Item</button></li>
-                            <li><button>Delete Item</button></li>
-                            <li><button>Add Location</button></li>
-                            <li><button>Edit Location</button></li>
-                            <li><button>Settings</button></li>
-                            <li><button onClick={thelogout}>Logout</button></li>
+                            <li className="desktopButton"><button>Home</button></li>
+                            <li className="desktopButton"><button>Add Item</button></li>
+                            <li className="desktopButton"><button>Delete Item</button></li>
+                            <li className="desktopButton"><button>Add Location</button></li>
+                            <li className="desktopButton"><button>Edit Location</button></li>
+                            <li className="desktopButton"><button>Settings</button></li>
+                            <li className="desktopButton"><button onClick={thelogout}>Logout</button></li>
+                            <li><button className="mobileNavButtons">Home</button></li>
+                            <li><button className="mobileNavButtons">Options</button></li>
                         </>
                     ) : (
                         <>
-                            <li><button id="home" onClick={() => props.pageSelector(1)}>Home</button></li>
-                            <li><button id="login" onClick={() => props.pageSelector(2)}>Login</button></li>
-                            <li><button id="register" onClick={() => props.pageSelector(3)}>Register</button></li>
+                            <li className="desktopButton"><button id="home" onClick={() => props.pageSelector(1)}>Home</button></li>
+                            <li className="desktopButton"><button id="login" onClick={() => props.pageSelector(2)}>Login</button></li>
+                            <li className="desktopButton"><button id="register" onClick={() => props.pageSelector(3)}>Register</button></li>
                         </>
                     )}
                 </ul>
