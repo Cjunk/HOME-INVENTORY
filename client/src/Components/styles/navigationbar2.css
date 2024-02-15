@@ -46,10 +46,8 @@
  }
  .navigation-buttons2{
   border-color:var(--navbar-buttons-color);
-
   border-style:solid;
  }
-
 
 /* Responsive Styles */
 @media (max-width: 768px) {

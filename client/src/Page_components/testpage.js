@@ -1,16 +1,26 @@
-import React, { useState, useEffect } from 'react';
-//import './styles/login.css';
+/*
+  This is the user LANDING page. Once logged in they land here
 
-import './styles/testpage.css'
+  First thing is to show the users inventory : Also have a welcome message with their name
+  From this screen the user should be able to filter and scroll the inventory . pick an item and adjust the quantity.
+
+  There should be an Operations Menu. For inbound and outbound into the SOH. 
+  There should also be a SETTINGS menu for PROFILE, ITEM _MASTER, LOCATIONS _MASTER, THEME, CATEORIES, 
+  There should also be a FEATURES menu.  Possibly for ChatGPT integration, Upgrade subscription, 
+  There should b a transaction menu ?? Possibly for subcription (support ) members.
+
+*/
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './styles/testpage.css'
+
 import ShowInventory from '../Components/showInventory';
-import { logout } from '../services/authService';
-function YourInventory({ handleLogout }) {
+function YourInventory() {
   const [theData, settheData] = useState('')
   const [serverResponse, settheServerResponse] = useState('')
   useEffect(() => {
     document.title = 'Home Harmony';
-    getData()
+    getData()  // Get the users inventory data. 
   }, [])
   const getData = async () => {
     try {
@@ -44,7 +54,6 @@ function YourInventory({ handleLogout }) {
       settheServerResponse(error.message, error.code, error.config)
     }
   }
-
   return (
     <div className="">
       {/* <ShowInventory filter={1} theData={theData} /> */}

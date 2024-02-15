@@ -2,8 +2,11 @@
   This is the the Form controller
 
   This will decide which form to display to the end user
-*/
+  (1)  LOGIN
+  (2)  REGISTER
 
+  Written by Jericho Sharman 2024
+*/
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Import Axios
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,7 +25,6 @@ function UserForm({ formType, setLogin }) {
     } else {
       document.title = "Register";
     }
-
   }, [])
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -37,10 +39,7 @@ function UserForm({ formType, setLogin }) {
           'Content-Type': 'application/json',
         },
       });
-
       if (response.status === 200) {
-        console.log('Login response:', response.data);
-
         localStorage.setItem('isLoggedIn', 'true');
         setLogin(true);
         //  TODO:  implement get POST login info from the server. must get from /test
@@ -58,7 +57,6 @@ function UserForm({ formType, setLogin }) {
   };
   const handlePasswordKeyDown = (event) => {
     if (event.key === 'Enter') {
-      console.log(username)
       const payload = {
         username: username,
         password: password
@@ -67,7 +65,7 @@ function UserForm({ formType, setLogin }) {
     }
   };
   return (
-    <div>
+    <div className="form-container">
       <form className="form" onSubmit={handleSubmit}>
         <div>
 
@@ -81,7 +79,6 @@ function UserForm({ formType, setLogin }) {
               className="inputFields"
             />
           </div>
-
         </div>
         <div>
           <label htmlFor="password" className="formlabel">Password:</label>

@@ -16,7 +16,7 @@ function ShowInventory(props) {
   const headings = ['Item Name', 'Item Number', 'Location', 'Date added', 'Qty', 'Picture']  // ID in the CSS file must match these headings. Spaces are replaced with a hythen '-' for use in the CSS file
   return (
     <div>
-      <h1>Your Inventory {props.itemID}</h1>
+      <h1>Your Inventory {props.theData.item_prime_photo}</h1> 
       <div className="inventory-container">
         <div className="inventory-heading">          
           {headings.map((heading, index) => (
@@ -31,7 +31,7 @@ function ShowInventory(props) {
             <div id={headings[2].replace(/ /g, "-")} className="item-property">{item.location_name}</div>
             <div id={headings[3].replace(/ /g, "-")} className="item-property">{formatDateTime(item.soh_date_added)}</div>
             <div id={headings[4].replace(/ /g, "-")} className="item-property-qty">{item.soh_qty}</div>
-            <img id={headings[5].replace(/ /g, "-")} src={"https://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/back02.jpg"} alt={item.item_name} className="item-image" />
+            <img id={headings[5].replace(/ /g, "-")} src={"https://cfl.dropboxstatic.com/static/images/brand/logotype_white-vflRG5Zd8.svg"} alt={item.item_name} className="item-image" />
           </div>
           ))}
       </div>

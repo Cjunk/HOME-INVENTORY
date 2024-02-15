@@ -9,7 +9,7 @@ securedRouter.use(isAuthenticated);
 /*================================================= SOH related routes */
 securedRouter.get('/inventory/soh', (req, res) => {
   const userID = req.session.user.userID
-  const queryStatement = 'SELECT SOH.*, COALESCE(ITEM_MASTER.item_name, \'NA\') as item_name, COALESCE(LOCATION_MASTER.location_name, \'NA\') AS location_name FROM SOH INNER JOIN ITEM_MASTER ON SOH.soh_item = ITEM_MASTER.item_number LEFT JOIN LOCATION_MASTER ON SOH.soh_locationID = LOCATION_MASTER.location_id AND LOCATION_MASTER.userID = ? WHERE SOH.userID = ?;';
+  const queryStatement = 'SELECT SOH.*, item_prime_photo,COALESCE(ITEM_MASTER.item_name, \'NA\') as item_name, COALESCE(LOCATION_MASTER.location_name, \'NA\') AS location_name FROM SOH INNER JOIN ITEM_MASTER ON SOH.soh_item = ITEM_MASTER.item_number LEFT JOIN LOCATION_MASTER ON SOH.soh_locationID = LOCATION_MASTER.location_id AND LOCATION_MASTER.userID = ? WHERE SOH.userID = ?;';
   db.executeQuery(queryStatement, [userID, userID]).then(results => {
     res.status(200).json(results)
   }).catch(error => {

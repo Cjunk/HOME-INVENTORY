@@ -1,14 +1,20 @@
+/*
+  Registration Form component
+
+
+
+*/
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/form.css';
 import axios from 'axios'; // Import Axios
-function RegisterForm({ setLogin }) {
+function RegisterForm() {
   const [firstname, setFirstname] = useState('');
   const [email, setemail] = useState('');
   const [pswd, setpswd] = useState('');
   const [Cpswd, setCpswd] = useState('');
   const [errorMessage, setErrorMessage] = useState("");
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({ //TODO: To be implemented to replace above constants
   firstname: '',
   email: '',
   pswd: '',
@@ -33,11 +39,10 @@ const handleSubmit = async (event) => {
   
   try {
     
-    const response = await axios.post('https:localhost:3001/register', payload, {
+    const response = await axios.post(`${process.env.REACT_APP_EXPRESS_SERVER_URL}/register`, payload, {
       headers: {
         'Content-Type': 'application/json',
       },
-      
       // Uncomment if needed based on your backend setup
        withCredentials: true,
     });

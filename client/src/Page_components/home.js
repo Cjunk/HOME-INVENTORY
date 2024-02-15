@@ -1,7 +1,11 @@
+/*
+    This is the initial non logged in home welcome page
+    Jericho Sharman
+    2024
+*/
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 function HomePage() {
-    const [errorMessage, setErrorMessage] = useState("");
     useEffect(() => {
         document.title = "Home";
     }, [])
