@@ -10,6 +10,12 @@
 .hero-content p,h1 {
   color:black;
 }
-
+.textContainer{
+  margin-left:5px;
+  display:inline;
+}
+.ptext{
+  margin-left:300px;
+}
 
 

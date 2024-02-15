@@ -3,9 +3,9 @@ import './styles/hero.css'
 function Hero() {
   return (
     <header className="hero-content">
-      <div>
+      <div className="textContainer">
         <h1>Home Harmony</h1>
-        <p>Keep track of your household items with ease.</p>
+        <p className="ptext">Keep track of your household items with ease.</p>
       </div>
     </header>
   )
