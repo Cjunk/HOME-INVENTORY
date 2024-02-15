@@ -70,5 +70,12 @@ INSERT INTO ITEM_MASTER (userID, item_number, alt_item_number, item_name, item_d
 INSERT into SOH (userID,soh_item,soh_locationID,soh_qty) VALUES (2,65493,"LOC0000000",55);
 INSERT into SOH (userID,soh_item,soh_locationID,soh_qty) VALUES (2,65493,"LOC0000002",54);
 
+INSERT INTO versionManagement (versNum,versName,versDate) VALUES ("1.0.0","The first version","2024-02-12 15:30:00"); -- Only single entry for each version number
+INSERT INTO versionManagement (versNum,versName,versDate) VALUES ("1.0.1","The first version","2024-02-12 15:35:00"); -- Only single entry for each version number
+
+INSERT INTO versionDetails (versionDet_versNum,versionDet) VALUES (1,"Cleaned up misaligned firing"); -- Can be multiple rows for each version number documenting the updates
+INSERT INTO versionDetails (versionDet_versNum,versionDet) VALUES (1,"Added sound effects"); -- Can be multiple rows for each version number documenting the updates
+
+INSERT INTO versionDetails (versionDet_versNum,versionDet) VALUES (2,"Added YOU LOSE screen"); -- Can be multiple rows for each version number documenting the updates
 
 
