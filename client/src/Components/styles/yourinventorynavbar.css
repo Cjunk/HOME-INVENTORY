@@ -1,0 +1,55 @@
+.theListContainer {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.eachListItem {
+    position: relative;
+    /* Needed for absolute positioning of submenu */
+    margin-right: 20px;
+    /* Space between menu items */
+}
+
+.eachListItem p {
+    margin: 0;
+    /* Reset default margins */
+    padding: 5px;
+    color: black;
+    cursor: pointer;
+}
+
+/* Correctly show the submenu when hovering over the .eachListItem */
+.eachListItem:hover .submenu {
+    display: block;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #f9f9f9;
+    /* Example background color */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    /* Optional: for a dropdown effect */
+    z-index: 1;
+    /* Ensures the submenu is on top of other content */
+}
+
+.eachsubListItem p {
+    padding: 10px 20px;
+    color: black;
+    text-decoration: none;
+    display: block;
+    text-align:left;
+}
+
+.eachsubListItem p:hover {
+    background-color: #f1f1f1;
+    /* Hover color for submenu items */
+}

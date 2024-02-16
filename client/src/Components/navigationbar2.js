@@ -17,7 +17,7 @@ function NavigationBar(props) {
     const menuList = [
         { "id": 1, "name": "Home", "liclassName": "desktopButton", "visible": 1 },
         { "id": 2, "name": "Add Item", "liclassName": "desktopButton", "visible": 0 },
-        { "id": 3, "name": "Add Location", "liclassName": "desktopButton", "visible": 1 },
+        { "id": 3, "name": "Add Location", "liclassName": "desktopButton", "visible": 0 },
         { "id": 4, "name": "Settings", "liclassName": "desktopButton", "visible": 0 },
         { "id": 5, "name": "Home", "liclassName": "desktopButton", "visible": 0 },
         { "id": 6, "name": "Home", "liclassName": "desktopButton", "visible": 0 },
