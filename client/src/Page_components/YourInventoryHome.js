@@ -12,12 +12,30 @@
 */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import YouInventoryNavBar from '../Components/YouInventoryNavBar'; 
 import './styles/testpage.css'
-
+//import { getData } from './databaseFunctions.js/getData';
+//import { menuList } from './NavigationBar';
+//import AddLocation from './views/components/addLocation';
 import ShowInventory from '../Components/showInventory';
-function YourInventory() {
+function YourInventoryHome(props) {
+  
+  // const thePages = [
+  //   { id: 1, name: "Show Inventory", ShowButton: 0 },
+  //   { id: 2, name: "Add Location", ShowButton: 0 }
+    
+  // ]
   const [theData, settheData] = useState('')
+  /*
+    Pages.  
+    1 = SHOW INVENTORY 
+    2 = 
+
+  */
+  // const [currentPage,setCurrentPage] = useState(1)
+  // eslint-disable-next-line 
   const [serverResponse, settheServerResponse] = useState('')
+  
   useEffect(() => {
     document.title = 'Home Harmony';
     getData()  // Get the users inventory data. 
@@ -57,11 +75,12 @@ function YourInventory() {
   return (
     <div className="">
       {/* <ShowInventory filter={1} theData={theData} /> */}
-      <ShowInventory theData={theData}/>
+      <YouInventoryNavBar/>
+      <ShowInventory theData={theData} />
       <button onClick={getData} className="input" id="logoutBut">
         Get data
       </button>
     </div>
   );
 }
-export default YourInventory;
+export default YourInventoryHome;

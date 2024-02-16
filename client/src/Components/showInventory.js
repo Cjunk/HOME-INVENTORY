@@ -16,7 +16,7 @@ function ShowInventory(props) {
   const headings = ['Item Name', 'Item Number', 'Location', 'Date added', 'Qty', 'Picture']  // ID in the CSS file must match these headings. Spaces are replaced with a hythen '-' for use in the CSS file
   return (
     <div>
-      <h1>Your Inventory {props.theData.item_prime_photo}</h1> 
+      
       <div className="inventory-container">
         <div className="inventory-heading">          
           {headings.map((heading, index) => (
