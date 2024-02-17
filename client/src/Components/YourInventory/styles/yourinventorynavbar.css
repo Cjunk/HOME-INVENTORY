@@ -1,8 +1,9 @@
+@import url("../../../palette.css");
 .YourInventoryNavBar-container{
     position:sticky;
-    top:137px;
+    top:136px;
     z-index:1000;
-    background-color:aqua;
+    background-color:var( --background-color);
     display: flex;
     font-size:12px;
 }
@@ -10,11 +11,20 @@
     font-size:16px;
 }
 .theListContainer {
+    
     display: flex;
     list-style-type: none;
     padding: 0;
     margin: 0;
    
+}
+.theListContainer button{
+    margin-top:2px;
+    margin-bottom:2px;
+    border:none;
+    border-right:solid 1px;
+    border-bottom:solid;
+
 }
 .currentNavbarTitle{
     display:grid;
@@ -23,7 +33,7 @@
 .eachListItem {
     position: relative;
     /* Needed for absolute positioning of submenu */
-    margin-right: 20px;
+    
     /* Space between menu items */
 }
 

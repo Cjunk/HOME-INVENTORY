@@ -1,5 +1,5 @@
 /* Hero.css */
-@import url("./palette.css");
+@import url("../../../palette.css");
 
 .hero-content {
   background-color: white;
