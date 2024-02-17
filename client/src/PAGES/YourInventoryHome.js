@@ -20,8 +20,8 @@ import ShowInventory from "../Components/YourInventory/showInventory";
 import { pageID } from "../constants/pageIDs";  // All the page ID's are in here for consistency
 
 function YourInventoryHome(props) {
-
   const [theData, settheData] = useState("");
+  const [initialLocationData, setinitialLocationData]=useState("")
   /*
     Pages.  
     3 = SHOW INVENTORY 
@@ -31,7 +31,6 @@ function YourInventoryHome(props) {
   const [currentPage, setCurrentPage] = useState(pageID.SOH);
   // eslint-disable-next-line
   const [serverResponse, settheServerResponse] = useState("");
-
   useEffect(() => {
     document.title = "Home Harmony";
     getData(); // Get the users inventory data.
@@ -86,7 +85,7 @@ function YourInventoryHome(props) {
   let PageComponent;
   switch (currentPage) {
     case pageID.M_LOC:
-      PageComponent = <LocationForm />;
+      PageComponent = <LocationForm initialLocationData={initialLocationData} />;
       break;
     case 2:
       PageComponent = <DummyComponent />;
@@ -100,12 +99,10 @@ function YourInventoryHome(props) {
   return (
     <div className="">
       {/* <ShowInventory filter={1} theData={theData} /> */}
-      <YouInventoryNavBar setCurrentPage={setTheCurrentPage} />
+      <YouInventoryNavBar setCurrentPage={setTheCurrentPage} currentPage={currentPage} />
 
       {PageComponent}
-      <button onClick={getData} className="input" id="logoutBut">
-        Get data
-      </button>
+
     </div>
   );
 }

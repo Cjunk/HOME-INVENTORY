@@ -67,18 +67,15 @@ function UserForm({ formType, setLogin }) {
   return (
     <div className="form-container">
       <form className="form" onSubmit={handleSubmit}>
-        <div>
-
-          <div className="">
+          <div>
             <label htmlFor="username" className="formlabel">Username:</label>
             <input
               type="text"
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="inputFields"
-            />
-          </div>
+              
+            /> 
         </div>
         <div>
           <label htmlFor="password" className="formlabel">Password:</label>
@@ -88,7 +85,7 @@ function UserForm({ formType, setLogin }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onKeyDown={handlePasswordKeyDown}
-            className="form-control"
+            
           />
         </div>
         <div>

@@ -1,28 +1,36 @@
 /* Define color variables */
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 :root {
   /* Primary Color */
-  --primary-color: rgb(87, 87, 221); /* Deep Blue */
+  --primary-color: #0077cc; /* Ocean Blue */
   /* Secondary Color */
-  --secondary-color: #0b447c; /* Slate Gray */
+  --secondary-color: #555555; /* Dim Gray */
   /* Accent Color */
-  --accent-color: #0c5555; /* Teal */
+  --accent-color: #cc0066; /* Raspberry */
   /* Background Color */
-  --background-color: #c6d5da; /* Mustard Yellow */
+  --background-color: #f5f5f5; /* Light Silver */
   /* Text Color */
-  --text-color: #033d63; /* Dark Slate Gray */
+  --text-color: #333333; /* Dark Gray */
   /* Navbar pallet */
-  --navbar-background1: rgb(197, 197, 209);
-  --navbar-background2: #830c38;
-  --navbar-buttons-color: rgb(116, 13, 13);
-  --navbar-buttons-background: white;
-  --navbar-button-login-background: lightgreen;
+  --navbar-background1: #f9f9f9; /* White Smoke */
+  --navbar-background2: #8d0a0a; /* Dark Gray */
+  --navbar-buttons-color: #ffffff; /* White */
+  --navbar-buttons-background: var(--primary-color); /* Ocean Blue */
+  --navbar-button-login-background: #66cc99; /* Light Green */
   --myfont: "Roboto", sans-serif;
 
-  /*Show Inventory Colors */
-  --inv-hover-background-color: rgb(192, 173, 173);
+  /* Show Inventory Colors */
+  --inv-hover-background-color: #ffcccc; /* Light Coral */
   --inv-column-headings-background-color: var(--navbar-background2);
-  --inv-headings-text: white;
-  --inv-items-text: black;
-  --inv-item-row-border-bottom: rgb(56, 49, 49);
+  --inv-headings-text: #ffffff; /* White */
+  --inv-items-text: #000000; /* Black */
+  --inv-item-row-border-bottom: #383838; /* Dark Gray */
+
+  /* Gradients and Special Effects */
+  --gradient-primary: linear-gradient(to right, #0077cc, #33aaff); /* Gradient from Ocean Blue to Sky Blue */
+  --gradient-secondary: linear-gradient(to right, #555555, #777777); /* Gradient from Dim Gray to Gray */
+  --gradient-accent: linear-gradient(to right, #cc0066, #ff66aa); /* Gradient from Raspberry to Pink */
+  --gradient-background: linear-gradient(to right, #f5f5f5, #dddddd); /* Gradient from Light Silver to Silver */
 }
+

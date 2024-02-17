@@ -3,6 +3,7 @@ import "./styles/yourinventorynavbar.css";
 import { pageID } from '../../constants/pageIDs'
 const YouInventoryNavBar = (props) => {
   const [activeMenu, setActiveMenu] = React.useState(null); // For toggle functionality on touch devices
+  const [currentTitle, setcurrentTitle] = React.useState(null); // For toggle functionality on touch devices
 
   const menuItems = [
     {
@@ -28,9 +29,12 @@ const YouInventoryNavBar = (props) => {
   const toggleSubMenu = (id) => {
     setActiveMenu(activeMenu === id ? null : id); // Toggle active menu
   };
-  const clickedmenu = (prop) => {
-    props.setCurrentPage(prop);
+  const clickedmenu = (SubItemid,title) => {
+    props.setCurrentPage(SubItemid);
+    setcurrentTitle(title)
   }
+
+
   return (
     <div className="YourInventoryNavBar-container">
 
@@ -48,7 +52,7 @@ const YouInventoryNavBar = (props) => {
                 <li
                   key={subItem.id}
                   className="eachsubListItem"
-                  onClick={() => clickedmenu(subItem.id)}
+                  onClick={() => clickedmenu(subItem.id, item.title + ":" +" " + subItem.title)}
                 >
                   <p>{subItem.title}</p>
                 </li>
@@ -57,7 +61,7 @@ const YouInventoryNavBar = (props) => {
           </li>
         ))}
       </ul>
-      <h1 className="currentNavbarTitle">SOH</h1>
+      <h1 className="currentNavbarTitle">{currentTitle}</h1>
     </div>
   );
 };

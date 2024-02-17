@@ -1,4 +1,4 @@
-@import url("./palette.css");
+@import url("../../../palette.css");
 .theitemcontainer {
   padding: 0;
   margin: 0;
@@ -21,7 +21,7 @@
 .inventory-heading{
     background-color:var(--inv-column-headings-background-color);
     position:sticky;
-    top:164px;
+    top:162px;
     z-index:10;
 }
 .inventory-row:hover{
