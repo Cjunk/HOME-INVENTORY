@@ -12,13 +12,13 @@
 */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import YouInventoryNavBar from "../Components/YouInventoryNavBar";
-import "./styles/testpage.css";
-import DummyComponent from "../Components/dummyComponent";
-import LocationForm from "../Components/LocationMasterForm";
-import './styles/locationmaster.css'
-import { pageID } from "../Components/pageIDs";  // All the page ID's are in here for consistency
-import ShowInventory from "../Components/showInventory";
+import YouInventoryNavBar from "../Components/YourInventory/YouInventoryNavBar";
+import DummyComponent from "../Components/DummyComponent/dummyComponent";
+import LocationForm from "../Components/LocationMaster/LocationMasterForm";
+import ShowInventory from "../Components/YourInventory/showInventory";
+
+import { pageID } from "../constants/pageIDs";  // All the page ID's are in here for consistency
+
 function YourInventoryHome(props) {
 
   const [theData, settheData] = useState("");
@@ -28,7 +28,7 @@ function YourInventoryHome(props) {
     2 = 
 
   */
-  const [currentPage, setCurrentPage] = useState(3);
+  const [currentPage, setCurrentPage] = useState(pageID.SOH);
   // eslint-disable-next-line
   const [serverResponse, settheServerResponse] = useState("");
 
@@ -74,9 +74,9 @@ function YourInventoryHome(props) {
     } catch (error) {
       settheData(
         "COOKIE:" +
-          encodeURIComponent(document.cookie) +
-          " MESSAGE" +
-          error.message
+        encodeURIComponent(document.cookie) +
+        " MESSAGE" +
+        error.message
       );
       console.error("Failed to get data:", error);
       settheServerResponse(error.message, error.code, error.config);

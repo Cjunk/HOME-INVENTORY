@@ -3,7 +3,7 @@
     Jericho Sharman
     2024
 */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 function HomePage() {
     useEffect(() => {

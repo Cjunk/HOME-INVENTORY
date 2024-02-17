@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./styles/locationMasterForm.css"
 function LocationForm({ onSubmit }) {
   const [formData, setFormData] = useState({
     location_id: "",

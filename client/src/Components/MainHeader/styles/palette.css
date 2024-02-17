@@ -1,0 +1,28 @@
+/* Define color variables */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+:root {
+  /* Primary Color */
+  --primary-color: rgb(87, 87, 221); /* Deep Blue */
+  /* Secondary Color */
+  --secondary-color: #0b447c; /* Slate Gray */
+  /* Accent Color */
+  --accent-color: #0c5555; /* Teal */
+  /* Background Color */
+  --background-color: #c6d5da; /* Mustard Yellow */
+  /* Text Color */
+  --text-color: #033d63; /* Dark Slate Gray */
+  /* Navbar pallet */
+  --navbar-background1: rgb(197, 197, 209);
+  --navbar-background2: #830c38;
+  --navbar-buttons-color: rgb(116, 13, 13);
+  --navbar-buttons-background: white;
+  --navbar-button-login-background: lightgreen;
+  --myfont: "Roboto", sans-serif;
+
+  /*Show Inventory Colors */
+  --inv-hover-background-color: rgb(192, 173, 173);
+  --inv-column-headings-background-color: var(--navbar-background2);
+  --inv-headings-text: white;
+  --inv-items-text: black;
+  --inv-item-row-border-bottom: rgb(56, 49, 49);
+}
