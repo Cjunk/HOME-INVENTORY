@@ -21,7 +21,8 @@
 .inventory-heading{
     background-color:var(--inv-column-headings-background-color);
     position:sticky;
-    top:135px;
+    top:165px;
+    z-index:10;
 }
 .inventory-row:hover{
     background-color:var(--inv-hover-background-color);

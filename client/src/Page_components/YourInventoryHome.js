@@ -17,20 +17,14 @@ import "./styles/testpage.css";
 import DummyComponent from "../Components/dummyComponent";
 import LocationForm from "../Components/LocationMasterForm";
 import './styles/locationmaster.css'
-//import { getData } from './databaseFunctions.js/getData';
-//import { menuList } from './NavigationBar';
-//import AddLocation from './views/components/addLocation';
+import { pageID } from "../Components/pageIDs";  // All the page ID's are in here for consistency
 import ShowInventory from "../Components/showInventory";
 function YourInventoryHome(props) {
-  // const thePages = [
-  //   { id: 1, name: "Show Inventory", ShowButton: 0 },
-  //   { id: 2, name: "Add Location", ShowButton: 0 }
 
-  // ]
   const [theData, settheData] = useState("");
   /*
     Pages.  
-    1 = SHOW INVENTORY 
+    3 = SHOW INVENTORY 
     2 = 
 
   */
@@ -91,13 +85,13 @@ function YourInventoryHome(props) {
   // Determine which component to render based on the current page
   let PageComponent;
   switch (currentPage) {
-    case 1:
+    case pageID.M_LOC:
       PageComponent = <LocationForm />;
       break;
     case 2:
       PageComponent = <DummyComponent />;
       break;
-    case 3:
+    case pageID.SOH:
       PageComponent = <ShowInventory theData={theData} />;
       break;
     default:

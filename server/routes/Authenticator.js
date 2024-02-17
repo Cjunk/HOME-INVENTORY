@@ -75,7 +75,8 @@ async function register(req, res) {
                     message: 'user already exists',
                     success: false,
                 });           
-        }       
+        } 
+        
         // Hash the password and add the new user
         const hash = await bcrypt.hash(pswd, saltRounds);
         // Insert the new user
