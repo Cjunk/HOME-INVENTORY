@@ -16,12 +16,13 @@ import YouInventoryNavBar from "../Components/YourInventory/YouInventoryNavBar";
 import DummyComponent from "../Components/DummyComponent/dummyComponent";
 import LocationForm from "../Components/LocationMaster/LocationMasterForm";
 import ShowInventory from "../Components/YourInventory/showInventory";
-
+import { getLocations } from "../services/authService";
 import { pageID } from "../constants/pageIDs";  // All the page ID's are in here for consistency
 
 function YourInventoryHome(props) {
   const [theData, settheData] = useState("");
-  const [initialLocationData, setinitialLocationData]=useState("")
+  const [locationData, setLocationData] = useState([]);
+  const [initialLocationData, setinitialLocationData] = useState("")
   /*
     Pages.  
     3 = SHOW INVENTORY 
@@ -34,10 +35,36 @@ function YourInventoryHome(props) {
   useEffect(() => {
     document.title = "Home Harmony";
     getData(); // Get the users inventory data.
+    //fetchLocationData()
   }, []);
   const setTheCurrentPage = (pageNumber) => {
     setCurrentPage(pageNumber);
     console.log("CLICKED IT", pageNumber, currentPage);
+  };
+  const fetchLocationData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_EXPRESS_SERVER_URL}/secure/inventory/masterlocation/list`,
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+            sessionID: "sessionID" + encodeURIComponent(document.cookie),
+          },
+        }
+      );
+
+
+      if (response.status === 200) {
+        setLocationData(response.data); // Set the location data in state
+      } else {
+        console.error('Failed to fetch locations:', response);
+        // Handle the case where the status is not 200
+      }
+    } catch (error) {
+      console.error('Error fetching locations:', error);
+      // Handle the error
+    }
   };
   const getData = async () => {
     try {
@@ -102,8 +129,9 @@ function YourInventoryHome(props) {
       <YouInventoryNavBar setCurrentPage={setTheCurrentPage} currentPage={currentPage} />
 
       {PageComponent}
-
+      <button onClick={fetchLocationData}>get Data</button>
     </div>
+
   );
 }
 export default YourInventoryHome;

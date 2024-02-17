@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { logout } from '../../services/authService';
 
-const globalTimeout = 5 * 60 * 1000; // 5 minutes in milliseconds
+const globalTimeout = 15 * 60 * 1000; // 5 minutes in milliseconds
 
 function AutoLogout({ onLogout }) {
     const lastActivityTimestampRef = useRef(Date.now());

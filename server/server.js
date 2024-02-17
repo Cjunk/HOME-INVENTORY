@@ -49,8 +49,16 @@ app.use(express.json()); // For parsing application/json
 app.use(express.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 
 //  Configure Mysql  TODO: Implement database access to store session info
-//const MySQLStore = require('express-mysql-session')(session);
-//const sessionStore = new MySQLStore({}, db); //TODO Keep this line in. eventually implement a database store
+const MySQLStore = require('express-mysql-session')(session);
+const options = {
+    host: 'localhost', // Replace with your MySQL server host
+    port: 3306, // Replace with your MySQL server port
+    user: 'root', // Replace with your MySQL username
+    password: 'Quest35#', // Replace with your MySQL password
+    database: 'home_inventory' // Replace with your database name where sessions will be stored
+};
+
+const sessionStore = new MySQLStore(options); //TODO Keep this line in. eventually implement a database store
 
 /*
     Configure EXPRESS SESSIONS MANAGEMENT  ===============================================================================================
@@ -59,13 +67,13 @@ app.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: true,
-    httpOnly: true, // Prevent JavaScript access to the cookie
+    store: sessionStore, //TODO:Implement
     cookie: {
         maxAge: 36000000, // Session expires after 1 hour (in milliseconds)
+        httpOnly: true, // Prevent JavaScript access to the cookie
         secure: true, // Set to true in a production environment if using HTTPS
         sameSite: 'none', // Required for cross-origin cookies        
-    },
-    //store: sessionStore //TODO:Implement
+    }, 
 }));
 //  =======================================================================================================================================
 // Serve static files from the 'public' directory // TODO: REMOVE THIS ABILITY

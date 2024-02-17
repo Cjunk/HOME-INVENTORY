@@ -72,11 +72,11 @@ async function register(req, res) {
         if (existingUsers.length > 0) {
             // User already exists
             return res.status(409).json({
-                    message: 'user already exists',
-                    success: false,
-                });           
-        } 
-        
+                message: 'user already exists',
+                success: false,
+            });
+        }
+
         // Hash the password and add the new user
         const hash = await bcrypt.hash(pswd, saltRounds);
         // Insert the new user
@@ -154,13 +154,9 @@ function login(req, res) {
 
 
 function isAuthenticated(req, res, next) {
-
-    req.sessionID = Object.keys(req.sessionStore.sessions)[0]
-    console.log("HERE IS THE SESSION COOKIE", req.sessionID);
-    if (req.session.isAuthenticated && req.sessionID) {
+    if (req.session.isAuthenticated) {
         next(); // Continue if the user is authenticated
     } else {
-        //res.redirect('/login'); // Redirect to login if not authenticated
         res.status(401).send('Unauthorized'); // Return 401 if not authenticated
     }
 }
@@ -180,4 +176,4 @@ function authMiddleware(req, res, next) {
 
 
 
-module.exports = { login, register,authMiddleware, isAuthenticated };
+module.exports = { login, register, authMiddleware, isAuthenticated };
