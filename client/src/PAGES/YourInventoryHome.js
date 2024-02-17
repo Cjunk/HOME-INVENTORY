@@ -22,7 +22,7 @@ import { pageID } from "../constants/pageIDs";  // All the page ID's are in here
 function YourInventoryHome(props) {
   const [theData, settheData] = useState("");
   const [locationData, setLocationData] = useState([]);
-  const [initialLocationData, setinitialLocationData] = useState("")
+
   /*
     Pages.  
     3 = SHOW INVENTORY 
@@ -35,7 +35,7 @@ function YourInventoryHome(props) {
   useEffect(() => {
     document.title = "Home Harmony";
     getData(); // Get the users inventory data.
-    //fetchLocationData()
+    fetchLocationData()
   }, []);
   const setTheCurrentPage = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -112,7 +112,7 @@ function YourInventoryHome(props) {
   let PageComponent;
   switch (currentPage) {
     case pageID.M_LOC:
-      PageComponent = <LocationForm initialLocationData={initialLocationData} />;
+      PageComponent = <LocationForm locationData={locationData} />;
       break;
     case 2:
       PageComponent = <DummyComponent />;

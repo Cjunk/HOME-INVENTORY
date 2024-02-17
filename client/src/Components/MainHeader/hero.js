@@ -4,8 +4,8 @@ function Hero() {
   return (
     <header className="hero-content">
       <div className="textContainer">
-        <h1>Home Harmony</h1>
-        <p className="ptext">Keep track of your household items with ease.</p>
+        <h1 className="mainHeadingText">Home Harmony</h1>
+        {/* <p className="ptext">Keep track of your household items with ease.</p> */}
       </div>
     </header>
   )

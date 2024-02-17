@@ -9,89 +9,89 @@
   display: block;
 }
 
-.inventory-row{
-    border-bottom:solid 2px;
-    border-color:var(--inv-item-row-border-bottom);
+.inventory-row {
+  border-bottom: solid 2px;
+  border-color: var(--inv-item-row-border-bottom);
 }
-.inventory-row,.inventory-heading {
+.inventory-row,
+.inventory-heading {
   display: grid;
   grid-template-columns: repeat(6, 1fr); /* Spans across 6 columns */
-  
 }
-.inventory-heading{
-    background-color:var(--inv-column-headings-background-color);
-    position:sticky;
-    top:162px;
-    z-index:10;
+.inventory-heading {
+  background-color: var(--inv-column-headings-background-color);
+  position: sticky;
+  top: var(--header-height2);
+  z-index: 10;
 }
-.inventory-row:hover{
-    background-color:var(--inv-hover-background-color);
-    cursor:pointer;
-    border-bottom:solid 1px;
+.inventory-row:hover {
+  background-color: var(--inv-hover-background-color);
+  cursor: pointer;
+  border-bottom: solid 1px;
 }
 .theItemUL {
   list-style-type: none; /* Remove default list styles */
   display: flex;
   flex-wrap: wrap; /* Allow flex items to wrap onto multiple lines */
 }
-.item-property,.item-property-qty {
+.item-property,
+.item-property-qty {
   display: flex;
   width: 100%; /* Adjust the width as needed */
   /* Optionally, add additional styles like padding or margin */
   margin-right: 10px;
-   text-align: left;
-   align-items: center;
-   height:100%;
-   align-self:center;  
-   padding-left:10px;
-   color:var(--inv-items-text);
+  text-align: left;
+  align-items: center;
+  height: 100%;
+  align-self: center;
+  padding-left: 10px;
+  color: var(--inv-items-text);
 }
-.heading-item-property,.heading-item-property-qty {
+.heading-item-property,
+.heading-item-property-qty {
   display: flex;
   width: 100%; /* Adjust the width as needed */
   /* Optionally, add additional styles like padding or margin */
   margin-right: 10px;
-   text-align: left;
-   align-items: center;
-   height:100%;
-   align-self:center;  
-   padding-left:10px;
-   color:var(--inv-headings-text);
+  text-align: left;
+  align-items: center;
+  height: 100%;
+  align-self: center;
+  padding-left: 10px;
+  color: var(--inv-headings-text);
 }
 .item-property-qty {
-    width:100px;
-    
+  width: 100px;
 }
 .item-property-img {
-width:100px;
+  width: 100px;
 }
 .item-image {
   width: 50px; /* Adjust width as needed */
   height: 50px; /* Adjust height as needed */
   margin-right: 10px; /* Optional: Add margin for spacing */
-  margin-bottom:1px;
-  
+  margin-bottom: 1px;
 }
 
 /* Media query for mobile devices */
 @media only screen and (max-width: 768px) {
-
-  #Date-added  {
+  #Date-added {
     display: none; /* Hide all properties and images */
   }
 
   .theitem-container li {
     display: block; /* Display list items vertically */
   }
-.inventory-row,.inventory-heading {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Spans across 6 columns */
-}
-.inventory-heading{
-    background-color:var(--inv-column-headings-background-color);
-    position:sticky;
-    top:230px;
-}
+  .inventory-row,
+  .inventory-heading {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Spans across 6 columns */
+  }
+  .inventory-heading {
+    background-color: var(--inv-column-headings-background-color);
+    position: sticky;
+    top: 230px;
+  }
   .theitem-container li .item-property,
   .theitem-container li .item-property-qty,
   .theitem-container li .item-image {

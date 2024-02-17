@@ -2,10 +2,13 @@
 @import url("../../../palette.css");
 
 .hero-content {
-  background-color: white;
+  background-color: var(--background-color);
   width:100%;
-  color:black;
-  display:flex;
+  color:var(--primary-text-color);
+
+}
+.mainHeadingText{
+  color:var(--primary-color)
 }
 .hero-content p,h1 {
   color:black;

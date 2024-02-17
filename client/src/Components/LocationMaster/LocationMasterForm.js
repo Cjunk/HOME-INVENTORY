@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles/locationMasterForm.css"
-function LocationForm({ onSubmit, initialLocationData }) {
+const headings = ['location_id', 'location name', 'Prime Location', 'Description', 'Capacity', 'Status']
+function LocationForm({ onSubmit, locationData }) {
   const [formData, setFormData] = useState({
     location_id: "",
     location_name: "",
@@ -13,16 +14,16 @@ function LocationForm({ onSubmit, initialLocationData }) {
     IsAvailable: true,
   });
   useEffect(() => {
-    if (initialLocationData) {
+    if (locationData) {
       setFormData({
         ...formData,
-        location_id: initialLocationData.location_id || "",
-        location_name: initialLocationData.location_name || "",
-        location_prime_location: initialLocationData.location_prime_location || "",
+        location_id: locationData.location_id || "",
+        location_name: locationData.location_name || "",
+        location_prime_location: locationData.location_prime_location || "",
         // Populate other fields as needed
       });
     }
-  }, [initialLocationData]); // Run effect when initialLocationData changes
+  }, []); // Run effect when initialLocationData changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevFormData) => ({
@@ -41,10 +42,8 @@ function LocationForm({ onSubmit, initialLocationData }) {
       
       case "location_desc":
         return "input-large"; // Example: large width for Name field
-    
       case "pickpath":
-      case "capacity":
-        
+      case "capacity":     
         return "input-small"; // Example: small width for Prime Location field
       default:
         return ""; // Default to empty string if width class is not specified
@@ -132,9 +131,35 @@ function LocationForm({ onSubmit, initialLocationData }) {
       </label>
       <button type="submit">Add New Location</button>
       </form>
+      <div><h1>Your Locations</h1>                   
+            <div>
+              <div className="">
+                <div className="inventory-heading">
+                  {headings.map((heading, index) => (
+                    <div id={heading.replace(/ /g, "-")} key={index} className={`heading-item-property${index === 4 ? '-qty' : ''}`}>{heading}</div>
+                  ))}
+                </div>
+                {locationData.map((item, index) => (
+                  <div key={index} className="inventory-row">
+                    <div id={headings[0].replace(/ /g, "-")} className="item-property">{item.location_id}</div>
+                    <div id={headings[1].replace(/ /g, "-")} className="item-property">{item.location_name}</div>
+                    <div id={headings[2].replace(/ /g, "-")} className="item-property">{item.location_prime_location}</div>
+                    <div id={headings[4].replace(/ /g, "-")} className="item-property-qty">{item.location_desc}</div>
+                    <div id={headings[5].replace(/ /g, "-")} className="item-property-qty">{item.capacity}</div>
+                    <div id={headings[5].replace(/ /g, "-")} className="item-property-qty">
+                      <input
+                        type="checkbox"
+                        checked={item.IsAvailable}
+                        onChange={() => { }} // Add a handler function here if you want to change the state when the checkbox is toggled
+                        readOnly // Makes the checkbox reflect the state but not editable directly by the user
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>     
+      </div>
     </div>
-      );
-    
+      );  
 }
-
 export default LocationForm;

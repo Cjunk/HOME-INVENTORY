@@ -8,9 +8,9 @@
   width: 100%;
   position:sticky;
   top:0;
+  z-index:1000;
+  background:var( --background-color);
 }
-.main-content {
-  flex: 1; /* Allow the main content to fill the remaining space */
-  height: 100%; /* Set the height to match the header height */
-}
+
+
 

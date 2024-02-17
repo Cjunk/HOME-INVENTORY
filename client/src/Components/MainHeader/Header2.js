@@ -5,10 +5,8 @@ import NavigationBar from "./navigationbar2";
 function Header(props) {
     return (
         <div className = "header-container">
-                <div className="main-content">
                     <Hero />
                     <NavigationBar {...props} />
-                </div>
         </div>
     );
 }
