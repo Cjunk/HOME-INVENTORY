@@ -7,22 +7,27 @@
 }
 .container{
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: rgb(31, 31, 187);
+;
   border-radius: 8px;
   border-style: ridge 5px;
   margin-top:25px;
- color:white;
+
+}
+.container form {
+  background-color:rgb(31, 31, 187);
+  color:white;
 }
 
 .form {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
-  background-color: rgb(4, 4, 61);
   grid-template-columns: 5fr;
   border-color: black;
   border-style: ridge 5px;
   padding: 20px;
+  background-color: rgb(4, 4, 61);
+  
 }
 
 .form input[type="text"],
@@ -41,10 +46,13 @@ input[type="password"] {
 .form button[type="submit"] {
   border-radius: 4px;
   background-color: #007bff;
+  
 }
+
 .form button[type="submit"]:hover {
   cursor: pointer;
   background-color: blue;
+  
 }
 .buttonLayout {
   display: grid;

@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/yourinventorynavbar.css";
-import { pageID } from "./pageIDs";
+import { pageID } from '../../constants/pageIDs'
 const YouInventoryNavBar = (props) => {
   const [activeMenu, setActiveMenu] = React.useState(null); // For toggle functionality on touch devices
 
@@ -28,12 +28,12 @@ const YouInventoryNavBar = (props) => {
   const toggleSubMenu = (id) => {
     setActiveMenu(activeMenu === id ? null : id); // Toggle active menu
   };
- const clickedmenu = (prop) =>{
-props.setCurrentPage(prop);
- }
+  const clickedmenu = (prop) => {
+    props.setCurrentPage(prop);
+  }
   return (
     <div className="YourInventoryNavBar-container">
-      
+
       <ul className="theListContainer">
         {menuItems.map((item) => (
           <li
@@ -48,7 +48,7 @@ props.setCurrentPage(prop);
                 <li
                   key={subItem.id}
                   className="eachsubListItem"
-                  onClick={() =>clickedmenu(subItem.id)}
+                  onClick={() => clickedmenu(subItem.id)}
                 >
                   <p>{subItem.title}</p>
                 </li>
