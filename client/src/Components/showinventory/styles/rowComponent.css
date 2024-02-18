@@ -1,8 +1,8 @@
 @import url("../../../palette.css");
 .the-inventory-data-row-container {
   display: grid;
-  grid-template-columns: 1fr 0.5fr 1.5fr 1fr 0.5fr 1fr 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: minmax(100px, 1fr) minmax(150px, 1fr) repeat(6, 1fr);
+  grid-template-rows: 0.5fr 3fr;
   grid-template-areas:
     "image top1 top2 top2 top2 top3 top4 top5"
     "image bottom1 bottom2 bottom2 bottom2 bottom3 bottom4 bottom5";
@@ -10,6 +10,7 @@
   margin-top: 2px;
   margin-bottom: 2px;
   border-bottom: solid 1px;
+  font-size: 14px;
 }
 .item-image {
   grid-area: image;
@@ -18,12 +19,20 @@
   width: 100%;
   height: 100%;
   padding: 2px;
+  max-width: 200px;
+  min-width: 100px;
 }
 .top-inventory-data-col {
   color: var(--data-row-column-header-text-color);
   font-weight: bold;
   text-align: left;
-  margin-left: 10px;
+
+  border-right: solid 1px grey;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.bottom-inventory-data-col {
+  border-right: solid 1px grey;
 }
 .top-inventory-data-col #name {
   width: 100%;
@@ -37,14 +46,16 @@
 }
 .bottom-inventory-data-col {
   text-align: left;
-  margin-left: 10px;
   color: var(--data-row-column-subtext-text-color);
 }
-.bottom-inventory-data-col #name {
+
+.bottom-inventory-data-col#name {
   grid-area: bottom1;
 }
-.bottom-inventory-data-col #description {
+.bottom-inventory-data-col#description {
   grid-area: bottom2;
+  overflow: auto; /* Adds scrollbar if content overflows */
+  height: 100px; /* Fixed height */
 }
 .bottom-inventory-data-col:nth-child(3) {
   grid-area: bottom1;
@@ -55,4 +66,33 @@
 }
 .bottom-inventory-data-col:nth-child(5) {
   grid-area: bottom3;
+}
+
+@media only screen and (max-width: 768px) {
+  .top-inventory-data-col {
+    border-right: none;
+  }
+  .bottom-inventory-data-col {
+    border-right: none;
+  }
+  .top-inventory-data-col#lastDate {
+    /* NOT WORKING TODO: Get this fixed*/
+    display: none;
+  }
+  .bottom-inventory-data-col#lastDate {
+    /* NOT WORKING TODO: Get this fixed*/
+    display: none;
+  }
+  .the-inventory-data-row-container {
+    grid-template-columns: minmax(120px, 1fr) minmax(70px, 1fr) repeat(4, 1fr);
+    grid-template-areas:
+      "image top1 top2 top2 top2 top3 top4"
+      "image bottom1 bottom2 bottom2 bottom2 bottom3 bottom4";
+    font-size: 12px;
+    #name {
+    
+      margin-left:5px;
+      width: 100%;
+    }
+  }
 }

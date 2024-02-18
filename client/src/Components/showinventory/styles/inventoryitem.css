@@ -32,4 +32,8 @@
   .theitem-container li .item-image {
     display: inline; /* Show only item name, location, and quantity */
   }
+
+  .the-inventory-data-row-container{
+    grid-template-columns: 1fr 0.5fr 1.5fr 1fr 0.25fr 0.5fr 1fr;
+  }
 }

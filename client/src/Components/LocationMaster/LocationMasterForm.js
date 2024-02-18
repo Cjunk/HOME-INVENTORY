@@ -39,13 +39,13 @@ function LocationForm({ locationData, setLocationData }) {
     switch (fieldName) {
       case "location_id":
       case "location_name":
-      case "location_prime_location":
         return "input-medium"; // Example: medium width for ID field
 
       case "location_desc":
         return "input-large"; // Example: large width for Name field
       case "pickpath":
       case "capacity":
+      case "location_prime_location":
         return "input-small"; // Example: small width for Prime Location field
       default:
         return ""; // Default to empty string if width class is not specified
@@ -125,7 +125,7 @@ function LocationForm({ locationData, setLocationData }) {
               value={formData.location_name}
               onChange={handleChange}
               className={getWidthClass("location_name")}
-              required
+
             />
           </label>
           <label className="dd">
@@ -136,6 +136,7 @@ function LocationForm({ locationData, setLocationData }) {
               value={formData.location_prime_location}
               className={getWidthClass("location_prime_location")}
               onChange={handleChange}
+
             />
           </label>
           <label className="dd">
