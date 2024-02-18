@@ -12,18 +12,7 @@
 .inventory-container {
   background-color: var(--data-list-background);
 }
-.inventory-heading {
-  background-color: var(--inv-column-headings-background-color);
-  position: sticky;
-  top: var(--header-height2);
-  z-index: 10;
-}
 
-.inventory-row,
-.inventory-heading {
-  display: grid;
-  grid-template-columns: repeat(var(--inv-column-count), 1fr); /* Spans across 6 columns */
-}
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
@@ -42,11 +31,11 @@
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-   THE ROW -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
-.inventory-row {
+.data-row {
   border-color: var(--inv-item-row-border-bottom);
   border-bottom: var(--data-list-item-border-clr);
 }
-.inventory-row:hover {
+.data-row:hover {
   background-color: var(--inv-item-background-color-hvr);
   cursor: pointer;
   border-bottom: solid 1px;

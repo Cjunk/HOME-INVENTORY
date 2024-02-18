@@ -1,14 +1,23 @@
-:root{
-
- /* \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ 
+:root {
+  /* \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ 
                          Show inventory data list */
-    --inv-column-count:12;
- /* /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\  */  
+  --inv-column-count: 12;
+  /* /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\  */
 
-
-
- --header-height: 114px;
-
+  --header-height: 114px;
 
   --header-height2: calc(var(--header-height) + 27px);
+
+  .data-heading {
+    background-color: var(--inv-column-headings-background-color);
+    position: sticky;
+    top: var(--header-height2);
+    z-index: 10;
+  }
+
+  .data-row,
+  .data-heading {
+    display: grid;
+    grid-template-columns: repeat(var(--inv-column-count), 1fr); /* Spans across 6 columns */
+  }
 }

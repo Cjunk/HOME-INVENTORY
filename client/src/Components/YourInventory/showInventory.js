@@ -18,14 +18,14 @@ function ShowInventory(props) {
     <div>
       
       <div className="inventory-container">
-        <div className="inventory-heading">          
+        <div className="data-heading">          
           {headings.map((heading, index) => (
             <div id= {heading.replace(/ /g, "-") }  key={index} className={`heading-item-property${index === 4 ? '-qty':''}` }>{heading}</div>
           ))}
       
         </div>     
         {dataArray.map((item, index) => (  
-          <div key={index} className="inventory-row">
+          <div key={index} className="data-row">
             <div id={headings[0].replace(/ /g, "-")} className="item-property">{item.item_name}</div>
             <div id={headings[1].replace(/ /g, "-")} className="item-property">{item.soh_item}</div>
             <div id={headings[2].replace(/ /g, "-")} className="item-property">{item.location_name}</div>

@@ -104,91 +104,92 @@ function LocationForm({ locationData, setLocationData }) {
 
 
   return (
-    <div className="Location-form-container">
-      <form className="locationForm" onSubmit={handleSubmit}>
-        <label className="dd">
-          ID:
-          <input
-            type="text"
-            name="location_id"
-            value={formData.location_id}
-            onChange={handleChange}
-            className={getWidthClass("location_id")}
-            required
-          />
-        </label>
-        <label className="dd">
-          Name:
-          <input
-            type="text"
-            name="location_name"
-            value={formData.location_name}
-            onChange={handleChange}
-            className={getWidthClass("location_name")}
-            required
-          />
-        </label>
-        <label className="dd">
-          Prime Location:
-          <input
-            type="number"
-            name="location_prime_location"
-            value={formData.location_prime_location}
-            className={getWidthClass("location_prime_location")}
-            onChange={handleChange}
-          />
-        </label>
-        <label className="dd">
-          Description:
-          <textarea
-            name="location_desc"
-            value={formData.location_desc}
-            className={getWidthClass("location_desc")}
-            onChange={handleChange}
-          />
-        </label>
-        <label >
-          Pickpath:
-          <input
-            type="number"
-            name="pickpath"
-            value={formData.pickpath}
-            onChange={handleChange}
-            className={getWidthClass("pickpath")}
-          />
-        </label>
-        <label>
-          Capacity:
-          <input
-            type="number"
-            name="capacity"
-            value={formData.capacity}
-            onChange={handleChange}
-            className={getWidthClass("capacity")}
-          />
-        </label>
-        <label>
-          Is Available:
-          <input
-            type="checkbox"
-            name="IsAvailable"
-            checked={formData.IsAvailable}
-            onChange={handleChange}
-            className={getWidthClass("IsAvailable")}
-          />
-        </label>
-        <button type="submit">Add New Location</button>
-      </form>
-      <div className="Location-data-container"><h1>Your Locations</h1>
-        <div>
+    <div>
+      <div className="Location-form-container">
+        <form className="locationForm" onSubmit={handleSubmit}>
+          <label className="dd">
+            ID:
+            <input
+              type="text"
+              name="location_id"
+              value={formData.location_id}
+              onChange={handleChange}
+              className={getWidthClass("location_id")}
+              required
+            />
+          </label>
+          <label className="dd">
+            Name:
+            <input
+              type="text"
+              name="location_name"
+              value={formData.location_name}
+              onChange={handleChange}
+              className={getWidthClass("location_name")}
+              required
+            />
+          </label>
+          <label className="dd">
+            Prime Location:
+            <input
+              type="number"
+              name="location_prime_location"
+              value={formData.location_prime_location}
+              className={getWidthClass("location_prime_location")}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="dd">
+            Description:
+            <textarea
+              name="location_desc"
+              value={formData.location_desc}
+              className={getWidthClass("location_desc")}
+              onChange={handleChange}
+            />
+          </label>
+          <label >
+            Pickpath:
+            <input
+              type="number"
+              name="pickpath"
+              value={formData.pickpath}
+              onChange={handleChange}
+              className={getWidthClass("pickpath")}
+            />
+          </label>
+          <label>
+            Capacity:
+            <input
+              type="number"
+              name="capacity"
+              value={formData.capacity}
+              onChange={handleChange}
+              className={getWidthClass("capacity")}
+            />
+          </label>
+          <label>
+            Is Available:
+            <input
+              type="checkbox"
+              name="IsAvailable"
+              checked={formData.IsAvailable}
+              onChange={handleChange}
+              className={getWidthClass("IsAvailable")}
+            />
+          </label>
+          <button type="submit">Add New Location</button>
+        </form>
+      </div>
+      <div className="Location-data-container"><h1>Your Locations</h1>  
           <div className="">
-            <div className="inventory-heading">
+            <div className="data-heading">
               {headings.map((heading, index) => (
                 <div id={heading.replace(/ /g, "-")} key={index} className={`heading-item-property${index === 4 ? '-qty' : ''}`}>{heading}</div>
               ))}
             </div>
             {[...locationData].sort((a, b) => a.location_id - b.location_id).map((item, index) => (
-              <div key={index} className="inventory-row">
+              <div key={index} className="data-row">
                 <div id={headings[0].replace(/ /g, "-")} className="item-property">{item.location_id}</div>
                 <div id={headings[1].replace(/ /g, "-")} className="item-property">{item.location_name}</div>
                 <div id={headings[2].replace(/ /g, "-")} className="item-property">{item.location_prime_location}</div>
@@ -205,7 +206,8 @@ function LocationForm({ locationData, setLocationData }) {
               </div>
             ))}
           </div>
-        </div>
+        
+
       </div>
     </div>
   );

@@ -84,4 +84,13 @@
   --data-list-background: rgb(243, 247, 243);
   --data-list-item-border-clr:1mm ridge rgba(229, 238, 230, 0.6);
   /* /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\  */
+
+
+
+
+  /* \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ 
+                         Inventory Forms */
+  --operations-frm-background-color:yellow;
+
+  /* /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\  */
 }
