@@ -3,8 +3,6 @@
 */
 import React from 'react'
 import './styles/rowComponent.css'
-const key = "u54e12va4a7kmc7psk1utefu2&"
-const filename = "IMG_1835.jpg"
 const RowComponent = ({ userID, ...restProps }) => {
     console.log(restProps)
     return (
