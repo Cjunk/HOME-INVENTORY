@@ -12,12 +12,10 @@
 */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import YouInventoryNavBar from "../Components/YourInventory/YouInventoryNavBar";
 import DummyComponent from "../Components/DummyComponent/dummyComponent";
 import LocationForm from "../Components/LocationMaster/LocationMasterForm";
-import ShowInventory from "../Components/YourInventory/showInventory";
+import ShowInventory from "../Components/showinventory/showInventory";
 import { pageID } from "../constants/pageIDs";  // All the page ID's are in here for consistency
-
 function YourInventoryHome(props) {
   const [theData, settheData] = useState("");
   const [locationData, setLocationData] = useState([]);
@@ -28,7 +26,6 @@ function YourInventoryHome(props) {
     2 = 
 
   */
-  const [currentPage, setCurrentPage] = useState(pageID.SOH);
   // eslint-disable-next-line
   const [serverResponse, settheServerResponse] = useState("");
   useEffect(() => {
@@ -36,10 +33,6 @@ function YourInventoryHome(props) {
     getData(); // Get the users inventory data.
     fetchLocationData()
   }, []);
-  const setTheCurrentPage = (pageNumber) => {
-    setCurrentPage(pageNumber);
-    console.log("CLICKED IT", pageNumber, currentPage);
-  };
   const fetchLocationData = async () => {
     try {
       const response = await axios.get(
@@ -52,8 +45,6 @@ function YourInventoryHome(props) {
           },
         }
       );
-
-
       if (response.status === 200) {
         setLocationData(response.data); // Set the location data in state
       } else {
@@ -109,7 +100,7 @@ function YourInventoryHome(props) {
   };
   // Determine which component to render based on the current page
   let PageComponent;
-  switch (currentPage) {
+  switch (props.currentInventoryView) {
     case pageID.M_LOC:
       PageComponent = <LocationForm locationData={locationData} setLocationData={setLocationData} />;
       break;
@@ -125,7 +116,7 @@ function YourInventoryHome(props) {
   return (
     <div className="">
       {/* <ShowInventory filter={1} theData={theData} /> */}
-      <YouInventoryNavBar setCurrentPage={setTheCurrentPage} currentPage={currentPage} />
+      {/* <YouInventoryNavBar setCurrentPage={setTheCurrentPage} currentPage={currentPage} /> */}
 
       {PageComponent}
       <button onClick={fetchLocationData}>get Data</button>

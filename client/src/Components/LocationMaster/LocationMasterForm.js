@@ -24,7 +24,8 @@ function LocationForm({ locationData, setLocationData }) {
         // Populate other fields as needed
       });
     }
-  }, []); // Run effect when initialLocationData changes
+    // eslint-disable-next-line
+  }, [locationData]); // Run effect when initialLocationData changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevFormData) => ({
@@ -101,8 +102,6 @@ function LocationForm({ locationData, setLocationData }) {
     //onSubmit(formData); // SUBMIT THE FORM DATA  TODO: Must be implemented
     // Here you might clear the form or handle submission (e.g., send data to a backend server)
   };
-
-
   return (
     <div>
       <div className="Location-form-container">
@@ -181,33 +180,31 @@ function LocationForm({ locationData, setLocationData }) {
           <button type="submit">Add New Location</button>
         </form>
       </div>
-      <div className="Location-data-container"><h1>Your Locations</h1>  
-          <div className="">
-            <div className="data-heading">
-              {headings.map((heading, index) => (
-                <div id={heading.replace(/ /g, "-")} key={index} className={`heading-item-property${index === 4 ? '-qty' : ''}`}>{heading}</div>
-              ))}
-            </div>
-            {[...locationData].sort((a, b) => a.location_id - b.location_id).map((item, index) => (
-              <div key={index} className="data-row">
-                <div id={headings[0].replace(/ /g, "-")} className="item-property">{item.location_id}</div>
-                <div id={headings[1].replace(/ /g, "-")} className="item-property">{item.location_name}</div>
-                <div id={headings[2].replace(/ /g, "-")} className="item-property">{item.location_prime_location}</div>
-                <div id={headings[4].replace(/ /g, "-")} className="item-property-qty">{item.location_desc}</div>
-                <div id={headings[5].replace(/ /g, "-")} className="item-property-qty">{item.capacity}</div>
-                <div id={headings[5].replace(/ /g, "-")} className="item-property-qty">
-                  <input
-                    type="checkbox"
-                    checked={item.IsAvailable}
-                    onChange={() => { }} // Add a handler function here if you want to change the state when the checkbox is toggled
-                    readOnly // Makes the checkbox reflect the state but not editable directly by the user
-                  />
-                </div>
-              </div>
+      <div className="Location-data-container"><h1>Your Locations</h1>
+        <div className="">
+          <div className="data-heading">
+            {headings.map((heading, index) => (
+              <div id={heading.replace(/ /g, "-")} key={index} className={`heading-item-property${index === 4 ? '-qty' : ''}`}>{heading}</div>
             ))}
           </div>
-        
-
+          {[...locationData].sort((a, b) => a.location_id - b.location_id).map((item, index) => (
+            <div key={index} className="data-row data-row-container">
+              <div id={headings[0].replace(/ /g, "-")} className="item-property">{item.location_id}</div>
+              <div id={headings[1].replace(/ /g, "-")} className="item-property">{item.location_name}</div>
+              <div id={headings[2].replace(/ /g, "-")} className="item-property">{item.location_prime_location}</div>
+              <div id={headings[4].replace(/ /g, "-")} className="item-property-qty">{item.location_desc}</div>
+              <div id={headings[5].replace(/ /g, "-")} className="item-property-qty">{item.capacity}</div>
+              <div id={headings[5].replace(/ /g, "-")} className="item-property-qty">
+                <input
+                  type="checkbox"
+                  checked={item.IsAvailable}
+                  onChange={() => { }} // Add a handler function here if you want to change the state when the checkbox is toggled
+                  readOnly // Makes the checkbox reflect the state but not editable directly by the user
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

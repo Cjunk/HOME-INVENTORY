@@ -49,18 +49,20 @@ function NavigationBar({ isLoggedIn, pageSelector, handleLogout }) {
                 break;
             case 3:
                 pageSelector(id)
+                break;
             case 1:
                 pageSelector(id)
+                break;
             default:
                 break;
         }
     };
 
-    const renderMenuItems = (items) => {
-        return items.map((item) => {
-            return item.visible === 1 && (
-                <li key={item.id} className={item.className}>
-                    <button className={item.buttonClassName || "desktopButton"} onClick={() => executeMenuItem(item.id)}>{item.name}</button>
+    const renderMenuItems = (menuItems) => {
+        return menuItems.map((menuItem) => {
+            return menuItem.visible === 1 && (
+                <li key={menuItem.id} className={menuItem.className}>
+                    <button className={menuItem.buttonClassName || "desktopButton"} onClick={() => executeMenuItem(menuItem.id)}>{menuItem.name}</button>
                 </li>
             );
         });
