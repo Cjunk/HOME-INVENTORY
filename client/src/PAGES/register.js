@@ -3,7 +3,7 @@
 */
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/form.css';
+
 import axios from 'axios'; // Import Axios
 function RegisterForm() {
   const [firstname, setFirstname] = useState('');

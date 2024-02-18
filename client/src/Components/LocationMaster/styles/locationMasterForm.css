@@ -3,7 +3,7 @@
 .Location-form-container{
     width:100%;
     height:100%;
-    background-color:var(--data-list-background) 
+    background-color:var(--data-list-background);
 }
 .locationForm {
     border: var(--frm-border-style-and-color);
@@ -39,6 +39,9 @@ form textarea {
     justify-content: space-around;
     
 }
+.Location-data-container {
+    
+}
 form button[type="submit"]{
     width:20%;
 }
@@ -56,9 +59,7 @@ form button[type="submit"]{
     width:100%;
     
 }
-.Location-data-container {
-    margin:20px;
-}
+
 /* Style for checkbox container */
 .checkbox-container {
     margin-bottom: 20px;

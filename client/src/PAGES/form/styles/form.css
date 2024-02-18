@@ -3,11 +3,24 @@
   display: grid;
   width: 100%;
   justify-content: center;
+  margin: 25px;
+  padding: 50px;
 }
-.container form {
+.form {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  grid-template-columns: 5fr;
+  border-color: black;
+  border-style: ridge 5px;
+  padding: 20px;
+  background-color: var(--frm-reg-log-bgrnd-clr);
+  
+}
+/* .container form {
   background-color: var(--frm-reg-log-bgrnd-clr);
   color: var(--frm-reg-log-heading-clr);
-}
+} */
 .formlabel {
   color: var(--frm-reg-log-lbl-color);
 }
@@ -30,5 +43,24 @@
   grid-template-columns: 1fr 1fr;
   padding: 0px;
   margin: 0px;
+}
+.form input[type="text"],
+input[type="password"] {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+.container form {
+  background-color:rgb(31, 31, 187);
+  color:white;
+}
+.container{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  border-style: ridge 5px;
+  margin-top:25px;
+
 }
 

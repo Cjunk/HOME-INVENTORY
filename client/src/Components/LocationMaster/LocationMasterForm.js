@@ -101,7 +101,7 @@ function LocationForm({ locationData, setLocationData }) {
     //onSubmit(formData); // SUBMIT THE FORM DATA  TODO: Must be implemented
     // Here you might clear the form or handle submission (e.g., send data to a backend server)
   };
-  
+
 
   return (
     <div className="Location-form-container">

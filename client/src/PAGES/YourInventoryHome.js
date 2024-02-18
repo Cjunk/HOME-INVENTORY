@@ -16,7 +16,6 @@ import YouInventoryNavBar from "../Components/YourInventory/YouInventoryNavBar";
 import DummyComponent from "../Components/DummyComponent/dummyComponent";
 import LocationForm from "../Components/LocationMaster/LocationMasterForm";
 import ShowInventory from "../Components/YourInventory/showInventory";
-import { getLocations } from "../services/authService";
 import { pageID } from "../constants/pageIDs";  // All the page ID's are in here for consistency
 
 function YourInventoryHome(props) {

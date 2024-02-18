@@ -1,0 +1,14 @@
+:root{
+
+ /* \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ 
+                         Show inventory data list */
+    --inv-column-count:12;
+ /* /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\  */  
+
+
+
+ --header-height: 114px;
+
+
+  --header-height2: calc(var(--header-height) + 27px);
+}
