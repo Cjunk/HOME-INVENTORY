@@ -154,6 +154,7 @@ function login(req, res) {
 
 
 function isAuthenticated(req, res, next) {
+    //console.log(req)
     if (req.session.isAuthenticated) {
         next(); // Continue if the user is authenticated
     } else {
@@ -161,19 +162,19 @@ function isAuthenticated(req, res, next) {
     }
 }
 // Middleware for authentication checks //TODO: I think this function can be removed
-function authMiddleware(req, res, next) {
-    // Your authentication logic here
-    if (req.session.user.username !== process.env.TEST_USR) {
-        return res.status(401).send('Access denied. No valid token provided.');
-    }
-    try {
-        next();
-    } catch (ex) {
-        res.status(400).send('Invalid token.');
-    }
-}
+// function authMiddleware(req, res, next) {
+//     // Your authentication logic here
+//     if (req.session.user.username !== process.env.TEST_USR) {
+//         return res.status(401).send('Access denied. No valid token provided.');
+//     }
+//     try {
+//         next();
+//     } catch (ex) {
+//         res.status(400).send('Invalid token.');
+//     }
+// }
 
 
 
 
-module.exports = { login, register, authMiddleware, isAuthenticated };
+module.exports = { login, register, isAuthenticated };

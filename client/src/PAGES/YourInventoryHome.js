@@ -112,7 +112,7 @@ function YourInventoryHome(props) {
   let PageComponent;
   switch (currentPage) {
     case pageID.M_LOC:
-      PageComponent = <LocationForm locationData={locationData} />;
+      PageComponent = <LocationForm locationData={locationData} setLocationData={setLocationData} />;
       break;
     case 2:
       PageComponent = <DummyComponent />;

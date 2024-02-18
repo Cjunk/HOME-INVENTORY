@@ -40,7 +40,9 @@ const corsOptions = {
             callback(new Error('Not allowed by CORS'));
         }
     },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Ensure PUT is allowed
     credentials: true, // Allow credentials (cookies) to be sent
+    
 };
 app.use(cors(corsOptions));
 //      ====================================================================================================================================

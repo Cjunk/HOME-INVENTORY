@@ -3,21 +3,18 @@
     position:sticky;
     top:var(--header-height);
     z-index:1000;
-    background-color:var( --background-color);
+    background-color:var(--operation-navbar-background);
     display: flex;
     font-size:12px;
-
 }
 .YourInventoryNavBar-container h1{
     font-size:16px;
 }
-.theListContainer {
-    
+.theListContainer {  
     display: flex;
     list-style-type: none;
     padding: 0;
-    margin: 0;
-   
+    margin: 0;  
 }
 .theListContainer button{
     margin-top:2px;
@@ -25,7 +22,7 @@
     border:none;
     border-right:solid 1px;
     border-bottom:solid;
-
+    background:var(--operation-navbar-but-back-clr);
 }
 .currentNavbarTitle{
     display:grid;
@@ -33,14 +30,9 @@
 }
 .eachListItem {
     position: relative;
-    /* Needed for absolute positioning of submenu */
-    
-    /* Space between menu items */
 }
-
 .eachListItem p {
     margin: 0;
-    /* Reset default margins */
     padding: 5px;
     color: black;
     cursor: pointer;
@@ -59,24 +51,23 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-    background-color: #f9f9f9;
+    background-color:var(--operation-submenu-background);
     /* Example background color */
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--operation-submenu-box-shadow);
     /* Optional: for a dropdown effect */
     z-index: 10;
     /* Ensures the submenu is on top of other content */
+    
 }
-
 .eachsubListItem p {
     padding: 10px 20px;
-    color: black;
+    color: var(--operation-submenu-txt-color);
     text-decoration: none;
     display: block;
-    text-align:left;
-    
+    text-align:left;   
 }
 
 .eachsubListItem p:hover {
-    background-color: #f1f1f1;
+    background-color:var(--operation-submenu-background-hvr);
     /* Hover color for submenu items */
 }

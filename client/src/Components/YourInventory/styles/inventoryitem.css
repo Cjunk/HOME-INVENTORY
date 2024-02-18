@@ -58,7 +58,7 @@
   height: 100%;
   align-self: center;
   padding-left: 10px;
-  color: var(--inv-headings-text);
+  color: var(--inv-col-headings-text);
 }
 .item-property-qty {
   width: 100px;
