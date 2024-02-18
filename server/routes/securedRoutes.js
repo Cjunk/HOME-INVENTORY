@@ -54,7 +54,32 @@ securedRouter.get('/inventory/masterlocation/list', (req, res) => {
   //  Update pre existing item details
 })
 securedRouter.put('/inventory/masterlocation/add', (req, res) => {
-  //  Update pre existing item details
+  const { location_id, location_name, location_prime_location, location_desc, pickpath, capacity, IsAvailable } = req.body;
+  const userID = req.session.user.userID; // Assuming the userID is stored in the session
+  const location_date_last_used = new Date(); // Assuming you want to set the current date/time as the last used date
+
+  const queryStatement = 'INSERT INTO location_master (userID,location_id,location_name,location_prime_location,location_desc,location_date_last_used,pickpath,capacity,IsAvailable) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+  db.executeQuery(queryStatement, [userID, location_id, location_name, location_prime_location, location_desc, location_date_last_used, pickpath, capacity, IsAvailable])
+    .then(results => {
+      res.status(200).json({ success: true, message: "Location added successfully", results });
+    }).catch(error => {
+    console.error(error);
+      res.status(500).send({ success: false, message: "Error adding location", error: error.message });
+    });
+})
+securedRouter.get('/inventory/masterlocation/add', (req, res) => {
+  const { location_id, location_name, location_prime_location, location_desc, pickpath, capacity, IsAvailable } = req.body;
+  const userID = req.session.user.userID; // Assuming the userID is stored in the session
+  const location_date_last_used = new Date(); // Assuming you want to set the current date/time as the last used date
+
+  const queryStatement = 'INSERT INTO location_master (userID,location_id,location_name,location_prime_location,location_desc,location_date_last_used,pickpath,capacity,IsAvailable) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+  db.executeQuery(queryStatement, [userID, location_id, location_name, location_prime_location, location_desc, location_date_last_used, pickpath, capacity, IsAvailable])
+    .then(results => {
+      res.status(200).json({ success: true, message: "Location added successfully", results });
+    }).catch(error => {
+      console.error(error);
+      res.status(500).send({ success: false, message: "Error adding location", error: error.message });
+    });
 })
 securedRouter.patch('/inventory/masterlocation/update', (req, res) => {
   //  Update pre existing item details

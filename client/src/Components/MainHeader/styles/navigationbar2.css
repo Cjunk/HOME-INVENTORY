@@ -7,14 +7,12 @@
   margin: 0;
   background: linear-gradient(to right, var(--navbar-background1), var(--navbar-background2));
 }
-.navigation-container{
-  
-}
+
 .navigation-container ul li {
     border-bottom:solid;
     border-right:solid;
     border-width:1px;
-    border-color:grey;
+    border-color:var(--navbar-brd-clr)
 }
 .navigation-container ul li:first-child {
     margin-right:auto;
