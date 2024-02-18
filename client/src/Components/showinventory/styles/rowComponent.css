@@ -21,6 +21,7 @@
   padding: 2px;
   max-width: 200px;
   min-width: 100px;
+  max-height:200px;
 }
 .top-inventory-data-col {
   color: var(--data-row-column-header-text-color);
@@ -30,23 +31,27 @@
   border-right: solid 1px grey;
   white-space: nowrap;
   font-size: 12px;
+  padding:5px;
 }
 .bottom-inventory-data-col {
   border-right: solid 1px grey;
+  
 }
-.top-inventory-data-col #name {
+.top-inventory-data-col#name {
   width: 100%;
   margin-right: 50px;
 }
-.top-inventory-data-col #descr {
+.top-inventory-data-col#descr {
   text-align: left;
   width: 100%;
   font-weight: bold;
   margin-right: 50px;
+  
 }
 .bottom-inventory-data-col {
   text-align: left;
   color: var(--data-row-column-subtext-text-color);
+  padding:5px;
 }
 
 .bottom-inventory-data-col#name {
@@ -55,7 +60,8 @@
 .bottom-inventory-data-col#description {
   grid-area: bottom2;
   overflow: auto; /* Adds scrollbar if content overflows */
-  height: 100px; /* Fixed height */
+  height: 100%; /* Fixed height */
+ 
 }
 .bottom-inventory-data-col:nth-child(3) {
   grid-area: bottom1;

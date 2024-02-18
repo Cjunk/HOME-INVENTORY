@@ -47,8 +47,8 @@ VALUES
 (2, 'LOC00002', 'Branch Office 72', 3, 'http://example.com/photo3.jpg', 'Subsidiary office', '2022-12-20', 5, 150, True),
 (2, 'LOC00003', 'Store Room 99', 1, 'http://example.com/photo4.jpg', 'Inventory storage', '2023-08-04', 5, 300, True),
 (2, 'LOC00004', 'Garage 65', 2, 'http://example.com/photo1.jpg', 'Vehicle storage', '2022-03-31', 4, 250, True),
-(3, 'LOC00000', 'Warehouse 76', 1, 'http://example.com/photo1.jpg', 'Storage facility', '2022-11-12', 2, 100, False),
-(4, 'LOC00000', 'Warehouse 25', 1, 'http://example.com/photo1.jpg', 'Storage facility', '2023-07-04', 5, 100, True);
+(3, 'LOC020000', 'Warehouse 76', 1, 'http://example.com/photo1.jpg', 'Storage facility', '2022-11-12', 2, 100, False),
+(4, 'LOC003000', 'Warehouse 25', 1, 'http://example.com/photo1.jpg', 'Storage facility', '2023-07-04', 5, 100, True);
 
 INSERT INTO ITEM_MASTER (userID, item_number, alt_item_number, item_name, item_descr, item_barcode, item_weight, item_height, item_width, image_link_ID, item_type, manufacturer_ID, item_files, item_CreateDate, item_LastModified, item_IsActive, item_uom,item_prime_photo,photo_key)
 VALUES 
@@ -61,6 +61,12 @@ VALUES
 (2,1002, "ITEM002",2002, 'Item Description 2', '1234567890124', 200, 20, 20, 2, 2, 2, 'file2.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',FALSE,'kg',"IMG_1835.jpg","u54e12va4a7kmc7psk1utefu2&"),
 (2,1003, "ITEM003",2003, 'Item Description 3', '1234567890125', 150, 15, 15, 3, 1, 1, 'file3.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',FALSE,'kg',"IMG_1835.jpg","u54e12va4a7kmc7psk1utefu2&"),
 (3,1004, "ITEM004",2004, 'Item Description 4', '1234567890126', 250, 25, 25, 4, 2, 2, 'file4.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',FALSE,'kg',"IMG_1835.jpg","u54e12va4a7kmc7psk1utefu2&");
+
+INSERT INTO ITEM_MASTER (userID, item_number, alt_item_number, item_name, item_descr, item_barcode, item_weight, item_height, item_width, image_link_ID, item_type, manufacturer_ID, item_files, item_CreateDate, item_LastModified, item_IsActive, item_uom,item_prime_photo,photo_key)
+VALUES 
+(2,667, "FIXTAP","FIX_A_TAP", 'Washers', '1234567890126', 250, 25, 25, 4, 2, 2, 'file4.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',FALSE,'kg',"IMG_1841.jpg","bkketghgvp9mngojyofu5xgvc&");
+
+
 
 INSERT into SOH (userID,soh_item,soh_locationID,soh_qty) VALUES (2,65493,"LOC0000000",55);
 INSERT into SOH (userID,soh_item,soh_locationID,soh_qty) VALUES (2,65493,"LOC0000002",54);
