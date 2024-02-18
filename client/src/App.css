@@ -1,7 +1,9 @@
 @import url("./palette.css");
 
 /* Rest of your global styles go here */
-
+div{
+  user-select:none;
+}
 html {
   margin: 0;
   padding: 0;

@@ -4,7 +4,6 @@ import { pageID } from '../../constants/pageIDs'
 const YouInventoryNavBar = (props) => {
   const [activeMenu, setActiveMenu] = React.useState(null); // For toggle functionality on touch devices
   const [currentTitle, setcurrentTitle] = React.useState(null); // For toggle functionality on touch devices
-
   const menuItems = [
     {
       id: 1,
@@ -25,16 +24,14 @@ const YouInventoryNavBar = (props) => {
       ],
     },
   ];
-
   const toggleSubMenu = (id) => {
     setActiveMenu(activeMenu === id ? null : id); // Toggle active menu
   };
-  const clickedmenu = (SubItemid,title) => {
-    props.setCurrentPage(SubItemid);
+  const clickedmenu = (SubItemid, title) => {
+    props.pageSelector(SubItemid);
+    props.setTheCurrentInventoryView(SubItemid);
     setcurrentTitle(title)
   }
-
-
   return (
     <div className="YourInventoryNavBar-container">
 
@@ -52,7 +49,8 @@ const YouInventoryNavBar = (props) => {
                 <li
                   key={subItem.id}
                   className="eachsubListItem"
-                  onClick={() => clickedmenu(subItem.id, item.title + ":" +" " + subItem.title)}
+                  // eslint-disable-next-line
+                  onClick={() => clickedmenu(subItem.id, item.title + ":" + " " + subItem.title)}
                 >
                   <p>{subItem.title}</p>
                 </li>
@@ -65,5 +63,4 @@ const YouInventoryNavBar = (props) => {
     </div>
   );
 };
-
 export default YouInventoryNavBar;

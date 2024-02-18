@@ -17,7 +17,7 @@
   /* Text Color */
   --text-color: #750606; /* Dark Gray */
 
-  --hover-button:blue;
+  --hover-button: blue;
 
   /* \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
  
@@ -26,13 +26,15 @@
   --header-bck-grnd-clr: var(--background-color);
   --header-txt-color: var(--primary-text-color);
   --heading-main-txt-clr: var(--primary-color);
+  --heading-main-bottom-border-color:green;
+  
   /* /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\  */
 
   /* \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
 
               Main Navbar pallete 
   */
-  --primary-text-color: var( --text-color);
+  --primary-text-color: var(--text-color);
   --navbar-background1: #8365c7; /* White Smoke */
   --navbar-background2: var(--secondary-color);
   --navbar-buttons-color: #ffffff; /* White */
@@ -52,7 +54,7 @@
   --operation-submenu-background: var(--primary-color);
   --operation-submenu-background-hvr: rgb(21, 32, 95);
   --operation-submenu-txt-color: white;
-  --operation-menu-txt-clr:white;
+  --operation-menu-txt-clr: white;
   --operation-submenu-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   /* /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\  */
 
@@ -82,15 +84,25 @@
   --inv-items-text: #000000; /* Black */
   --inv-item-row-border-bottom: #383838; /* Dark Gray */
   --data-list-background: rgb(243, 247, 243);
-  --data-list-item-border-clr:1mm ridge rgba(229, 238, 230, 0.6);
+  --data-list-item-border-clr: 1mm ridge rgba(229, 238, 230, 0.6);
   /* /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\  */
 
+  /* \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ 
+                         The Data component
+                         inventory-data-row-container
+                         
+                         */
+  --data-row-column-header-text-color: blue;
+  --data-row-column-subtext-text-color: black;
 
-
+  /* /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\  */
 
   /* \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ 
-                         Inventory Forms */
-  --operations-frm-background-color:yellow;
+                         Data Forms 
+                         These forms appear in any of the users views for them to add to the database
+                         
+                         */
+  --operations-frm-background-color: white;
 
   /* /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\  */
 }

@@ -12,8 +12,12 @@ import './App.css';
 function App() {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
   const [currentPage, setcurrentPage] = useState(1)
+  const [currentInventoryView, setcurrentInventoryView] = useState(1)
   const setTheCurrentPage = (page) => {
     setcurrentPage(page)
+  }
+  const setTheCurrentInventoryView = (viewID) => {
+    setcurrentInventoryView(viewID)
   }
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -28,14 +32,14 @@ function App() {
   }
   return (
     <div className="App">
-      <Header isLoggedIn={loggedIn} pageSelector={setTheCurrentPage} handleLogout={handleLogout} />
+      <Header isLoggedIn={loggedIn} pageSelector={setTheCurrentPage} handleLogout={handleLogout} setTheCurrentInventoryView={setTheCurrentInventoryView} />
       {/* Include AutoLogout component */}
       {loggedIn && <AutoLogout onLogout={handleLogout} />}
       <Router>
         <Routes>
           <Route path="/" element={loggedIn ? (<Navigate to="/homepage" replace />) : currentPage === 1 ? (<HomePage />) : currentPage === 2 ? (<UserForm setLogin={handleLogin} formType={1} />) : (<RegisterForm formType={2} />)}>
           </Route>
-          <Route path="/homepage" element={!loggedIn ? (<Navigate to="/" replace />) : (<YourInventoryHome handleLogout={handleLogout} />)}>
+          <Route path="/homepage" element={!loggedIn ? (<Navigate to="/" replace />) : (<YourInventoryHome handleLogout={handleLogout} currentInventoryView={currentInventoryView} />)}>
           </Route>
         </Routes>
       </Router>
