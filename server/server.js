@@ -5,16 +5,15 @@
 //  ==========================================  CONSTANTS   =================================================================
 //const dotenv = require('dotenv').config()
 let NUMBER_OF_CONNECTIONS = 0 // This var is used to track the number of attempts to the API. TODO: ok to remove this in prod
-
+const logFilename = './logs/requestLog.txt'
 const express = require('express');
 const moment = require('moment-timezone');
 const session = require('express-session');
-const https = require('https');
+// const https = require('https');
 const fs = require('fs');
-const path = require('path');
+// const path = require('path');
 const MySQLStore = require('express-mysql-session')(session);
 const cors = require('cors');
-
 // Import routes
 const securedRoutes = require('./routes/securedRoutes');
 const testRouter = require('./routes/testroutes.js')
@@ -28,11 +27,11 @@ const app = express();
 
 // Server configuration
 // Configure HTTPS server with the self-signed certificate
-const httpsOptions = {
-    key: fs.readFileSync(path.join(__dirname, 'server.key')),
-    cert: fs.readFileSync(path.join(__dirname, 'server.cer'))
-};
-const server = https.createServer(httpsOptions, app);
+// const httpsOptions = {
+//     key: fs.readFileSync(path.join(__dirname, 'server.key')),
+//     cert: fs.readFileSync(path.join(__dirname, 'server.cer'))
+// };
+// const server = https.createServer(httpsOptions, app);
 const HOST = '0.0.0.0'; // Bind to all IP addresses
 
 // CORS configuration
@@ -60,9 +59,9 @@ const { userInfo } = require('os');
 const sessionStore = new MySQLStore({
     host: 'localhost', // Replace with your MySQL server host
     port: 3306, // Replace with your MySQL server port
-    user: 'root', // Replace with your MySQL username
-    password: 'Quest35#', // Replace with your MySQL password
-    database: 'home_inventory' // Replace with your database name where sessions will be stored
+    user: process.env.DB_ADMIN, // Replace with your MySQL username
+    password: process.env.DB_PASS, // Replace with your MySQL password
+    database: process.env.DB_NAME // Replace with your database name where sessions will be stored
 });
 app.use(session({
     secret: process.env.SECRET_KEY,
@@ -71,9 +70,9 @@ app.use(session({
     store: sessionStore,
     cookie: {
         maxAge: 36000000, // Session expires after 1 hour (in milliseconds)
-        httpOnly: true, // Prevent JavaScript access to the cookie
-        secure: true, // Set to true in a production environment if using HTTPS
-        sameSite: 'none', // Required for cross-origin cookies        
+        httpOnly: false, // Prevent JavaScript access to the cookie
+        secure: false, // Set to true in a production environment if using HTTPS
+        sameSite: 'Lax', // Required for cross-origin cookies        
     },
 }));
 //  =======================================================================================================================================
@@ -115,7 +114,7 @@ app.use((req, res, next) => {
         const durationInMilliseconds = getDurationInMilliseconds(startTime);
         const now = moment().tz("Australia/Sydney").format('YYYY-MM-DD HH:mm:ss');
         const logEntry = `${now} - IP: ${clientIp} // Path: ${req.originalUrl} // CONNECTIONS: ${NUMBER_OF_CONNECTIONS} // STATUS: ${res.statusCode} // DURATION: ${durationInMilliseconds} // USER AGENT: ${req.get('User-Agent')} // Authenticated: ${req.session && req.session.isAuthenticated ? 'Yes' : 'No'}\n`;
-        fs.appendFile('/logs/requestLog.txt', logEntry, (err) => {
+        fs.appendFile( logFilename , logEntry, (err) => {
             if (err) {
                 console.error('Failed to write to log:', err);
             }
@@ -197,10 +196,10 @@ function getDurationInMilliseconds(start) {
 //  ========================================================================================================================================
 
 
-server.listen(port, HOST, () => {
+app.listen(port, HOST, () => {
     console.log(`Server is running on port ${port}`);
     const logEntry = `-- SERVER RESTARTED : - ${moment().tz("Australia/Sydney").format('YYYY-MM-DD HH:mm:ss')} \n`;
-    fs.appendFile('/logs/requestLog.txt', logEntry, (err) => {
+    fs.appendFile(logFilename, logEntry, (err) => {
         if (err) {
             console.error('Failed to write to log:', err);
         }
