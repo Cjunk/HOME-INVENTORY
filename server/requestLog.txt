@@ -116,3 +116,4 @@
 2024-02-20 13:30:26 - IP: 112.141.11.237 // Path: /secure/inventory/masterlocation/list // CONNECTIONS: 16 // STATUS: 200 // DURATION: 0.0014 // USER AGENT: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 // Authenticated: Yes
 2024-02-20 13:30:26 - IP: 112.141.11.237 // Path: /secure/inventory/soh // CONNECTIONS: 17 // STATUS: 200 // DURATION: 0.0021 // USER AGENT: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 // Authenticated: Yes
 2024-02-20 13:30:26 - IP: 112.141.11.237 // Path: /secure/inventory/masterlocation/list // CONNECTIONS: 18 // STATUS: 200 // DURATION: 0.0022 // USER AGENT: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 // Authenticated: Yes
+-- SERVER RESTARTED : - 2024-02-20 13:45:56 
