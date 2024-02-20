@@ -11,6 +11,7 @@ node_modules
 *.sql
 .env
 /server/requestLog.txt
+/logs/requestLog.txt
 
 "F:\MY REPOS\Main Website\HOME_INVENTORY_DATABASE\"
 /HOME_INVENTORY_DATABASE

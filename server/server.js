@@ -115,7 +115,7 @@ app.use((req, res, next) => {
         const durationInMilliseconds = getDurationInMilliseconds(startTime);
         const now = moment().tz("Australia/Sydney").format('YYYY-MM-DD HH:mm:ss');
         const logEntry = `${now} - IP: ${clientIp} // Path: ${req.originalUrl} // CONNECTIONS: ${NUMBER_OF_CONNECTIONS} // STATUS: ${res.statusCode} // DURATION: ${durationInMilliseconds} // USER AGENT: ${req.get('User-Agent')} // Authenticated: ${req.session && req.session.isAuthenticated ? 'Yes' : 'No'}\n`;
-        fs.appendFile('requestLog.txt', logEntry, (err) => {
+        fs.appendFile('/logs/requestLog.txt', logEntry, (err) => {
             if (err) {
                 console.error('Failed to write to log:', err);
             }
@@ -200,7 +200,7 @@ function getDurationInMilliseconds(start) {
 server.listen(port, HOST, () => {
     console.log(`Server is running on port ${port}`);
     const logEntry = `-- SERVER RESTARTED : - ${moment().tz("Australia/Sydney").format('YYYY-MM-DD HH:mm:ss')} \n`;
-    fs.appendFile('requestLog.txt', logEntry, (err) => {
+    fs.appendFile('/logs/requestLog.txt', logEntry, (err) => {
         if (err) {
             console.error('Failed to write to log:', err);
         }

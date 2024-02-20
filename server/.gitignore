@@ -3,6 +3,8 @@
 # dependencies
 /node_modules
 requestLog.txt
+/logs/requestLog.txt
+
 /.pnp
 /Bin
 Bin
