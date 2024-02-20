@@ -10,6 +10,7 @@ lerna-debug.log*
 node_modules
 *.sql
 .env
+requestLog.txt
 
 "F:\MY REPOS\Main Website\HOME_INVENTORY_DATABASE\"
 /HOME_INVENTORY_DATABASE
