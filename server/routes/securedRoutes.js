@@ -9,7 +9,33 @@ securedRouter.use(isAuthenticated);
 /*================================================= SOH related routes */
 securedRouter.get('/inventory/soh', (req, res) => {
   const userID = req.session.user.userID
-  const queryStatement = `SELECT SOH.*, item_descr, item_number,item_prime_photo,photo_key,COALESCE(ITEM_MASTER.item_name, \'NA\') as item_name, COALESCE(LOCATION_MASTER.location_name, \'NA\') AS location_name FROM SOH INNER JOIN ITEM_MASTER ON SOH.soh_item = ITEM_MASTER.item_number LEFT JOIN LOCATION_MASTER ON SOH.soh_locationID = LOCATION_MASTER.location_id AND LOCATION_MASTER.userID = ? WHERE SOH.userID = ?;`;
+  const queryStatement = `
+    SELECT
+      soh.soh_item,
+      soh.soh_locationID,
+      item.item_name,
+      locations.location_name,
+      item.item_descr,
+      item.item_prime_photo,
+      item.photo_key,
+      item.item_barcode,
+      soh.soh_qty,
+      soh.soh_date_added,
+      soh.soh_last_updated,
+      itypes.type_name,
+      catts.cat_name
+    FROM
+      SOH soh
+    LEFT JOIN 
+      ITEM_MASTER item ON soh.soh_item = item.item_number AND (item.userID = ${userID})
+    LEFT JOIN
+      LOCATION_MASTER locations ON soh.soh_locationID = locations.location_id AND (locations.userID = ${userID})
+    LEFT JOIN
+      item_types itypes ON item.item_type = itypes.type_id AND (itypes.type_user_id = ${userID})
+    LEFT JOIN 
+      categories catts ON catts.catID = item.item_cat AND (catts.userid = ${userID})
+    WHERE soh.userID = ${userID}
+  `;
   db.executeQuery(queryStatement, [userID, userID]).then(results => {
     res.status(200).json(results)
   }).catch(error => {
