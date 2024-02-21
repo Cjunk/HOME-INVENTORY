@@ -2,39 +2,53 @@
   The Show Inventory component serves as the main inventory display window
   Created by Jericho Sharman
   Data is passed as a prop 
+
+  NOTES:
+  The SOH has a row for every user and inventory entry. Each of these has a unique number.
 */
 import React, { useState } from "react";
 import "./styles/inventoryitem.css";
 import RowComponent from "./rowComponent";
+import Soh_card from "./soh_card";
 
 // function formatDateTime(dateTimeString) {
 //   const date = new Date(dateTimeString);
-//Format the date as needed, for example: DD/MM/YYYY HH:mm:ss
+//   Format the date as needed, for example: DD/MM/YYYY HH:mm:ss
 //   const formattedDateTime = date.toLocaleString(); // Adjust options as needed
 //   return formattedDateTime;
 // }
-const handleDoubleClick = (item) => {
-  
-  // Handle double click action here
-  console.log('Double clicked item:', item);
-};
+
 function ShowInventory(props) {
-  const [screenView, setScreenView] = useState(1);
+  const [screenView, setScreenView] = useState(1); //
+  const [currentSohID, setcurrentSohId] = useState(0); //  the ID of the card
+  const [currentsohcarddata, setcurrentsohcarddata] = useState({});
   const dataArray = Object.values(props.theData);
-  // const headings = ['Item Name', 'Location', 'Qty', 'Description', 'Picture']  // ID in the CSS file must match these headings. Spaces are replaced with a hythen '-' for use in the CSS file
+  const handleDoubleClick = (item) => {
+    // Handle double click action here
+    // this will get the data from the database and store it in the varaible for use in SOH_card
+    console.log("Double clicked item:", item);
+    setcurrentsohcarddata(item);
+    setScreenView(2);
+  };
   return (
-    
-      <div className="inventory-container">
-        {screenView === 1
-          ? dataArray.map((item, index) => (
-              <div key={index} className="data-row-container">
-                <RowComponent {...item} />
-              </div>
-            ))
-          : "nothing"}
-      </div>
+    <div className="inventory-container">
+      {screenView === 1 ? (
+        dataArray.map((item, index) => (
+          <div key={index} id={item.soh_ID} className="data-row-container"> 
+            <RowComponent
+              {...item}
+              setcurrentSohId={setcurrentSohId}
+              setScreenView={setScreenView}
+              handleDoubleClick={handleDoubleClick}
+            />
+          </div>
+        ))
+      ) : (
+        <div>
+          <Soh_card currentsohcarddata={currentsohcarddata} setScreenView={setScreenView}/>
+        </div>
+      )}
     </div>
   );
-
 }
 export default ShowInventory;
