@@ -3,9 +3,10 @@
   Created by Jericho Sharman
   Data is passed as a prop 
 */
-import React, { useState } from 'react';
-import './styles/inventoryitem.css'
-import RowComponent from './rowComponent';
+import React, { useState } from "react";
+import "./styles/inventoryitem.css";
+import RowComponent from "./rowComponent";
+
 // function formatDateTime(dateTimeString) {
 //   const date = new Date(dateTimeString);
 //Format the date as needed, for example: DD/MM/YYYY HH:mm:ss
@@ -24,13 +25,16 @@ function ShowInventory(props) {
   return (
     
       <div className="inventory-container">
-        {dataArray.map((item, index) => (
-          <div key={index} className="data-row-container">
-            <RowComponent key={index}{...item} handleDoubleClick={handleDoubleClick} />
-          </div>
-        ))}
+        {screenView === 1
+          ? dataArray.map((item, index) => (
+              <div key={index} className="data-row-container">
+                <RowComponent {...item} />
+              </div>
+            ))
+          : "nothing"}
       </div>
-    
-  )
+    </div>
+  );
+
 }
 export default ShowInventory;
