@@ -10,6 +10,7 @@ Bin
 .env.development
 # testing
 /coverage
+client/.env.development
 
 # production
 /build
