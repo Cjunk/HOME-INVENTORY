@@ -11,6 +11,7 @@ securedRouter.get('/inventory/soh', (req, res) => {
   const userID = req.session.user.userID
   const queryStatement = `
     SELECT
+    soh.soh_ID,
       soh.soh_item,
       soh.soh_locationID,
       item.item_name,

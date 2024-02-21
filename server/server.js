@@ -9,16 +9,13 @@ const logFilename = './logs/requestLog.txt'
 const express = require('express');
 const moment = require('moment-timezone');
 const session = require('express-session');
-// const https = require('https');
 const fs = require('fs');
-// const path = require('path');
 const MySQLStore = require('express-mysql-session')(session);
 const cors = require('cors');
 // Import routes
 const securedRoutes = require('./routes/securedRoutes');
 const testRouter = require('./routes/testroutes.js')
 const systemroutes = require('./routes/systemroutes.js')
-
 const port = process.env.PORT || 3001;
 const MAX_REQUESTS_PER_MINUTE = 25; // Adjust this threshold as needed
 const RESET_TIME_INTERVAL = 60000; // 1 minute in milliseconds
@@ -27,11 +24,15 @@ const app = express();
 
 // Server configuration
 // Configure HTTPS server with the self-signed certificate
+// const https = require('https');
+// const path = require('path');
 // const httpsOptions = {
 //     key: fs.readFileSync(path.join(__dirname, 'server.key')),
 //     cert: fs.readFileSync(path.join(__dirname, 'server.cer'))
 // };
 // const server = https.createServer(httpsOptions, app);
+const server = app
+
 const HOST = '0.0.0.0'; // Bind to all IP addresses
 
 // CORS configuration
@@ -72,11 +73,11 @@ app.use(session({
         maxAge: 36000000, // Session expires after 1 hour (in milliseconds)
         httpOnly: false, // Prevent JavaScript access to the cookie
         secure: false, // Set to true in a production environment if using HTTPS
-        sameSite: 'Lax', // Required for cross-origin cookies        
+        sameSite: 'lax', // Required for cross-origin cookies        
     },
 }));
 //  =======================================================================================================================================
-// Serve static files from the 'public' directory // TODO: REMOVE THIS ABILITY
+// Serve static files from the 'public' directory // TODO: CONSIDER REMOVE THIS ABILITY
 app.use(express.static('public'));
 // Error handling middleware
 app.set('trust proxy', true); // Or a more specific configuration depending on your setup
@@ -114,7 +115,7 @@ app.use((req, res, next) => {
         const durationInMilliseconds = getDurationInMilliseconds(startTime);
         const now = moment().tz("Australia/Sydney").format('YYYY-MM-DD HH:mm:ss');
         const logEntry = `${now} - IP: ${clientIp} // Path: ${req.originalUrl} // CONNECTIONS: ${NUMBER_OF_CONNECTIONS} // STATUS: ${res.statusCode} // DURATION: ${durationInMilliseconds} // USER AGENT: ${req.get('User-Agent')} // Authenticated: ${req.session && req.session.isAuthenticated ? 'Yes' : 'No'}\n`;
-        fs.appendFile( logFilename , logEntry, (err) => {
+        fs.appendFile(logFilename, logEntry, (err) => {
             if (err) {
                 console.error('Failed to write to log:', err);
             }
@@ -196,7 +197,8 @@ function getDurationInMilliseconds(start) {
 //  ========================================================================================================================================
 
 
-app.listen(port, HOST, () => {
+
+server.listen(port, HOST, () => {
     console.log(`Server is running on port ${port}`);
     const logEntry = `-- SERVER RESTARTED : - ${moment().tz("Australia/Sydney").format('YYYY-MM-DD HH:mm:ss')} \n`;
     fs.appendFile(logFilename, logEntry, (err) => {
