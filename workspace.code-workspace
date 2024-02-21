@@ -7,7 +7,10 @@
       "path": "server"
     },
     {
-      "path": "HOME_INVENTORY_DATABASE"
+      "path": "\\\\Jericho-pc\\f\\MY REPOS\\Main Website\\HOME_INVENTORY_DATABASE\\SCHEMA"
+    },
+    {
+      "path": "."
     }
   ],
   "settings": {}
