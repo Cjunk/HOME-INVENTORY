@@ -33,7 +33,7 @@ function ShowInventory(props) {
             ))
           : "nothing"}
       </div>
-    </div>
+ 
   );
 
 }
