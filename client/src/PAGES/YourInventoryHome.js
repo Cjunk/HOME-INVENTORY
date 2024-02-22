@@ -15,28 +15,43 @@ import axios from "axios";
 import DummyComponent from "../Components/DummyComponent/dummyComponent";
 import LocationForm from "../Components/LocationMaster/LocationMasterForm";
 import ShowInventory from "../Components/showinventory/showInventory";
+import ItemMasterForm from "../Components/ItemMaster/ItemMasterForm";
+import YouInventoryNavBar from "../Components/MainHeader/YouInventoryNavBar";
 import { pageID } from "../constants/pageIDs";  // All the page ID's are in here for consistency
 function YourInventoryHome(props) {
   const [theData, settheData] = useState("");
+  const [itemMasterData, setItemMasterData] = useState("")
   const [locationData, setLocationData] = useState([]);
-
-  /*
-    Pages.  
-    3 = SHOW INVENTORY 
-    2 = 
-
-  */
-  // eslint-disable-next-line
   const [serverResponse, settheServerResponse] = useState("");
+
+
+
+
+  const [currentPage, setcurrentPage] = useState(1)
+  const [currentInventoryView, setcurrentInventoryView] = useState(1)
+  const setTheCurrentPage = (page) => {
+    setcurrentPage(page)
+  }
+  const setTheCurrentInventoryView = (viewID) => {
+    setcurrentInventoryView(viewID)
+  }
+
+
+
+
+
+
+  
   useEffect(() => {
     document.title = "Home Harmony";
     getData(); // Get the users inventory data.
-    fetchLocationData()
+
   }, []);
-  const fetchLocationData = async () => {
+  const fetchData = async (whichOne) => {
+    let endPoint = (whichOne === 1) ? "masterlocation" : "masterItem";
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_EXPRESS_SERVER_URL}/secure/inventory/masterlocation/list`,
+        `${process.env.REACT_APP_EXPRESS_SERVER_URL}/secure/inventory/${endPoint}/list`,
         {
           withCredentials: true,
           headers: {
@@ -46,13 +61,18 @@ function YourInventoryHome(props) {
         }
       );
       if (response.status === 200) {
-        setLocationData(response.data); // Set the location data in state
+        if (whichOne == 1) {
+          setLocationData(response.data); // Set the location data in state
+        } else {
+          setItemMasterData(response.data);
+        }
+        
       } else {
-        console.error('Failed to fetch locations:', response);
+        console.error('Failed to fetch data:', response);
         // Handle the case where the status is not 200
       }
     } catch (error) {
-      console.error('Error fetching locations:', error);
+      console.error('Error fetching data:', error);
       // Handle the error
     }
   };
@@ -100,12 +120,14 @@ function YourInventoryHome(props) {
   };
   // Determine which component to render based on the current page
   let PageComponent;
-  switch (props.currentInventoryView) {
+  switch (currentPage) {
     case pageID.M_LOC:
-      PageComponent = <LocationForm locationData={locationData} setLocationData={setLocationData} />;
+      //fetchData(1);
+      PageComponent = <LocationForm locationData={locationData} setLocationData={setLocationData} fetchData={fetchData} />;
       break;
-    case 2:
-      PageComponent = <DummyComponent />;
+    case pageID.ITEMS:
+      //fetchData(2);
+      PageComponent = <ItemMasterForm itemData={itemMasterData} setitemData={setLocationData} fetchData={fetchData} />;
       break;
     case pageID.SOH:
       PageComponent = <ShowInventory theData={theData} />;
@@ -115,13 +137,10 @@ function YourInventoryHome(props) {
   }
   return (
     <div className="">
-      {/* <ShowInventory filter={1} theData={theData} /> */}
-      {/* <YouInventoryNavBar setCurrentPage={setTheCurrentPage} currentPage={currentPage} /> */}
-
+      <span style={{ color: 'white' }}>{serverResponse}</span>
+      <YouInventoryNavBar {...props} pageSelector={setTheCurrentPage} setTheCurrentInventoryView={setTheCurrentInventoryView} />
       {PageComponent}
-      <button onClick={fetchLocationData}>get Data</button>
     </div>
-
   );
 }
 export default YourInventoryHome;

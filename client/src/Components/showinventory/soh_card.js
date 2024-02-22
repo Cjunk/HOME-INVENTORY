@@ -34,7 +34,7 @@ const Soh_card = ({ setScreenView, currentsohcarddata }) => {
         <div className="img-wrapper">
           <img
             id={"picture"}
-            src={`https://dl.dropboxusercontent.com/scl/fi/rdc48784286ll24f5o3xc/${currentsohcarddata.item_prime_photo}?rlkey=${currentsohcarddata.photo_key}`}
+            src={`${currentsohcarddata.item_prime_photo}`}
             alt={currentsohcarddata.item_prime_photo}
             className="grid-item item-image"
           />
@@ -44,7 +44,7 @@ const Soh_card = ({ setScreenView, currentsohcarddata }) => {
             <ul className="details-list">
               <li>
                 <div className="eachListRow">
-                  <a classname="listTitle">Location ID:</a>{" "}
+                  <a className="listTitle">Location ID:</a>{" "}
                   <a className="listDetail">
                     {currentsohcarddata.soh_locationID}
                   </a>

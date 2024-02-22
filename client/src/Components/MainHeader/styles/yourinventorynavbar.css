@@ -8,7 +8,11 @@
   font-size: 12px;
 }
 .YourInventoryNavBar-container h1 {
-  font-size: 36px;
+  font-size: 16px;
+  display:grid;
+  grid-template-columns: 1fr 5fr;
+  background-color:var(--operation-yourinventory-navbar-bck-clr);
+
 }
 .theListContainer {
   display: flex;
@@ -28,8 +32,8 @@
 .currentNavbarTitle {
   display: grid;
   grid-template-columns: columns;
-  width:100%;
-  font-size: 36px;
+  width: 100%;
+
 }
 .eachListItem {
   position: relative;
@@ -73,7 +77,9 @@
   background-color: var(--operation-submenu-background-hvr);
   /* Hover color for submenu items */
 }
-
+.subNavBarControls {
+  
+}
 @media only screen and (max-width: 768px) {
   .YourInventoryNavBar-container {
     position: sticky;

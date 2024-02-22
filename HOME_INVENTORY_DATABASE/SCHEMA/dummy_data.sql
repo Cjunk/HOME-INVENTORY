@@ -52,21 +52,35 @@ VALUES
 
 INSERT INTO ITEM_MASTER (userID, item_number, alt_item_number, item_name, item_descr, item_barcode, item_weight, item_height, item_width, image_link_ID, item_type, manufacturer_ID, item_files, item_CreateDate, item_LastModified, item_IsActive, item_uom,item_prime_photo,photo_key)
 VALUES 
-(2, 92856, 36473, 'Item45', 'Description for item Item45', '97212895239098626276', 4.51, 8.15, 14.58, 8, 1, 95, 'manual_92856.pdf', '2024-02-11 10:31:37', '2024-02-11 10:31:37', False, 'kg',"IMG_1835.jpg","u54e12va4a7kmc7psk1utefu2&"),
-(2, 65493, 42691, 'Item30', 'Description for item Item30', '61011884701793955833', 6.25, 7.9, 9.73, 34, 8, 40, 'manual_65493.pdf', '2024-02-11 10:31:37', '2024-02-11 10:31:37', False, 'pcs',"IMG_1835.jpg","u54e12va4a7kmc7psk1utefu2&"),
-(3, 59418, 41136, 'Item91', 'Description for item Item91', '79309134954547787172', 16.76, 8.0, 5.66, 86, 2, 91, 'manual_59418.pdf', '2024-02-11 10:31:37', '2024-02-11 10:31:37', True, 'pair',"IMG_1835.jpg","u54e12va4a7kmc7psk1utefu2&"),
-(3, 93606, 84776, 'Item85', 'Description for item Item85', '82747787670334296495', 13.16, 18.52, 19.18, 86, 3, 74, 'manual_93606.pdf', '2024-02-11 10:31:37', '2024-02-11 10:31:37', False, 'pair',"IMG_1835.jpg","u54e12va4a7kmc7psk1utefu2&"),
-(4, 75137, 33052, 'Item76', 'Description for item Item76', '66304191440970520537', 11.3, 10.52, 3.64, 66, 1, 67, 'manual_75137.pdf', '2024-02-11 10:31:37', '2024-02-11 10:31:37', True, 'kg',"IMG_1835.jpg","u54e12va4a7kmc7psk1utefu2&"),
-(2,1001, "ITEM001",2001, 'Item Description 1', '1234567890123', 100, 10, 10, 1, 1, 1, 'file1.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',FALSE,'kg',"IMG_1835.jpg","u54e12va4a7kmc7psk1utefu2&"),
-(2,1002, "ITEM002",2002, 'Item Description 2', '1234567890124', 200, 20, 20, 2, 2, 2, 'file2.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',FALSE,'kg',"IMG_1835.jpg","u54e12va4a7kmc7psk1utefu2&"),
-(2,1003, "ITEM003",2003, 'Item Description 3', '1234567890125', 150, 15, 15, 3, 1, 1, 'file3.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',FALSE,'kg',"IMG_1835.jpg","u54e12va4a7kmc7psk1utefu2&"),
-(3,1004, "ITEM004",2004, 'Item Description 4', '1234567890126', 250, 25, 25, 4, 2, 2, 'file4.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',FALSE,'kg',"IMG_1835.jpg","u54e12va4a7kmc7psk1utefu2&");
+(2, 92856, 36473, 'Item45', 'Description for item Item45', '97212895239098626276', 4.51, 8.15, 14.58, 8, 1, 95, 'manual_92856.pdf', '2024-02-11 10:31:37', '2024-02-11 10:31:37', TRUE, 'kg',"https://res.cloudinary.com/dc7oti3kw/image/upload/v1708599107/HOME_HARMONY/IMG_1726",""),
+(2, 65493, 42691, 'Item30', 'Description for item Item30', '61011884701793955833', 6.25, 7.9, 9.73, 34, 8, 40, 'manual_65493.pdf', '2024-02-11 10:31:37', '2024-02-11 10:31:37', TRUE, 'pcs',"https://res.cloudinary.com/dc7oti3kw/image/upload/v1708599087/HOME_HARMONY/IMG_1835",""),
+(2,1001, "ITEM001",2001, 'Item Description 1', '1234567890123', 100, 10, 10, 1, 1, 1, 'file1.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',TRUE,'kg',"https://res.cloudinary.com/dc7oti3kw/image/upload/v1708599087/HOME_HARMONY/IMG_1835",""),
+(2,1002, "ITEM002",2002, 'Item Description 2', '1234567890124', 200, 20, 20, 2, 2, 2, 'file2.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',TRUE,'kg',"https://res.cloudinary.com/dc7oti3kw/image/upload/v1708599087/HOME_HARMONY/IMG_1835",""),
+(2,1003, "ITEM003",2003, 'Item Description 3', '1234567890125', 150, 15, 15, 3, 1, 1, 'file3.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',TRUE,'kg',"https://res.cloudinary.com/dc7oti3kw/image/upload/v1708599057/HOME_HARMONY/IMG_1845",""),
+(2,1004, "ITEM003",'Snap Hooks', 'Swivel', '123456789012', 0, 0, 0, 0, 0, 0, '','2024-02-11 10:31:37','2024-02-11 10:31:37',TRUE,'kg',"IMG_1845.jpg",""),
+(3, 59418, 41136, 'Item91', 'Description for item Item91', '79309134954547787172', 16.76, 8.0, 5.66, 86, 2, 91, 'manual_59418.pdf', '2024-02-11 10:31:37', '2024-02-11 10:31:37', True, 'pair',"https://res.cloudinary.com/dc7oti3kw/image/upload/v1708599101/HOME_HARMONY/IMG_1727",""),
+(3, 93606, 84776, 'Item85', 'Description for item Item85', '82747787670334296495', 13.16, 18.52, 19.18, 86, 3, 74, 'manual_93606.pdf', '2024-02-11 10:31:37', '2024-02-11 10:31:37', False, 'pair',"https://res.cloudinary.com/dc7oti3kw/image/upload/v1708599101/HOME_HARMONY/IMG_1727",""),
+(4, 75137, 33052, 'Item76', 'Description for item Item76', '66304191440970520537', 11.3, 10.52, 3.64, 66, 1, 67, 'manual_75137.pdf', '2024-02-11 10:31:37', '2024-02-11 10:31:37', True, 'kg',"https://res.cloudinary.com/dc7oti3kw/image/upload/v1708599101/HOME_HARMONY/IMG_1727",""),
+(3,1004, "ITEM004",2004, 'Item Description 4', '1234567890126', 250, 25, 25, 4, 2, 2, 'file4.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',FALSE,'kg',"IMG_1835.jpg","");
 
 INSERT INTO ITEM_MASTER (userID, item_number, alt_item_number, item_name, item_descr, item_barcode, item_weight, item_height, item_width, image_link_ID, item_type, manufacturer_ID, item_files, item_CreateDate, item_LastModified, item_IsActive, item_uom,item_prime_photo,photo_key)
 VALUES 
-(2,667, "FIXTAP","FIX_A_TAP", 'Washers', '1234567890126', 250, 25, 25, 4, 2, 2, 'file4.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',FALSE,'kg',"IMG_1841.jpg","bkketghgvp9mngojyofu5xgvc&");
+(2,1010, "ITEM003",'Snap Hooks', 'Swivel', '123456789012', 0, 0, 0, 0, 0, 0, '','2024-02-11 10:31:37','2024-02-11 10:31:37',TRUE,'kg',"https://res.cloudinary.com/dc7oti3kw/image/upload/v1708599057/HOME_HARMONY/IMG_1845","");
+
+INSERT INTO ITEM_MASTER (userID, item_number, alt_item_number, item_name, item_descr, item_barcode, item_weight, item_height, item_width, image_link_ID, item_type, manufacturer_ID, item_files, item_CreateDate, item_LastModified, item_IsActive, item_uom,item_prime_photo,item_photo_file_name,item_photo_secret_url)
+VALUES 
+(2,1011, "",'Pliers', 'Pair of Pliers', '123456789012', 0, 0, 0, 0, 0, 0, '','2024-02-11 10:31:37','2024-02-11 10:31:37',TRUE,'kg',"https://res.cloudinary.com/dc7oti3kw/image/upload/v1708607473/HOME_HARMONY/Pliers.jpg","Pliers","https://res.cloudinary.com/dc7oti3kw/image/upload/v1708607473/HOME_HARMONY/Pliers.jpg");
+
+-- https://res.cloudinary.com/dc7oti3kw/image/upload/v1708607473/HOME_HARMONY/Pliers.jpg
+
+INSERT into SOH (userID,soh_item,soh_locationID,soh_qty) VALUES (2,1010,"LOC0000000",5);
 
 
+
+
+INSERT INTO ITEM_MASTER (userID, item_number, alt_item_number, item_name, item_descr, item_barcode, item_weight, item_height, item_width, image_link_ID, item_type, manufacturer_ID, item_files, item_CreateDate, item_LastModified, item_IsActive, item_uom,item_prime_photo,photo_key)
+VALUES 
+(2,667, "FIXTAP","FIX_A_TAP", 'Washers', '1234567890126', 250, 25, 25, 4, 2, 2, 'file4.pdf','2024-02-11 10:31:37','2024-02-11 10:31:37',FALSE,'kg',"https://res.cloudinary.com/dc7oti3kw/image/upload/v1708599068/HOME_HARMONY/IMG_1841","");
 
 INSERT into SOH (userID,soh_item,soh_locationID,soh_qty) VALUES (2,65493,"LOC0000000",55);
 INSERT into SOH (userID,soh_item,soh_locationID,soh_qty) VALUES (2,65493,"LOC0000002",54);
