@@ -20,7 +20,6 @@ import Soh_card from "./soh_card";
 
 function ShowInventory(props) {
   const [screenView, setScreenView] = useState(1); //
-  const [currentSohID, setcurrentSohId] = useState(0); //  the ID of the card
   const [currentsohcarddata, setcurrentsohcarddata] = useState({});
   const dataArray = Object.values(props.theData);
   const handleDoubleClick = (item) => {
@@ -37,7 +36,6 @@ function ShowInventory(props) {
           <div key={index} id={item.soh_ID} className="data-row-container"> 
             <RowComponent
               {...item}
-              setcurrentSohId={setcurrentSohId}
               setScreenView={setScreenView}
               handleDoubleClick={handleDoubleClick}
             />
