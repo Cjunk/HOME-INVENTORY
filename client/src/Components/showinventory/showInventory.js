@@ -25,7 +25,6 @@ function ShowInventory(props) {
   const handleDoubleClick = (item) => {
     // Handle double click action here
     // this will get the data from the database and store it in the varaible for use in SOH_card
-    console.log("Double clicked item:", item);
     setcurrentsohcarddata(item);
     setScreenView(2);
   };

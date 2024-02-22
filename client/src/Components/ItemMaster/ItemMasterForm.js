@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./styles/locationMasterForm.css"
-const headings = ['location_id', 'location name', 'Prime Location', 'Description', 'Capacity', 'Status']
-function LocationForm({ locationData, setLocationData, fetchData }) {
+import "./styles/ItemMasterForm.css"
+const headings = ['picture','item_id', 'item name', 'Description', 'Capacity', 'Status']
+function ItemMasterForm({ itemData, setitemData, fetchData }) {
+  console.log("your form data", itemData)
   const [formData, setFormData] = useState({
-    location_id: 0,
-    location_name: "",
-    location_prime_location: 1,
-    location_photo: "",
-    location_desc: "",
-    location_date_last_used: "",
+    item_number: "",
+    item_name: "",
+    item_prime_item: 1,
+    item_photo: "",
+    item_desc: "",
+    item_date_last_used: "",
     pickpath: 1,
     capacity: 10,
     IsAvailable: true,
   });
   useEffect(() => {
-    if (locationData.length > 0) {
-      console.log(locationData)
+    if (itemData) {
       setFormData({
         ...formData,
-        location_id: locationData.location_id || "",
-        location_name: locationData.location_name || "",
-        location_prime_location: locationData.location_prime_location || "",
+        item_id: itemData.item_id || "",
+        item_name: itemData.item_name || "",
+        item_prime_item: itemData.item_prime_item || "",
         // Populate other fields as needed
-      });
+      }); 
     } else {
-
-      fetchData(1)
+      fetchData(2)
     }
-  }, [locationData]); // Run effect when initialLocationData changes
+    // eslint-disable-next-line
+  }, [itemData]); // Run effect when initialitemData changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevFormData) => ({
@@ -40,24 +40,19 @@ function LocationForm({ locationData, setLocationData, fetchData }) {
   const getWidthClass = (fieldName) => {
     // Add logic to determine width class based on field name or other factors
     switch (fieldName) {
-      case "location_id":
-      case "location_name":
+      case "item_id":
+      case "item_name":
         return "input-medium"; // Example: medium width for ID field
 
-      case "location_desc":
+      case "item_desc":
         return "input-large"; // Example: large width for Name field
       case "pickpath":
       case "capacity":
-      case "location_prime_location":
-        return "input-small"; // Example: small width for Prime Location field
+      case "item_prime_item":
+        return "input-small"; // Example: small width for Prime item field
       default:
         return ""; // Default to empty string if width class is not specified
     }
-  };
-  const handleCheckboxChange = (index) => {
-    const updatedLocationData = [...locationData];
-    updatedLocationData[index].IsAvailable = !updatedLocationData[index].IsAvailable;
-    setLocationData(updatedLocationData);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,7 +61,7 @@ function LocationForm({ locationData, setLocationData, fetchData }) {
     };
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_EXPRESS_SERVER_URL}/secure/inventory/masterlocation/add`, data,
+        `${process.env.REACT_APP_EXPRESS_SERVER_URL}/secure/inventory/masteritem/add`, data,
         {
           withCredentials: true,
           headers: {
@@ -81,14 +76,14 @@ function LocationForm({ locationData, setLocationData, fetchData }) {
       }
       if (response.status === 200) {
         if (response.data) {
-          setLocationData([...locationData, data]);
+          setitemData([...itemData, data]);
           setFormData({
-            location_id: "",
-            location_name: "",
-            location_prime_location: 1,
-            location_photo: "",
-            location_desc: "",
-            location_date_last_used: "",
+            item_number: "",
+            item_name: "",
+            item_prime_item: 1,
+            item_prime_photo: "",
+            item_descr: "",
+            item_date_last_used: "",
             pickpath: 1,
             capacity: 10,
             IsAvailable: true,
@@ -109,19 +104,24 @@ function LocationForm({ locationData, setLocationData, fetchData }) {
     }
     //onSubmit(formData); // SUBMIT THE FORM DATA  TODO: Must be implemented
     // Here you might clear the form or handle submission (e.g., send data to a backend server)
+    
   };
+  // const originalUrl = itemData.item_prime_photo;
+  // const insertionString = 'w_100,h_100,q_auto:good,c_fill/';
+  // const uploadIndex = originalUrl.indexOf('/upload/');
+  // const modifiedUrl = originalUrl.slice(0, uploadIndex + '/upload/'.length) + insertionString + originalUrl.slice(uploadIndex + '/upload/'.length);
   return (
     <div>
-      <div className="Location-form-container">
-        <form className="locationForm" onSubmit={handleSubmit}>
+      <div className="item-form-container">
+        <form className="itemForm" onSubmit={handleSubmit}>
           <label className="dd">
             ID:
             <input
               type="text"
-              name="location_id"
-              value={formData.location_id}
+              name="item_id"
+              value={formData.item_id}
               onChange={handleChange}
-              className={getWidthClass("location_id")}
+              className={getWidthClass("item_id")}
               required
             />
           </label>
@@ -129,20 +129,20 @@ function LocationForm({ locationData, setLocationData, fetchData }) {
             Name:
             <input
               type="text"
-              name="location_name"
-              value={formData.location_name}
+              name="item_name"
+              value={formData.item_name}
               onChange={handleChange}
-              className={getWidthClass("location_name")}
+              className={getWidthClass("item_name")}
 
             />
           </label>
           <label className="dd">
-            Prime Location:
+            Prime item:
             <input
               type="number"
-              name="location_prime_location"
-              value={formData.location_prime_location}
-              className={getWidthClass("location_prime_location")}
+              name="item_prime_item"
+              value={formData.item_prime_item}
+              className={getWidthClass("item_prime_item")}
               onChange={handleChange}
 
             />
@@ -150,9 +150,9 @@ function LocationForm({ locationData, setLocationData, fetchData }) {
           <label className="dd">
             Description:
             <textarea
-              name="location_desc"
-              value={formData.location_desc}
-              className={getWidthClass("location_desc")}
+              name="item_desc"
+              value={formData.item_desc}
+              className={getWidthClass("item_desc")}
               onChange={handleChange}
             />
           </label>
@@ -167,7 +167,7 @@ function LocationForm({ locationData, setLocationData, fetchData }) {
             />
           </label>
           <label>
-            Capacity:
+            Barcode:
             <input
               type="number"
               name="capacity"
@@ -183,35 +183,29 @@ function LocationForm({ locationData, setLocationData, fetchData }) {
               name="IsAvailable"
               checked={formData.IsAvailable}
               onChange={handleChange}
-              style={{ zIndex: 1000 }}
               className={getWidthClass("IsAvailable")}
             />
           </label>
-          <button type="submit">Add New Location</button>
+          <button type="submit">Add New item</button>
         </form>
       </div>
-      <div className="Location-data-container"><h1>Your Locations</h1>
+      <div className="item-data-container"><h1>Your items</h1>
         <div className="">
           <div className="data-heading">
             {headings.map((heading, index) => (
               <div id={heading.replace(/ /g, "-")} key={index} className={`heading-item-property${index === 4 ? '-qty' : ''}`}>{heading}</div>
             ))}
           </div>
-          {[...locationData].sort((a, b) => a.location_id - b.location_id).map((item, index) => (
+          {[...itemData].sort((a, b) => a.item_id - b.item_id).map((item, index) => (
+            
             <div key={index} className="data-row data-row-container">
-              <div id={headings[0].replace(/ /g, "-")} className="item-property">{item.location_id}</div>
-              <div id={headings[1].replace(/ /g, "-")} className="item-property">{item.location_name}</div>
-              <div id={headings[2].replace(/ /g, "-")} className="item-property">{item.location_prime_location}</div>
-              <div id={headings[4].replace(/ /g, "-")} className="item-property-qty">{item.location_desc}</div>
-              <div id={headings[5].replace(/ /g, "-")} className="item-property-qty">{item.capacity}</div>
-              <div id={headings[5].replace(/ /g, "-")} className="item-property-qty">
-                <input
-                  type="checkbox"
-                  checked={item.IsAvailable}
-                  onChange={() => handleCheckboxChange(index)} // Add a handler function here if you want to change the state when the checkbox is toggled
-                  readOnly // Makes the checkbox reflect the state but not editable directly by the user
-                />
-              </div>
+              <img id={"picture"} src={`${item.item_prime_photo}`} alt={item.item_prime_photo} className="grid-item item-image2" />
+              <div id={headings[0].replace(/ /g, "-")} className="item-property">{item.item_number}</div>
+              <div id={headings[1].replace(/ /g, "-")} className="item-property">{item.item_name}</div>
+
+              <div id={headings[4].replace(/ /g, "-")} className="item-property-qty">{item.item_descr}</div>
+              <div id={headings[5].replace(/ /g, "-")} className="item-property-qty">{item.item_barcode}</div>
+              
             </div>
           ))}
         </div>
@@ -219,4 +213,4 @@ function LocationForm({ locationData, setLocationData, fetchData }) {
     </div>
   );
 }
-export default LocationForm;
+export default ItemMasterForm;

@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/yourinventorynavbar.css";
 import { pageID } from '../../constants/pageIDs'
-const YouInventoryNavBar = (props) => {
+const YouInventoryNavBar = (props) => {   //  You need to pass the current 'Inventory nav Bar to display'
   const [activeMenu, setActiveMenu] = React.useState(null); // For toggle functionality on touch devices
   const [currentTitle, setcurrentTitle] = React.useState(null); // For toggle functionality on touch devices
   const menuItems = [
@@ -32,9 +32,23 @@ const YouInventoryNavBar = (props) => {
     props.setTheCurrentInventoryView(SubItemid);
     setcurrentTitle(title)
   }
+
+  let PageComponent;
+  switch (activeMenu) {
+
+    case pageID.M_LOC:
+      //PageComponent = <LocationForm locationData={locationData} setLocationData={setLocationData} />;
+      break;
+    case 2:
+      PageComponent = {};
+      break;
+    case pageID.SOH:
+      break;
+    default:
+    // PageComponent = <DummyComponent theData={theData} />;
+  }
   return (
     <div className="YourInventoryNavBar-container">
-
       <ul className="theListContainer">
         {menuItems.map((item) => (
           <li
@@ -60,6 +74,8 @@ const YouInventoryNavBar = (props) => {
         ))}
       </ul>
       <h1 className="currentNavbarTitle">{currentTitle}</h1>
+
+
     </div>
   );
 };

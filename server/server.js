@@ -4,7 +4,26 @@
 */
 //  ==========================================  CONSTANTS   =================================================================
 //const dotenv = require('dotenv').config()
+// const { Cloudinary } = require("@cloudinary/url-gen");
+// const cloudinary = require('cloudinary').v2; // Use CommonJS syntax to import the v2 object
+// cloudinary.config({
+//     cloud_name: 'dc7oti3kw',
+//     api_key: '983499594215616',
+//     api_secret: 'Z-EsHRo7dEY_TWMpyjUynO8Lg8Q'
+// });
+// const App = () => {
+//     const cld = new Cloudinary({ cloud: { cloudName: 'dc7oti3kw' } });
+//     cloudinary.uploader.upload("C:/Users/User/Dropbox/INVENTORY PHOTOS/IMG_1725.jpg",
+//         {
+//             folder: "HOME_HARMONY", // Specify the folder path,
+//             public_id: "olympic_flag"
+//         },
+//     function (error, result) { console.log(result); });
+// };
+// App()
+
 let NUMBER_OF_CONNECTIONS = 0 // This var is used to track the number of attempts to the API. TODO: ok to remove this in prod
+
 const logFilename = './logs/requestLog.txt'
 const express = require('express');
 const moment = require('moment-timezone');
@@ -103,6 +122,7 @@ app.use((req, res, next) => {
         // Check if request count exceeds the threshold
         if (requestCount > MAX_REQUESTS_PER_MINUTE) {
             isServerPaused = true; // Set server paused flag to true
+            console.log('Server paused due to excessive API calls. Please try again later.')
             res.status(429).send('Server paused due to excessive API calls. Please try again later.');
             setTimeout(() => {
                 isServerPaused = false; // Reset server paused flag after 1 minute
@@ -162,6 +182,8 @@ if (process.env.NODE_ENV = 'development') {
 app.use('/system', systemroutes);
 app.post('/login', login);
 app.post('/register', register) // get the registration page
+
+
 /*
     ============    PUBLIC ROUTES  ---------------------------------------------------------------------------------------------
 */
