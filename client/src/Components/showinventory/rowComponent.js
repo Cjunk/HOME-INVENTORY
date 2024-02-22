@@ -4,15 +4,13 @@
 import React from 'react'
 import './styles/rowComponent.css'
 const RowComponent = ({ userID, handleDoubleClick, ...restProps }) => {
-    console.log(restProps)
-    const onDoubleClickHandler = (e) => {
-        // Call the passed handleDoubleClick function with the desired argument
-        // e.target gives you the specific DOM element that was double-clicked
-        // If you need to pass the whole item or specific item properties, adjust accordingly
-        handleDoubleClick(e.target);
+
+    const onDoubleClickHandler = () => {
+      // Directly use restProps.soh_id instead of relying on e.target
+      handleDoubleClick(restProps);
     };
     return (
-        <div key={userID} className="the-inventory-data-row-container" onDoubleClick={onDoubleClickHandler} id={restProps.soh_id}>
+        <div key={userID}  className="the-inventory-data-row-container" onClick={onDoubleClickHandler}>
             {/* <img id={"picture"} src={"https://www.gstatic.com/webp/gallery/1.jpg"} alt={restProps.item_name} className="grid-item item-image" /> */}
             <img id={"picture"} src={`https://dl.dropboxusercontent.com/scl/fi/rdc48784286ll24f5o3xc/${restProps.item_prime_photo}?rlkey=${restProps.photo_key}`} alt={restProps.item_prime_photo} className="grid-item item-image"  />
             <div id="name" className="grid-item top-inventory-data-col">Name: </div>
