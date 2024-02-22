@@ -30,6 +30,7 @@ function ShowInventory(props) {
     setScreenView(2);
   };
   return (
+
     <div className="inventory-container">
       {screenView === 1 ? (
         dataArray.map((item, index) => (
@@ -47,6 +48,7 @@ function ShowInventory(props) {
         </div>
       )}
     </div>
+
   );
 }
 export default ShowInventory;

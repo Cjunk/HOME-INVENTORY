@@ -1,14 +1,10 @@
 {
   "folders": [
-    {
-      "path": "server"
-    },
-    {
-      "path": "HOME_INVENTORY_DATABASE"
-    },
-    {
-      "path": "client"
-    }
-  ],
-  "settings": {}
+	{
+		"path": "server"
+	}
+],
+  "settings": {
+    "explorerExclude.backup": {}
+  }
 }
