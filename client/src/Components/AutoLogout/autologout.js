@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import  { useEffect, useRef } from 'react';
 import { logout } from '../../services/authService';
 
 const globalTimeout = 15 * 60 * 1000; // 5 minutes in milliseconds
@@ -40,7 +40,7 @@ function AutoLogout({ onLogout }) {
             clearTimeout(timeoutRef.current);
             removeEventListeners();
         };
-    }, []);
+    });
 
     useEffect(() => {
         const checkInactivity = () => {
@@ -58,7 +58,7 @@ function AutoLogout({ onLogout }) {
         return () => {
             clearTimeout(timeoutRef.current);
         };
-    }, []);
+    });
 
     return null;
 }

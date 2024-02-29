@@ -19,7 +19,6 @@ function NavigationBar({ isLoggedIn, pageSelector, handleLogout }) {
             console.error("Logout failed", error);
         }
     };
-
     const menuItems = [
         { id: 1, name: "Home", className: "desktopButton", visible: 1 },
         { id: 2, name: "Add Item", className: "desktopButton", visible: 0 },
@@ -32,13 +31,11 @@ function NavigationBar({ isLoggedIn, pageSelector, handleLogout }) {
         { id: 9, name: "Home", className: "", visible: 1, buttonClassName: "mobileNavButtons" },
         { id: 10, name: "Options", className: "", visible: 1, onClick: handleLogoutClick, buttonClassName: "mobileNavButtons" },
     ];
-
     const homeMenuItems = [
         { id: 1, name: "Home", className: "desktopButton", visible: 1 },
         { id: 2, name: "Login", className: "desktopButton", visible: 1 },
         { id: 3, name: "Register", className: "desktopButton", visible: 1 },
     ];
-
     const executeMenuItem = (id) => {
         switch (id) {
             case 2:

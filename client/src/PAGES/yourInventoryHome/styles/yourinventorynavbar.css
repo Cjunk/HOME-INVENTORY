@@ -1,4 +1,4 @@
-@import url("../../../palette.css");
+@import url("../../../styles/palette.css");
 .YourInventoryNavBar-container {
   position: sticky;
   top: var(--header-height);

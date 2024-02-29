@@ -5,14 +5,16 @@
 */
 import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/home.css'
 function HomePage() {
     useEffect(() => {
         document.title = "Home";
     }, [])
     return (
-        <div>
-            <h2>THIS IS THE HOME PAGE</h2>
-                {/* {errorMessage && <div className="alert alert-danger">{errorMessage}</div>} */}
+        <div className="home-page-container background-image">
+   
+            {/* {errorMessage && <div className="alert alert-danger">{errorMessage}</div>} */}
+            {/* <img src="./home1.jpg" alt="sdf"/> */}
             </div>
     );
 }

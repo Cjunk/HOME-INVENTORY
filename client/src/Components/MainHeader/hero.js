@@ -4,11 +4,11 @@ function Hero() {
   return (
     <header className="hero-content">
       <div className = "img-wrapper">
-        <img className="logo-img" src="./home_harmony_logo.jpg"></img>
+        <img className="logo-img" src="./home_harmony_logo.jpg" alt="./home_harmony_logo.jpg"></img>
       </div>
       <div className="textContainer">
         <h1 className="mainHeadingText">Home Harmony</h1>
-        {/* <p className="ptext">Keep track of your household items with ease.</p> */}
+        <span className="ptext">Keep track of your household items with ease.</span>
       </div>
     </header>
   )

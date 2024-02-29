@@ -1,20 +1,20 @@
 /* Form container styles */
-@import url("../../../palette.css");
+@import url("../../../styles/palette.css");
 .Location-form-container{
     position:sticky;
     top:var(--header-height2);
-    width:100%;
-    height:100%;
     background-color:var(--data-list-background);
+    
 }
 .locationForm {
-    border: var(--frm-border-style-and-color);
+    /* border: var(--frm-border-style-and-color); */
     border-radius: 5px;
     background-color:var(--operations-frm-background-color);
     display:grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr 2fr 1fr 1fr 1fr 1fr;
     text-align: left;
+    box-shadow: 0 14px 8px rgba(0, 0, 0, 0.1);
+    padding-bottom:5px;
 }
 /* Style for each form field */
 form label {
@@ -37,6 +37,7 @@ form textarea {
     display:grid;
     grid-template-columns: 2fr 50fr;
     justify-content: space-around;
+    margin-left:5px;
     
 }
 

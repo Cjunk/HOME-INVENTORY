@@ -25,7 +25,7 @@ function ItemMasterForm({ itemData, setitemData, fetchData }) {
         // Populate other fields as needed
       }); 
     } else {
-      fetchData(2)
+      fetchData(2)   //  2 is interpreted as get the item data 
     }
     // eslint-disable-next-line
   }, [itemData]); // Run effect when initialitemData changes
@@ -112,8 +112,8 @@ function ItemMasterForm({ itemData, setitemData, fetchData }) {
   // const modifiedUrl = originalUrl.slice(0, uploadIndex + '/upload/'.length) + insertionString + originalUrl.slice(uploadIndex + '/upload/'.length);
   return (
     <div>
-      <div className="item-form-container">
-        <form className="itemForm" onSubmit={handleSubmit}>
+      <div className="item-form-container form-format">
+        <form className="form-edit-global" onSubmit={handleSubmit}>
           <label className="dd">
             ID:
             <input

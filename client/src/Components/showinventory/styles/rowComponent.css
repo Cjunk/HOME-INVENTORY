@@ -1,4 +1,4 @@
-@import url("../../../palette.css");
+@import url("../../../styles/palette.css");
 .the-inventory-data-row-container {
   display: grid;
   grid-template-columns: minmax(100px, 1fr) minmax(150px, 1fr) repeat(6, 1fr);

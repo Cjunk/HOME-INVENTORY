@@ -1,26 +1,32 @@
 /* Hero.css */
-@import url("../../../palette.css");
+@import url("../../../styles/palette.css");
 
 .hero-content {
-  background-color: var(--header-bck-grnd-clr);
-  width:100%;
-  display:flex;
-  
+  background-color: var( --header-bckgrnd-clr);
+  width: 100%;
+  display: flex;
 }
-.img-wrapper{
-  width:50px;
-  height:50px;
+.img-wrapper {
+  width: 50px;
+  height: 50px;
+}
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mainHeadingText {
+  color: var(--heading-main-txt-clr);
+  margin: 0;
+}
+.textContainer {
+  margin-left: 5px;
+  display: flex;
+}
+.ptext {
+  color: rgb(232, 235, 238);
+  margin-left: 100px;
+  align-self: center;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); 
+}
 
-}
-.logo-img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.mainHeadingText{
-  color:var(--heading-main-txt-clr)
-}
-.textContainer{
-  margin-left:5px;
-  display:inline;
-}

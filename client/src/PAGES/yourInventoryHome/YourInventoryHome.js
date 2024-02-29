@@ -1,6 +1,6 @@
 /*
   This is the user LANDING page. Once logged in they land here
-
+  
   First thing is to show the users inventory : Also have a welcome message with their name
   From this screen the user should be able to filter and scroll the inventory . pick an item and adjust the quantity.
 
@@ -8,44 +8,27 @@
   There should also be a SETTINGS menu for PROFILE, ITEM _MASTER, LOCATIONS _MASTER, THEME, CATEORIES, 
   There should also be a FEATURES menu.  Possibly for ChatGPT integration, Upgrade subscription, 
   There should b a transaction menu ?? Possibly for subcription (support ) members.
-
 */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import DummyComponent from "../Components/DummyComponent/dummyComponent";
-import LocationForm from "../Components/LocationMaster/LocationMasterForm";
-import ShowInventory from "../Components/showinventory/showInventory";
-import ItemMasterForm from "../Components/ItemMaster/ItemMasterForm";
-import YouInventoryNavBar from "../Components/MainHeader/YouInventoryNavBar";
-import { pageID } from "../constants/pageIDs";  // All the page ID's are in here for consistency
+import DummyComponent from "../../Components/DummyComponent/dummyComponent";
+import LocationForm from "../../Components/LocationMaster/LocationMasterForm";
+import ShowInventory from "../../Components/showinventory/showInventory";
+import ItemMasterForm from "../../Components/ItemMaster/ItemMasterForm";
+import YouInventoryNavBar from "./YouInventoryNavBar";
+import { pageID } from "../../constants/pageIDs";  // All the page ID's are in here for consistency
 function YourInventoryHome(props) {
   const [theData, settheData] = useState("");
   const [itemMasterData, setItemMasterData] = useState("")
   const [locationData, setLocationData] = useState([]);
   const [serverResponse, settheServerResponse] = useState("");
-
-
-
-
   const [currentPage, setcurrentPage] = useState(1)
-  const [currentInventoryView, setcurrentInventoryView] = useState(1)
   const setTheCurrentPage = (page) => {
     setcurrentPage(page)
   }
-  const setTheCurrentInventoryView = (viewID) => {
-    setcurrentInventoryView(viewID)
-  }
-
-
-
-
-
-
-  
   useEffect(() => {
     document.title = "Home Harmony";
     getData(); // Get the users inventory data.
-
   }, []);
   const fetchData = async (whichOne) => {
     let endPoint = (whichOne === 1) ? "masterlocation" : "masterItem";
@@ -61,7 +44,7 @@ function YourInventoryHome(props) {
         }
       );
       if (response.status === 200) {
-        if (whichOne == 1) {
+        if (whichOne === 1) {
           setLocationData(response.data); // Set the location data in state
         } else {
           setItemMasterData(response.data);
@@ -138,7 +121,7 @@ function YourInventoryHome(props) {
   return (
     <div className="">
       <span style={{ color: 'white' }}>{serverResponse}</span>
-      <YouInventoryNavBar {...props} pageSelector={setTheCurrentPage} setTheCurrentInventoryView={setTheCurrentInventoryView} />
+      <YouInventoryNavBar {...props} pageSelector={setTheCurrentPage}  />
       {PageComponent}
     </div>
   );

@@ -1,4 +1,4 @@
-@import url("../../../palette.css");
+@import url("../../../styles/palette.css");
 .inventory-container {
   background-color: var(--data-list-background);
 }

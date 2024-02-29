@@ -25,7 +25,7 @@ type_name: null;*/
 import React from "react";
 import "./styles/soh_card.css";
 
-const Soh_card = ({ setScreenView, currentsohcarddata }) => {
+const SohCard = ({ setScreenView, currentsohcarddata }) => {
   console.log(currentsohcarddata);
   return (
     <div>
@@ -44,64 +44,64 @@ const Soh_card = ({ setScreenView, currentsohcarddata }) => {
             <ul className="details-list">
               <li>
                 <div className="eachListRow">
-                  <a className="listTitle">Location ID:</a>{" "}
-                  <a className="listDetail">
+                  <span className="listTitle">Location ID:</span>{" "}
+                  <span className="listDetail">
                     {currentsohcarddata.soh_locationID}
-                  </a>
+                  </span>
                 </div>
               </li>
               <li>
                 <div className="eachListRow">
-                  <a>Quantity:</a> <a>{currentsohcarddata.soh_qty}</a>
+                  <span>Quantity:</span> <span>{currentsohcarddata.soh_qty}</span>
                 </div>
               </li>
               <li>
                 <div className="eachListRow">
-                  <a>Cat Name:</a> <a>{currentsohcarddata.cat_name || "N/A"}</a>
+                  <span>Cat Name:</span> <span>{currentsohcarddata.cat_name || "N/A"}</span>
                 </div>
               </li>
               <li>
                 <div className="eachListRow">
-                  <a>Item Barcode:</a> <a>{currentsohcarddata.item_barcode}</a>
+                  <span>Item Barcode:</span> <span>{currentsohcarddata.item_barcode}</span>
                 </div>
               </li>
               <li>
                 <div className="eachListRow">
-                  <a>Description:</a> <a>{currentsohcarddata.item_descr}</a>
+                  <span>Description:</span> <span>{currentsohcarddata.item_descr}</span>
                 </div>
               </li>
               <li>
                 <div className="eachListRow">
-                  <a>Item Name:</a> <a>{currentsohcarddata.item_name}</a>
+                  <span>Item Name:</span> <span>{currentsohcarddata.item_name}</span>
                 </div>
               </li>
               <li>
                 <div className="eachListRow">
-                  <a>Location Name:</a>{" "}
-                  <a>{currentsohcarddata.location_name || "N/A"}</a>
+                  <span>Location Name:</span>{" "}
+                  <span>{currentsohcarddata.location_name || "N/A"}</span>
                 </div>
               </li>
               <li>
                 <div className="eachListRow">
-                  <a>Date Added:</a> <a>{currentsohcarddata.soh_date_added}</a>
+                  <span>Date Added:</span> <span>{currentsohcarddata.soh_date_added}</span>
                 </div>
               </li>
               <li>
                 <div className="eachListRow">
-                  <a>SOH Item:</a> <a>{currentsohcarddata.soh_item}</a>
+                  <span>SOH Item:</span> <span>{currentsohcarddata.soh_item}</span>
                 </div>
               </li>
               <li>
                 <div className="eachListRow">
-                  <a>Last Updated:</a>{" "}
-                  <a>{currentsohcarddata.soh_last_updated}</a>
+                  <span>Last Updated:</span>{" "}
+                  <span>{currentsohcarddata.soh_last_updated}</span>
                 </div>
               </li>
 
               <li>
                 <div className="eachListRow">
-                  <a>Type Name:</a>{" "}
-                  <a>{currentsohcarddata.type_name || "N/A"}</a>
+                  <span>Type Name:</span>{" "}
+                  <span>{currentsohcarddata.type_name || "N/A"}</span>
                 </div>
               </li>
             </ul>
@@ -115,4 +115,4 @@ const Soh_card = ({ setScreenView, currentsohcarddata }) => {
   );
 };
 
-export default Soh_card;
+export default SohCard;

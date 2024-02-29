@@ -28,7 +28,7 @@ function LocationForm({ locationData, setLocationData, fetchData }) {
 
       fetchData(1)
     }
-  }, [locationData]); // Run effect when initialLocationData changes
+  }, [locationData, formData, fetchData]); // Run effect when initialLocationData changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevFormData) => ({

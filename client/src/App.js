@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 
 import RegisterForm from './PAGES/register.js'
 import UserForm from './PAGES/form/form.js'
-import YourInventoryHome from './PAGES/YourInventoryHome.js';
+import YourInventoryHome from './PAGES/yourInventoryHome/YourInventoryHome.js';
 import HomePage from './PAGES/home.js'
 import Header from './Components/MainHeader/Header2.js';
 import AutoLogout from './Components/AutoLogout/autologout.js';

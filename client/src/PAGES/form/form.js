@@ -18,14 +18,14 @@ import './styles/form.css';
 function UserForm({ formType, setLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     if (formType === 1) {
       document.title = "Login";
     } else {
       document.title = "Register";
     }
-  }, [])
+  })
   const handleSubmit = async (event) => {
     event.preventDefault();
     const payload = {
@@ -47,7 +47,7 @@ function UserForm({ formType, setLogin }) {
         console.error('Failed to login:', response);
       }
     } catch (error) {
-      setErrorMessage(error.message);
+      
       console.error('Failed to login:', error);
       // Handle errors here, like showing a notification to the user
     }
@@ -65,7 +65,7 @@ function UserForm({ formType, setLogin }) {
     }
   };
   return (
-    <div className="form-container">
+    <div className="form-container background-image">
       <form className="form" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="username" className="formlabel">Username:</label>

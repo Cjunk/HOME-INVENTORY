@@ -1,4 +1,4 @@
-@import url("../../../palette.css");
+@import url("../../../styles/palette.css");
 .navigation-container ul {
   list-style-type: none;
   display: flex;

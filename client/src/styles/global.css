@@ -110,6 +110,19 @@
 .item-property-NAME {
   width: 100%;
 }
+.form-edit-global {
+     border: var(--frm-border-style-and-color);
+    border-radius: 5px;
+    background-color:var(--operations-frm-background-color);
+    
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    text-align: left; 
+}
+
+
+
 @media (max-width: 768px) {
   .data-heading {
     top: 178px;

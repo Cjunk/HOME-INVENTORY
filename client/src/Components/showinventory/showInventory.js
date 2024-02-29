@@ -9,7 +9,7 @@
 import React, { useState } from "react";
 import "./styles/inventoryitem.css";
 import RowComponent from "./rowComponent";
-import Soh_card from "./soh_card";
+import SohCard from "./soh_card";
 
 // function formatDateTime(dateTimeString) {
 //   const date = new Date(dateTimeString);
@@ -43,7 +43,7 @@ function ShowInventory(props) {
         ))
       ) : (
         <div>
-          <Soh_card currentsohcarddata={currentsohcarddata} setScreenView={setScreenView}/>
+          <SohCard currentsohcarddata={currentsohcarddata} setScreenView={setScreenView}/>
         </div>
       )}
     </div>

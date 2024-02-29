@@ -29,18 +29,17 @@ const YouInventoryNavBar = (props) => {   //  You need to pass the current 'Inve
   };
   const clickedmenu = (SubItemid, title) => {
     props.pageSelector(SubItemid);
-    props.setTheCurrentInventoryView(SubItemid);
     setcurrentTitle(title)
   }
 
-  let PageComponent;
+  // let PageComponent;
   switch (activeMenu) {
 
     case pageID.M_LOC:
       //PageComponent = <LocationForm locationData={locationData} setLocationData={setLocationData} />;
       break;
     case 2:
-      PageComponent = {};
+      // PageComponent = {};
       break;
     case pageID.SOH:
       break;

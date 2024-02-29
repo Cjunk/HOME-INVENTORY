@@ -11,13 +11,13 @@ function RegisterForm() {
   const [pswd, setpswd] = useState('');
   const [Cpswd, setCpswd] = useState('');
   const [errorMessage, setErrorMessage] = useState("");
-  const [formData, setFormData] = useState({ //TODO: To be implemented to replace above constants
-  firstname: '',
-  email: '',
-  pswd: '',
-  Cpswd: '',
-  errorMessage: '',
-});
+//   const [formData, setFormData] = useState({ //TODO: To be implemented to replace above constants
+//   firstname: '',
+//   email: '',
+//   pswd: '',
+//   Cpswd: '',
+//   errorMessage: '',
+// });
   useEffect(() => {
     document.title = "Register";
   }, [])
@@ -66,9 +66,9 @@ const handleSubmit = async (event) => {
   };
   return (
     <div className="container"> {/* Add Bootstrap container class */}
-      <div>
+      <div className="form-container background-image">
 
-        <form onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
           <div>
 
             <h2 className="mb-4">REGISTER</h2>
