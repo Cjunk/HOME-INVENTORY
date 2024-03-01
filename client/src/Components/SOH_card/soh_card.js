@@ -23,22 +23,15 @@ soh_locationID: "LOC002";
 soh_qty: 5005;
 type_name: null;*/
 import React from "react";
-import "./styles/soh_card.css";
-
+import "./soh_card.css";
+import ImgComponent from "./img_component.js"
 const SohCard = ({ setScreenView, currentsohcarddata }) => {
   console.log(currentsohcarddata);
   return (
     <div>
       <h1>The SOH CARD</h1>
       <div className="element-content-container">
-        <div className="img-wrapper">
-          <img
-            id={"picture"}
-            src={`${currentsohcarddata.item_prime_photo}`}
-            alt={currentsohcarddata.item_prime_photo}
-            className="grid-item item-image"
-          />
-        </div>
+        <ImgComponent currentsohcarddata={currentsohcarddata} />
         <div>
           {currentsohcarddata ? (
             <ul className="details-list">

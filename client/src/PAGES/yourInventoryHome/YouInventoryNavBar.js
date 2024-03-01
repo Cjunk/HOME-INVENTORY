@@ -72,7 +72,7 @@ const YouInventoryNavBar = (props) => {   //  You need to pass the current 'Inve
           </li>
         ))}
       </ul>
-      <h1 className="currentNavbarTitle">{currentTitle}</h1>
+      <span className="currentNavbarTitle">{currentTitle}</span>
 
 
     </div>

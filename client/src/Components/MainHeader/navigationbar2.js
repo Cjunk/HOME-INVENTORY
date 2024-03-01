@@ -10,8 +10,7 @@ import './styles/navigationbar2.css';
  */
 function NavigationBar({ isLoggedIn, pageSelector, handleLogout }) {
     const handleLogoutClick = async () => {
-        try {
-            console.log("ATTEMPTING LOGOUT");
+        try { 
             await logout();
             pageSelector(1);
             handleLogout();
@@ -20,7 +19,7 @@ function NavigationBar({ isLoggedIn, pageSelector, handleLogout }) {
         }
     };
     const menuItems = [
-        { id: 1, name: "Home", className: "desktopButton", visible: 1 },
+        // { id: 1, name: "Home", className: "desktopButton", visible: 1 },
         { id: 2, name: "Add Item", className: "desktopButton", visible: 0 },
         { id: 3, name: "Add Location", className: "desktopButton", visible: 0 },
         { id: 4, name: "Settings", className: "desktopButton", visible: 0 },
@@ -32,8 +31,8 @@ function NavigationBar({ isLoggedIn, pageSelector, handleLogout }) {
         { id: 10, name: "Options", className: "", visible: 1, onClick: handleLogoutClick, buttonClassName: "mobileNavButtons" },
     ];
     const homeMenuItems = [
-        { id: 1, name: "Home", className: "desktopButton", visible: 1 },
-        { id: 2, name: "Login", className: "desktopButton", visible: 1 },
+        // { id: 1, name: "Home", className: "desktopButton", visible: 1 },
+        { id: 2, name: "Login", className: "desktopButton loginButton", visible: 1 },
         { id: 3, name: "Register", className: "desktopButton", visible: 1 },
     ];
     const executeMenuItem = (id) => {
@@ -58,8 +57,8 @@ function NavigationBar({ isLoggedIn, pageSelector, handleLogout }) {
     const renderMenuItems = (menuItems) => {
         return menuItems.map((menuItem) => {
             return menuItem.visible === 1 && (
-                <li key={menuItem.id} className={menuItem.className}>
-                    <button className={menuItem.buttonClassName || "desktopButton"} onClick={() => executeMenuItem(menuItem.id)}>{menuItem.name}</button>
+                <li key={menuItem.id}>
+                    <button className={menuItem.className || "desktopButton"} onClick={() => executeMenuItem(menuItem.id)}>{menuItem.name}</button>
                 </li>
             );
         });

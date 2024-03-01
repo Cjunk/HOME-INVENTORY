@@ -5,8 +5,17 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--header-background-color);
+  display:grid;
+  grid-template-columns: 1fr 1fr;;
   border-bottom: solid 1px var(--heading-main-bottom-border-color);
   box-shadow: 0 12px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  
+  align-items: center;;
+  padding:5px;
+}
+@media (max-width: 768px) {
+  .header-container {
+  grid-template-columns: 1fr;
+  }
 }
 

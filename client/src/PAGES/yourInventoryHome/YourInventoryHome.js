@@ -21,6 +21,7 @@ function YourInventoryHome(props) {
   const [theData, settheData] = useState("");
   const [itemMasterData, setItemMasterData] = useState("")
   const [locationData, setLocationData] = useState([]);
+  // eslint-disable-next-line
   const [serverResponse, settheServerResponse] = useState("");
   const [currentPage, setcurrentPage] = useState(1)
   const setTheCurrentPage = (page) => {
@@ -120,7 +121,7 @@ function YourInventoryHome(props) {
   }
   return (
     <div className="">
-      <span style={{ color: 'white' }}>{serverResponse}</span>
+      {/* <span style={{ color: 'white' }}>{serverResponse}</span> */}
       <YouInventoryNavBar {...props} pageSelector={setTheCurrentPage}  />
       {PageComponent}
     </div>

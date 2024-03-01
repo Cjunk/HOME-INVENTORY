@@ -9,7 +9,7 @@
 import React, { useState } from "react";
 import "./styles/inventoryitem.css";
 import RowComponent from "./rowComponent";
-import SohCard from "./soh_card";
+import SohCard from "../SOH_card/soh_card";
 
 // function formatDateTime(dateTimeString) {
 //   const date = new Date(dateTimeString);

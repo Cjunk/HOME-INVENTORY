@@ -1,0 +1,19 @@
+@import url("../../styles/palette.css");
+.element-content-container {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+    margin-bottom:50px;
+}
+.eachListRow{
+    display:grid;
+    grid-template-columns: 1fr 5fr;
+    
+}
+.details-list {
+    list-style: none;
+}
+
+.details-list li {
+    text-align:left;
+}

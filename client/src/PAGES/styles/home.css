@@ -12,6 +12,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   animation: changeBackground 40s infinite; /* Adjust duration as needed */
+  margin:0;
 }
 
 @keyframes changeBackground {

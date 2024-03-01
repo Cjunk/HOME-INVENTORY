@@ -5,7 +5,7 @@
   justify-content: right;
   padding: 10px;
   margin: 0;
-  background: linear-gradient(to right, var(--navbar-background1), var(--navbar-background2));
+  background: transparent;
 }
 .navigation-container ul li {
   border-bottom: solid;
@@ -13,9 +13,7 @@
   border-width: 1px;
   border-color: var(--navbar-brd-clr);
 }
-.navigation-container ul li:first-child {
-  margin-right: auto;
-}
+
 .navigation-container ul {
   height: 100%;
   padding: 0;
@@ -25,10 +23,10 @@
   border-style: none;
   cursor: pointer;
 }
-#login {
-  background: var(--navbar-button-login-background);
+.loginButton {
+  background: transparent;
 }
-#login:hover {
+.loginButton:hover {
   filter: invert(100%);
 }
 .navigation-buttons2 ul li button {
@@ -53,7 +51,7 @@
     display: block;
   }
   .desktopButton {
-    display: none;
+    
   }
   .navigation-container ul {
     flex-direction: column;

@@ -4,6 +4,7 @@
 
 /* Define color variables */
 :root {
+  --ipad-screen-size:768px;
   /* Gradients */
   --gradient-primary: linear-gradient(to right, #0077cc, #33aaff); /* Ocean Blue to Sky Blue */
   --gradient-secondary: linear-gradient(to right, #555555, #777777); /* Dim Gray to Gray */
@@ -22,13 +23,13 @@
   --hover-button: blue;
 
   /* Header */
-  --header-bckgrnd-clr: darkblue;
-  --heading-main-txt-clr: white;
+  --header-bckgrnd-clr: white;
+  --heading-main-txt-clr: var(--accent-color);
   --header-txt-color: var(--primary-text-color);
   --heading-main-bottom-border-color: green;
 
   /* Navbar */
-  --navbar-background1: #100231; /* White Smoke */
+  --navbar-background1: var(--header-bckgrnd-clr); /* White Smoke */
   --navbar-background2: var(--secondary-color);
   --navbar-buttons-color: #ffffff; /* White */
   --navbar-buttons-background: var(--primary-color); /* Ocean Blue */
@@ -61,7 +62,7 @@
 
   /* Data Lists */
   --inv-item-background-color-hvr: #0c3461; /* Light Coral */
-  --inv-item-background-color-hvr-txt: #c3cdd8; /* Light Coral */
+  --inv-item-background-color-hvr-txt: white; /* Light Coral */
   --inv-column-headings-background-color: var(--navbar-background2);
   --inv-col-headings-text: #ffffff; /* White */
   --inv-items-text: #061ace; /* Black */

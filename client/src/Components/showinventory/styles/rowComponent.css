@@ -76,7 +76,56 @@
 .bottom-inventory-data-col:nth-child(5) {
   grid-area: bottom3;
 }
+.data-heading {
+  background-color: var(--inv-column-headings-background-color);
+  position: sticky;
+  top: var(--header-height2);
+  z-index: 10;
+  text-align: left;
+  padding-left: 5px;
+}
 
+.data-row,
+.data-heading {
+  display: grid;
+  /* grid-template-columns: repeat(var(--inv-column-count), 1fr); Spans across 6 columns */
+  grid-template-columns: repeat(3, 0.5fr) 4fr repeat(4, 1fr);
+  color: var(--inv-col-headings-text);
+}
+.data-row {
+  padding-left: 5px;
+  text-align: left;
+  margin-top: 2px;
+}
+.data-row {
+  border-color: var(--inv-item-row-border-bottom);
+  border-bottom: var(--data-list-item-border-clr);
+}
+.data-row {
+  width: 100%;
+  color: var(--inv-items-text);
+}
+
+.data-row-bottom #qty {
+  width: 100%;
+  color: var(--inv-items-text);
+}
+.data-row-bottom #description {
+  width: 100%;
+  color: var(--inv-items-text);
+}
+.data-row-bottom #picture {
+  width: 100%;
+  color: var(--inv-items-text);
+}
+
+.the-inventory-data-row-container:hover {
+  background-color: var(--inv-item-background-color-hvr);
+  cursor: pointer;
+  /* border-bottom: solid 1px; */
+  /* color:var(--inv-item-background-color-hvr-txt); */
+  
+}
 @media only screen and (max-width: 768px) {
   .top-inventory-data-col {
     border-right: none;

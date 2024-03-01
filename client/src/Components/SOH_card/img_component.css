@@ -1,0 +1,29 @@
+@import url("../../styles/palette.css");
+
+.soh-img-wrapper {
+  margin: 0;
+  padding: 0;
+  /* Adjust these if necessary to fit the fixed-size image or based on your layout needs */
+  width: 100%;
+  /* This can be adjusted or even removed depending on your specific layout needs */
+  height: 100%;
+  /* Same as above, adjust or remove as needed */
+}
+.soh-main-image {
+  display: grid;
+  grid-template-columns: 1fr 150fr 1fr;
+  justify-items: center;
+  align-items: center;
+  gap: 2rem;
+}
+.soh-grid-item:first-child {
+  justify-self: start; /* Aligns the first item to the left of its grid cell */
+}
+.soh-grid-item:last-child {
+  justify-self: end; /* Aligns the last item to the right of its grid cell */
+}
+.main-item-image {
+  border: ridge 5px gold;
+  max-height: 500px;
+  max-width: 500px;
+}

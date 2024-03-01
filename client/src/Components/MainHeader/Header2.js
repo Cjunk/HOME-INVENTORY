@@ -4,10 +4,10 @@ import Hero from "./hero";
 import NavigationBar from "./navigationbar2";
 function Header(props) {
     return (
-        <div className="header-container">
+        <main className="header-container">
             <Hero />
             <NavigationBar {...props} />
-        </div>
+        </main>
     );
 }
 export default Header;
